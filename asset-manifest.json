@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/thaibudget65/static/css/main.8c8b27cf.chunk.css",
+    "main.js": "/thaibudget65/static/js/main.351baeaf.chunk.js",
+    "main.js.map": "/thaibudget65/static/js/main.351baeaf.chunk.js.map",
+    "runtime-main.js": "/thaibudget65/static/js/runtime-main.fd9d0fa8.js",
+    "runtime-main.js.map": "/thaibudget65/static/js/runtime-main.fd9d0fa8.js.map",
+    "static/js/2.0b890a0a.chunk.js": "/thaibudget65/static/js/2.0b890a0a.chunk.js",
+    "static/js/2.0b890a0a.chunk.js.map": "/thaibudget65/static/js/2.0b890a0a.chunk.js.map",
+    "static/js/3.85b7da2a.chunk.js": "/thaibudget65/static/js/3.85b7da2a.chunk.js",
+    "static/js/3.85b7da2a.chunk.js.map": "/thaibudget65/static/js/3.85b7da2a.chunk.js.map",
+    "index.html": "/thaibudget65/index.html",
+    "static/css/main.8c8b27cf.chunk.css.map": "/thaibudget65/static/css/main.8c8b27cf.chunk.css.map",
+    "static/js/2.0b890a0a.chunk.js.LICENSE.txt": "/thaibudget65/static/js/2.0b890a0a.chunk.js.LICENSE.txt",
+    "static/media/logo.6ce24c58.svg": "/thaibudget65/static/media/logo.6ce24c58.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.fd9d0fa8.js",
+    "static/js/2.0b890a0a.chunk.js",
+    "static/css/main.8c8b27cf.chunk.css",
+    "static/js/main.351baeaf.chunk.js"
+  ]
+}
