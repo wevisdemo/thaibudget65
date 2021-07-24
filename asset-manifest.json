@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/thaibudget65/static/css/main.013003b8.chunk.css",
-    "main.js": "/thaibudget65/static/js/main.9b4319aa.chunk.js",
-    "main.js.map": "/thaibudget65/static/js/main.9b4319aa.chunk.js.map",
+    "main.css": "/thaibudget65/static/css/main.bc8d0cef.chunk.css",
+    "main.js": "/thaibudget65/static/js/main.2c09ec3c.chunk.js",
+    "main.js.map": "/thaibudget65/static/js/main.2c09ec3c.chunk.js.map",
     "runtime-main.js": "/thaibudget65/static/js/runtime-main.379b6c8c.js",
     "runtime-main.js.map": "/thaibudget65/static/js/runtime-main.379b6c8c.js.map",
     "static/js/2.491e9591.chunk.js": "/thaibudget65/static/js/2.491e9591.chunk.js",
@@ -10,14 +10,14 @@
     "static/js/3.f437ef15.chunk.js": "/thaibudget65/static/js/3.f437ef15.chunk.js",
     "static/js/3.f437ef15.chunk.js.map": "/thaibudget65/static/js/3.f437ef15.chunk.js.map",
     "index.html": "/thaibudget65/index.html",
-    "static/css/main.013003b8.chunk.css.map": "/thaibudget65/static/css/main.013003b8.chunk.css.map",
+    "static/css/main.bc8d0cef.chunk.css.map": "/thaibudget65/static/css/main.bc8d0cef.chunk.css.map",
     "static/js/2.491e9591.chunk.js.LICENSE.txt": "/thaibudget65/static/js/2.491e9591.chunk.js.LICENSE.txt",
     "static/media/logo.6ce24c58.svg": "/thaibudget65/static/media/logo.6ce24c58.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.379b6c8c.js",
     "static/js/2.491e9591.chunk.js",
-    "static/css/main.013003b8.chunk.css",
-    "static/js/main.9b4319aa.chunk.js"
+    "static/css/main.bc8d0cef.chunk.css",
+    "static/js/main.2c09ec3c.chunk.js"
   ]
 }
