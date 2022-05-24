@@ -1,21 +1,16 @@
-import React, {
-  useCallback, useEffect, useMemo, useState,
-} from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import * as d3 from 'd3';
 import styled from 'styled-components';
-import { useHistory, useLocation } from 'react-router-dom';
 import ReactTooltip from 'react-tooltip';
-import logo from './logo.svg';
-import './App.css';
-import DataView from './components/DataView';
-import FullView from './components/FullView';
+import DataView from '../components/DataView';
+import FullView from '../components/FullView';
 
 const PageContainer = styled.div`
- display: flex;
- flex-direction: row;
- flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
 
-  @media screen and (orientation:portrait) {
+  @media screen and (orientation: portrait) {
     flex-direction: column;
   }
 `;
@@ -52,20 +47,20 @@ const Sidebar = styled.div`
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  
-  @media screen and (orientation:landscape) {
+
+  @media screen and (orientation: landscape) {
     width: 80px;
-    &>*:not(:last-child) {
+    & > *:not(:last-child) {
       margin-bottom: 16px;
     }
   }
 
-  @media screen and (orientation:portrait) {
+  @media screen and (orientation: portrait) {
     height: 64px;
     flex-direction: row;
     /* display: none !important; */
 
-    &>*:not(:last-child) {
+    & > *:not(:last-child) {
       margin-right: 16px;
     }
 
@@ -114,51 +109,46 @@ function App() {
     return sumWindows.filter((x) => mx === x).length > 1;
   }, [sumWindows]);
 
-  const preprocessedData = useMemo(() => data
-    .map((d) => ({
-      ...d,
-      AMOUNT: parseFloat(d.AMOUNT.replace(/,/g, '')),
-      OUTPUT_PROJECT: (d.OUTPUT || d.PROJECT) ? (d.OUTPUT + d.PROJECT) : 'ไม่ระบุโครงการ/ผลผลิต',
-      MINISTRY: d.MINISTRY.replace(/\([0-9]+\)$/, '').trim(),
-      ITEM: [
-        d.ITEM_DESCRIPTION,
-        d.CATEGORY_LV2,
-        d.CATEGORY_LV3,
-        d.CATEGORY_LV4,
-        d.CATEGORY_LV5,
-        d.CATEGORY_LV6,
-      ]
-        .filter((x) => x)
-        .join(' - '),
-    }))
-    .filter((d) => +d.FISCAL_YEAR === 2022),
-  [data]);
-
-  const location = useLocation();
-  const history = useHistory();
+  const preprocessedData = useMemo(
+    () =>
+      data
+        .map((d) => ({
+          ...d,
+          AMOUNT: parseFloat(d.AMOUNT.replace(/,/g, '')),
+          OUTPUT_PROJECT:
+            d.OUTPUT || d.PROJECT
+              ? d.OUTPUT + d.PROJECT
+              : 'ไม่ระบุโครงการ/ผลผลิต',
+          MINISTRY: d.MINISTRY.replace(/\([0-9]+\)$/, '').trim(),
+          ITEM: [
+            d.ITEM_DESCRIPTION,
+            d.CATEGORY_LV2,
+            d.CATEGORY_LV3,
+            d.CATEGORY_LV4,
+            d.CATEGORY_LV5,
+            d.CATEGORY_LV6,
+          ]
+            .filter((x) => x)
+            .join(' - '),
+        }))
+        .filter((d) => +d.FISCAL_YEAR === 2022),
+    [data]
+  );
 
   useEffect(() => {
     const f = location.pathname.split('/').slice(1);
     console.log('f', f, f.length > 0 && f[0] ? f : ['all']);
     setFilters(f.length > 0 && f[0] ? f : ['all']);
-  }, [location]);
-
-  const navigateTo = (x, i) => {
-    console.log(x, i);
-    const temp = [...filters];
-    temp.splice(i + 1);
-    // setFilters(temp);
-    console.log('temp', temp);
-    history.push(`/${temp.join('/')}`);
-  };
+  }, []);
 
   return (
     <FullView>
       <PageContainer>
-        <div style={{
-          position: 'relative',
-          flexGrow: 1,
-        }}
+        <div
+          style={{
+            position: 'relative',
+            flexGrow: 1,
+          }}
         >
           <DataView
             data={preprocessedData}
@@ -174,10 +164,11 @@ function App() {
           />
         </div>
         {isCompareView && (
-          <div style={{
-            position: 'relative',
-            flexGrow: 1,
-          }}
+          <div
+            style={{
+              position: 'relative',
+              flexGrow: 1,
+            }}
           >
             <DataView
               data={preprocessedData}
@@ -197,22 +188,25 @@ function App() {
           <ActionButton
             type="button"
             onClick={() => {
-              if (isCompareView) { setSumWindowsIdx(1, 0); }
+              if (isCompareView) {
+                setSumWindowsIdx(1, 0);
+              }
               setCompareView(!isCompareView);
             }}
           >
-            <span style={{
-              display: 'inline-flex',
-              fontSize: 24,
-              width: 32,
-              height: 32,
-              borderRadius: '50%',
-              backgroundColor: '#333',
-              color: 'white',
-              alignItems: 'center',
-              justifyContent: 'center',
-              marginBottom: 8,
-            }}
+            <span
+              style={{
+                display: 'inline-flex',
+                fontSize: 24,
+                width: 32,
+                height: 32,
+                borderRadius: '50%',
+                backgroundColor: '#333',
+                color: 'white',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginBottom: 8,
+              }}
             >
               {!isCompareView ? '+' : '×'}
             </span>
@@ -222,11 +216,22 @@ function App() {
 
           <CreditLink target="_blank" href="https://taepras.com">
             <small>Visualized by</small>
-            <ResponsiveImage src={`${process.env.PUBLIC_URL}/tp_logo_dark.svg`} alt="kaogeek logo" title="Thanawit Prasongpongchai" />
+            <ResponsiveImage
+              src={`${process.env.PUBLIC_URL}/tp_logo_dark.svg`}
+              alt="kaogeek logo"
+              title="Thanawit Prasongpongchai"
+            />
           </CreditLink>
-          <CreditLink target="_blank" href="https://docs.google.com/spreadsheets/d/1yyWXSTbq3CD_gNxks-krcSBzbszv3c_2Nq54lckoQ24/edit#gid=343539850">
+          <CreditLink
+            target="_blank"
+            href="https://docs.google.com/spreadsheets/d/1yyWXSTbq3CD_gNxks-krcSBzbszv3c_2Nq54lckoQ24/edit#gid=343539850"
+          >
             <small>Data Source</small>
-            <ResponsiveImage src={`${process.env.PUBLIC_URL}/kaogeek_logo_dark.png`} alt="kaogeek logo" title="กลุ่มก้าว Geek" />
+            <ResponsiveImage
+              src={`${process.env.PUBLIC_URL}/kaogeek_logo_dark.png`}
+              alt="kaogeek logo"
+              title="กลุ่มก้าว Geek"
+            />
           </CreditLink>
           <div style={{ opacity: 0.6, textAlign: 'center' }}>
             <small style={{ display: 'inline-block', lineHeight: 1.2 }}>
