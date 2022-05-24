@@ -8,7 +8,7 @@ body {
 } */
 
 .treemap-piece:hover rect {
-  stroke: #fff;
+  stroke: white;
 }
 
 .treemap-piece:focus {
