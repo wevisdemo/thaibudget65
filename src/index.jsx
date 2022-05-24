@@ -2,17 +2,38 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import {
-  HashRouter as Router,
+  BrowserRouter as Router,
+  Link,
+  Route,
   Switch,
-  useLocation,
 } from 'react-router-dom';
+import WvNavbar from '@wevisdemo/ui/components/navbar';
+import WvNavButton from '@wevisdemo/ui/components/nav-button';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import '@wevisdemo/ui/styles/typography.css';
+import '@wevisdemo/ui/styles/components.css';
+import Explore from './pages/explore';
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <App />
+      <link
+        rel="stylesheet"
+        href="https://design-systems.wevis.info/typography.css"
+      />
+      <WvNavbar title="THAILAND BUDGET 2566">
+        <Link to="/">
+          <WvNavButton>Treemap</WvNavButton>
+        </Link>
+        <Link to="/explore">
+          <WvNavButton>Explore</WvNavButton>
+        </Link>
+      </WvNavbar>
+      <Switch>
+        <Route exact path="/"><App /></Route>
+        <Route path="/explore"><Explore /></Route>
+      </Switch>
     </Router>
   </React.StrictMode>,
   // eslint-disable-next-line no-undef
