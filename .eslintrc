@@ -6,6 +6,7 @@
     "airbnb/hooks"
   ],
   "rules": {
+    "import/prefer-default-export": ["off"],
     "no-unused-vars": [
       "warn"
     ],
@@ -25,5 +26,11 @@
       "warn"
     ]
   },
-  "parser": "babel-eslint"
+  "parser": "@babel/eslint-parser",
+  "parserOptions": {
+    "requireConfigFile": false,
+    "babelOptions": {
+      "presets": ["@babel/preset-react"]
+   }
+  }
 }
