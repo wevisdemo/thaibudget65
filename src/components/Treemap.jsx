@@ -146,7 +146,7 @@ function Treemap({
       .append('rect')
       .attr('class', 'box')
       .attr('rx', 3)
-      .style('fill', 'DarkSlateBlue')
+      .style('fill', '#3904E9')
       .attr('width', (d) => (d.x1 - d.x0) || 0)
       .attr('height', (d) => (d.y1 - d.y0) || 0);
     // .attr('x', d => d.x0)
@@ -244,7 +244,7 @@ function Treemap({
       .transition()
       .duration(300)
       .attr('rx', 3)
-      .attr('fill', 'DarkSlateBlue')
+      .attr('fill', '#3904E9')
       .attr('stroke', 'black')
       .attr('stroke-width', gutter)
       .attr('width', (d) => Math.max((d.x1 - d.x0) || 0, 0))
@@ -317,14 +317,19 @@ function Treemap({
         overflowY: 'auto',
       }}
     >
-      <div style={{
-        paddingLeft: 18,
-        fontSize: 12,
-        marginBottom: -padding + 4,
-        zIndex: 2,
-      }}
+      <div
+        style={{
+          marginLeft: 18,
+          marginRight: 18,
+          marginTop: 10,
+          padding: 5,
+          fontSize: 12,
+          marginBottom: -padding + 4,
+          zIndex: 2,
+          backgroundColor: '#141414',
+        }}
       >
-        <b style={{ whiteSpace: 'nowrap' }}>{filters[filters.length - 1] === 'all' ? 'รวมทุกหน่วยงาน' : filters[filters.length - 1]}</b>
+        <b style={{ whiteSpace: 'nowrap' }}>{filters[filters.length - 1] === 'all' ? 'รวมทั้งหมด' : filters[filters.length - 1]}</b>
         <br />
         <span style={{ opacity: 0.7 }}>
           {sum.toLocaleString()}
