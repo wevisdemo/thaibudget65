@@ -45,6 +45,8 @@ function Treemap({
 
   // const history = useHistory();
 
+  const TREECOLOR = index === 0 ? '#3904E9' : '#5906cf';
+
   const svgRef = useRef(null);
 
   // const [data, setData] = useState([]);
@@ -78,7 +80,10 @@ function Treemap({
 
     console.log('indata', inData);
 
-    return inData;
+    if (inData !== undefined) {
+      return inData;
+    }
+    return { key: 'all', values: [] };
   }, [data, filters, hierarchyBy]);
 
   useEffect(() => {
@@ -146,7 +151,7 @@ function Treemap({
       .append('rect')
       .attr('class', 'box')
       .attr('rx', 3)
-      .style('fill', '#3904E9')
+      .style('fill', TREECOLOR)
       .attr('width', (d) => (d.x1 - d.x0) || 0)
       .attr('height', (d) => (d.y1 - d.y0) || 0);
     // .attr('x', d => d.x0)
@@ -244,7 +249,7 @@ function Treemap({
       .transition()
       .duration(300)
       .attr('rx', 3)
-      .attr('fill', '#3904E9')
+      .attr('fill', TREECOLOR)
       .attr('stroke', 'black')
       .attr('stroke-width', gutter)
       .attr('width', (d) => Math.max((d.x1 - d.x0) || 0, 0))
@@ -286,23 +291,7 @@ function Treemap({
     console.log('too small', root.leaves().filter((d) => (d.x1 - d.x0) * (d.y1 - d.y0) < 100));
     console.log('too narrow', root.leaves().filter((d) => d.x1 - d.x0 < 20));
     console.log('too short', root.leaves().filter((d) => d.y1 - d.y0 < 20));
-  }, [
-    svgRef,
-    nestedData,
-    filters,
-    width,
-    height,
-    displayMode,
-    padding,
-    gutter,
-    hierarchyBy,
-    setFilters,
-    fullValue,
-    sum,
-    index,
-    isMultipleMaxSum,
-    sumWindows,
-  ]);
+  }, [svgRef, nestedData, filters, width, height, displayMode, padding, gutter, hierarchyBy, setFilters, fullValue, sum, index, isMultipleMaxSum, sumWindows, TREECOLOR]);
 
   return (
     <div

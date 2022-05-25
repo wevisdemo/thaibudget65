@@ -7,6 +7,7 @@ import {
   Link, Route, useHistory, useLocation,
 } from 'react-router-dom';
 import ReactTooltip from 'react-tooltip';
+import Dropdown from 'react-dropdown';
 import logo from './logo.svg';
 import './App.css';
 import DataView from './components/DataView';
@@ -94,11 +95,27 @@ const ActionButton = styled.button`
 function App() {
   const [data, setData] = useState([]);
   const [isLoading, setLoading] = useState(true);
+  const [data65, setData65] = useState([]);
+  const [isLoading65, setLoading65] = useState(true);
   const [isCompareView, setCompareView] = useState(false);
   const [filters, setFilters] = useState(['all']);
   const [sumWindows, setSumWindows] = useState([0, 0]);
 
+  const [searchQuery, setSearchQuery] = useState('');
+  const [optionsState, setOptionsState] = useState('หน่วยงาน');
+  const options = ['หน่วยงาน', 'จังหวัด'];
+  const defaultOption = options[0];
+
+  const handleDropdown = (e) => {
+    setOptionsState(e.value);
+    setFilters(['all']);
+  };
+
   useEffect(() => {
+    d3.csv(`${process.env.PUBLIC_URL}/data65.csv`).then((d) => {
+      setLoading65(false);
+      setData65(d);
+    });
     d3.csv(`${process.env.PUBLIC_URL}/data.csv`).then((d) => {
       setLoading(false);
       setData(d);
@@ -128,7 +145,7 @@ function App() {
     return matched.join('-');
   };
 
-  const preprocessedData = useMemo(() => data
+  const preprocessedData65 = useMemo(() => data65
     .map((d) => ({
       ...d,
       AMOUNT: parseFloat(d.AMOUNT.replace(/,/g, '')),
@@ -147,6 +164,27 @@ function App() {
         .join(' - '),
     }))
     .filter((d) => +d.FISCAL_YEAR === 2022),
+  [data65]);
+
+  const preprocessedData = useMemo(() => data
+    .map((d) => ({
+      ...d,
+      AMOUNT: parseFloat(d.AMOUNT.replace(/,/g, '')),
+      OUTPUT_PROJECT: (d.OUTPUT || d.PROJECT) ? (d.OUTPUT + d.PROJECT) : 'ไม่ระบุโครงการ/ผลผลิต',
+      MINISTRY: d.MINISTRY.replace(/\([0-9]+\)$/, '').trim(),
+      PROVINCE: matchedProvinces(d.ITEM_DESCRIPTION),
+      ITEM: [
+        d.ITEM_DESCRIPTION,
+        d.CATEGORY_LV2,
+        d.CATEGORY_LV3,
+        d.CATEGORY_LV4,
+        d.CATEGORY_LV5,
+        d.CATEGORY_LV6,
+      ]
+        .filter((x) => x)
+        .join(' - '),
+    }))
+    .filter((d) => +d.FISCAL_YEAR === 2023),
   [data]);
 
   const location = useLocation();
@@ -170,6 +208,41 @@ function App() {
   return (
     <div>
       <FullView>
+        {/* <div className="absolute top-8 right-[83px] wv-font-anuphan z-30"> */}
+        <div>
+          <div className="wv-font-anuphan flex justify-center mt-14">
+            <div className="pr-2">
+              <label className="flex text-xs items-center pb-2">แบ่งตาม</label>
+
+              <Dropdown className=" text-red-400" options={options} onChange={handleDropdown} value={defaultOption} placeholder="Select" />
+            </div>
+            <div>
+              <label className="flex text-xs items-center pb-2">
+                <svg
+                  className="h-4 w-4 mr-1 fill-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                  x="0px"
+                  y="0px"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 30 30"
+                >
+                  <path d="M 13 3 C 7.4889971 3 3 7.4889971 3 13 C 3 18.511003 7.4889971  23 13 23 C 15.396508 23 17.597385 22.148986 19.322266 20.736328 L 25.292969 26.707031 A 1.0001 1.0001 0 1 0 26.707031 25.292969 L 20.736328 19.322266 C 22.148986 17.597385 23 15.396508 23 13 C 23 7.4889971 18.511003 3 13 3 z M 13 5 C 17.430123 5 21 8.5698774 21 13 C 21 17.430123 17.430123 21 13 21 C 8.5698774 21 5 17.430123 5 13 C 5 8.5698774 8.5698774 5 13 5 z" />
+                </svg>
+
+                ค้นหา
+
+              </label>
+              <input
+                className="w-48 h-[40px] text-white rounded-sm p-2 bg-[#141414] border border-[#ccc] placeholder-[#767676]"
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder={optionsState === 'หน่วยงาน' ? 'หน่วยรับงบหรือกระทรวง' : 'จังหวัด'}
+              />
+            </div>
+          </div>
+        </div>
         <PageContainer>
           <div style={{
             position: 'relative',
@@ -185,8 +258,12 @@ function App() {
                 setSumWindowsIdx(0, s);
               }}
               isMultipleMaxSum={isMultipleMaxSum}
-              sumWindows={[sumWindows[0], minSumValue]}
+              sumWindows={[0, 0]}
               index={0}
+              optionsState={optionsState}
+              searchQuery={searchQuery}
+              filters={filters}
+              setFilters={setFilters}
             />
           </div>
           {isCompareView && (
@@ -196,8 +273,8 @@ function App() {
           }}
           >
             <DataView
-              data={preprocessedData}
-              isLoading={isLoading}
+              data={preprocessedData65}
+              isLoading={isLoading65}
               fullValue={maxSumValue}
               setCurrentSum={(s) => {
                 console.log('setCurrentSum 1', s);
@@ -205,15 +282,19 @@ function App() {
               }}
               isMultipleMaxSum={isMultipleMaxSum}
               // sumWindows={sumWindows}
-              sumWindows={[minSumValue, sumWindows[1]]}
+              sumWindows={[sumWindows[1], 0]}
               index={1}
+              optionsState={optionsState}
+              searchQuery={searchQuery}
+              filters={filters}
+              setFilters={setFilters}
             />
           </div>
           )}
           <Sidebar>
             <ActionButton
               type="button"
-              className="wv-font-anuphan text-xs mt-[145px]"
+              className="wv-font-anuphan text-xs md:mt-[80px]"
               onClick={() => {
                 if (isCompareView) { setSumWindowsIdx(1, 0); }
                 setCompareView(!isCompareView);
@@ -234,12 +315,15 @@ function App() {
               >
                 {!isCompareView ? '+' : '×'}
               </span>
-              {!isCompareView ? 'Open\nCompare\nView' : 'Close\nCompare\nView'}
+              {!isCompareView ? 'เทียบงบ 65' : 'ปิดการเทียบ'}
             </ActionButton>
             <div style={{ flexGrow: 1 }} />
 
             <CreditLink target="_blank" href="https://docs.google.com/spreadsheets/d/1Js6iDnBR53nk80Hr4UybEwV4poUpNEeOoUUWJDCpLjI/edit#gid=696564335">
-              <small className="wv-font-anuphan text-xs">ดูข้อมูล</small>
+              <small className="wv-font-anuphan text-xs">ดูข้อมูลปี 66</small>
+            </CreditLink>
+            <CreditLink target="_blank" href="https://docs.google.com/spreadsheets/d/1yyWXSTbq3CD_gNxks-krcSBzbszv3c_2Nq54lckoQ24/edit#gid=343539850">
+              <small className="wv-font-anuphan text-xs">ดูข้อมูลปี 65</small>
             </CreditLink>
             <CreditLink target="_blank" href="https://taepras.com">
               {/* <small className="wv-font-anuphan text-xs">Visualized by</small> */}

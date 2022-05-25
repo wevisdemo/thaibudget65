@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const FullView = styled.div`
   position: absolute;
-  top: 33px;
+  top: 15px;
   left: 0;
   right: 0;
   bottom: 0;

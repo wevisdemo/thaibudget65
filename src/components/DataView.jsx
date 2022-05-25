@@ -5,15 +5,15 @@ import * as d3 from 'd3';
 import styled from 'styled-components';
 import { useHistory, useLocation } from 'react-router-dom';
 import ReactTooltip from 'react-tooltip';
-import Dropdown from 'react-dropdown';
+// import Dropdown from 'react-dropdown';
 import '../dropdown.css';
 import Treemap from './Treemap';
 import FullView from './FullView';
 
-const options = ['หน่วยงาน', 'จังหวัด'];
-const defaultOption = options[0];
+// const options = ['หน่วยงาน', 'จังหวัด'];
+// const defaultOption = options[0];
 
-const TOP_BAR_HEIGHT = 60;
+const TOP_BAR_HEIGHT = 40;
 
 const hierarchyByMinistry = [
   'MINISTRY',
@@ -54,10 +54,14 @@ function DataView({
   index = 0,
   isMultipleMaxSum = false,
   sumWindows = [],
+  optionsState,
+  searchQuery,
+  filters,
+  setFilters,
 }) {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [optionsState, setOptionsState] = useState('หน่วยงาน');
-  const [filters, setFilters] = useState(['all']);
+  // const [searchQuery, setSearchQuery] = useState('');
+  // const [optionsState, setOptionsState] = useState('หน่วยงาน');
+  // const [filters, setFilters] = useState(['all']);
 
   const filterDataByQuery = useCallback((datum, query) => {
     const searchLevels = [
@@ -84,6 +88,7 @@ function DataView({
     const f = location.pathname.split('/').slice(1);
     console.log('f', f, f.length > 0 && f[0] ? f : ['all']);
     setFilters(f.length > 0 && f[0] ? f : ['all']);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location]);
 
   const navigateTo = (x, i) => {
@@ -96,10 +101,10 @@ function DataView({
     // history.push(`/${temp.join('/')}`);
   };
 
-  const handleDropdown = (e) => {
-    setOptionsState(e.value);
-    setFilters(['all']);
-  };
+  // const handleDropdown = (e) => {
+  //   setOptionsState(e.value);
+  //   setFilters(['all']);
+  // };
 
   return (
     <FullView className="wv-font-anuphan">
@@ -108,6 +113,13 @@ function DataView({
       toggle compare view
       </button>
        */}
+      <div className="ml-4 text-xs">
+        งบประมาณปี
+        {' '}
+        <span className="font-bold">
+          {index === 0 ? 2566 : 2565}
+        </span>
+      </div>
       <div
         style={{
           height: TOP_BAR_HEIGHT,
@@ -174,7 +186,7 @@ function DataView({
           ))}
           {/* {JSON.stringify(filters)} */}
         </div>
-        <div className="pr-2">
+        {/* <div className="pr-2">
           <label className="flex text-xs items-center pb-2">แบ่งตาม</label>
 
           <Dropdown className=" text-red-400" options={options} onChange={handleDropdown} value={defaultOption} placeholder="Select" />
@@ -203,7 +215,7 @@ function DataView({
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder={optionsState === 'หน่วยงาน' ? 'หน่วยรับงบหรือกระทรวง' : 'จังหวัด'}
           />
-        </div>
+        </div> */}
       </div>
       <div style={{ display: 'flex', flexDirection: 'row', flexGrow: 1 }}>
         <div style={{
