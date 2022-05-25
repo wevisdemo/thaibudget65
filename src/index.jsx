@@ -22,14 +22,16 @@ ReactDOM.render(
         rel="stylesheet"
         href="https://design-systems.wevis.info/typography.css"
       />
-      <WvNavbar title="THAILAND BUDGET 2566">
-        <Link to="/">
-          <WvNavButton>Treemap</WvNavButton>
-        </Link>
-        <Link to="/explore">
-          <WvNavButton>Explore</WvNavButton>
-        </Link>
-      </WvNavbar>
+      <div className="z-40 relative">
+        <WvNavbar title="THAILAND BUDGET 2566">
+          <Link to="/">
+            <WvNavButton>Treemap</WvNavButton>
+          </Link>
+          <Link to="/explore">
+            <WvNavButton>Explore</WvNavButton>
+          </Link>
+        </WvNavbar>
+      </div>
       <Switch>
         <Route exact path="/"><App /></Route>
         <Route path="/explore"><Explore /></Route>
