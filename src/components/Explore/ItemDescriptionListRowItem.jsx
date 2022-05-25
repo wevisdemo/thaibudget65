@@ -15,7 +15,7 @@ function ItemDescriptionListRowItem() {
         </div>
       </div>
       <div>
-        <p className="text-[#828282] text-right">1,260,000</p>
+        <p className="text-[#828282] text-right">{(Math.random() * 1_000_000).toLocaleString()}</p>
       </div>
     </div>
   )
