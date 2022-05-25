@@ -6,7 +6,7 @@ import Result from '../components/Explore/Result';
 const Explore = () => (
   <div className="bg-[hsl(0,0%,98%)] text-black px-4 md:px-36 pt-6 md:pt-[73px]">
     <h1 className="wv-font-anuphan text-4xl font-bold">สำรวจงบประมาณปี 2566</h1>
-    <p>
+    <p className="text-[#828282]">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fames
       velit eget bibendum augue et, sit nisl.
     </p>

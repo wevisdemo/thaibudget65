@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import RatioCompare from './ResultRatioCompare';
 import ResultGroupBy from './ResultGroupBy';
+import ItemDescriptionList from './ItemDescriptionList';
 /*
 interface FilterResult {
   keyword: string;
@@ -28,7 +29,7 @@ function Result() {
   const count = 4123;
   const total = 3_130_000_000_000 / 7;
   const budgetYearTotal = 3_130_000_000_000;
-  const [activeTabIndex, setActiveTabIndex] = useState(0);
+  const [activeTabIndex, setActiveTabIndex] = useState(1);
 
   const groupByFields = [
     'ระดับกระทรวง',
@@ -50,10 +51,7 @@ function Result() {
     },
     {
       name: 'รายการงบ',
-      component: (
-        <div>
-          <h1>####รายการงบ####</h1>
-        </div>),
+      component: <ItemDescriptionList />,
     },
   ];
 

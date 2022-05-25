@@ -34,7 +34,7 @@ function KeywordListItem({
 }) {
   return (
     <tr
-      className={`duration-100 ${checked && 'bg-[#3904E90F]'} items-center`}
+      className={`duration-100 border-b  ${checked && 'bg-[#3904E90F] border-white/0'} items-center`}
       role="menuitemradio"
       aria-checked={checked}
       onClick={onCheck}
