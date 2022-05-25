@@ -46,7 +46,7 @@ const keywords = [
 const KEYWORD_HEADER_STRING = 'คำสำคัญ';
 const AMOUNT_UNIT_HEADER_STRING = 'ล้านบาท';
 const TITLE_STRING = 'คำสำคัญในรายละเอียดงบ';
-function KeywordList() {
+function KeywordList({ onKeywordChange }) {
   const [checkedIndex, setCheckedIndex] = useState(0);
 
   return (
@@ -65,7 +65,7 @@ function KeywordList() {
               count={400}
               total={31442}
               checked={checkedIndex === i}
-              onCheck={() => setCheckedIndex(i)}
+              onCheck={() => { setCheckedIndex(i); onKeywordChange(v); }}
             />
           ))}
         </table>

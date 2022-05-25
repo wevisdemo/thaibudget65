@@ -24,7 +24,7 @@ interface GroupByResult {
 }
 */
 
-function Result() {
+function Result({ result }) {
   const keyword = 'ค่าธรรมเนียม';
   const count = 4123;
   const total = 3_130_000_000_000 / 7;
@@ -39,6 +39,8 @@ function Result() {
     'ผลผลิต',
     'จังหวัด',
   ];
+
+  console.log(result);
 
   const tabs = [
     {
