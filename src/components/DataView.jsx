@@ -59,10 +59,6 @@ function DataView({
   const [optionsState, setOptionsState] = useState('หน่วยงาน');
   const [filters, setFilters] = useState(['all']);
 
-  const handleOptionChange = (e) => {
-    setOptionsState(e.target.value);
-  };
-
   const filterDataByQuery = useCallback((datum, query) => {
     const searchLevels = [
       'MINISTRY',
@@ -98,6 +94,11 @@ function DataView({
     console.log('temp', temp);
     setFilters(temp);
     // history.push(`/${temp.join('/')}`);
+  };
+
+  const handleDropdown = (e) => {
+    setOptionsState(e.value);
+    setFilters(['all']);
   };
 
   return (
@@ -176,7 +177,7 @@ function DataView({
         <div className="pr-2">
           <label className="flex text-xs items-center pb-2">แบ่งตาม</label>
 
-          <Dropdown className=" text-red-400" options={options} onChange={(e) => setOptionsState(e.value)} value={defaultOption} placeholder="Select an option" />
+          <Dropdown className=" text-red-400" options={options} onChange={handleDropdown} value={defaultOption} placeholder="Select" />
         </div>
         <div>
           <label className="flex text-xs items-center pb-2">
