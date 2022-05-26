@@ -7,7 +7,7 @@ function Result({
   result, keyword,
 }) {
   const count = result ? result.items.length : 0;
-  const [activeTabIndex, setActiveTabIndex] = useState(1);
+  const [activeTabIndex, setActiveTabIndex] = useState(0);
 
   const groupByFields = [
     {
