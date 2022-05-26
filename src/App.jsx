@@ -209,8 +209,14 @@ function App() {
     <div>
       <FullView>
         {/* <div className="absolute top-8 right-[83px] wv-font-anuphan z-30"> */}
+        <div className="flex justify-center text-white p-5 pt-[45px] md:pt-[63px]">
+          <div className="wv-font-anuphan text-2xl font-bold flex items-center">
+            <img className="w-[24px] h-[24px] mr-2" src={`${process.env.PUBLIC_URL}/inspect.png`} alt="inspect" title="inspect" />
+            สำรวจงบประมาณปี 2566
+          </div>
+        </div>
         <div>
-          <div className="wv-font-anuphan flex justify-center mt-14">
+          <div className="wv-font-anuphan flex justify-center">
             <div className="pr-2">
               <label className="flex text-xs items-center pb-2">แบ่งตาม</label>
 
@@ -332,7 +338,7 @@ function App() {
             <CreditLink target="_blank" href="https://wevis.info/">
               <ResponsiveImage src={`${process.env.PUBLIC_URL}/wv_logo_dark.svg`} alt="kaogeek logo" title="WeVis" />
             </CreditLink>
-            <CreditLink target="_blank" href="https://docs.google.com/spreadsheets/d/1Js6iDnBR53nk80Hr4UybEwV4poUpNEeOoUUWJDCpLjI/edit#gid=696564335">
+            <CreditLink target="_blank" href="https://github.com/kaogeek">
               {/* <small className="wv-font-anuphan text-xs">Data Source</small> */}
               <ResponsiveImage src={`${process.env.PUBLIC_URL}/kaogeek_logo_dark.png`} alt="kaogeek logo" title="กลุ่มก้าว Geek" />
             </CreditLink>
