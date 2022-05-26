@@ -8,7 +8,7 @@ import { provinces } from '../provinces';
 import selectedKeywords from '../selectedKeyword.json';
 
 const PAGE_TITLE_STRING = 'สำรวจงบประมาณปี 2566';
-const PAGE_SUB_TITLE_STRING = 'จากคำสำคัญที่พบได้บ่อย และคำที่น่าสนใจในงบประมาณ';
+const PAGE_SUB_TITLE_STRING = 'ผ่านคำสำคัญที่พบได้บ่อย และคำที่น่าสนใจในงบประมาณ';
 const DOWNLOAD_DATA_BUTTON_STRING = 'ดาวน์โหลดข้อมูล';
 const DOWNLOAD_DATA_URL_STRING = 'https://docs.google.com/spreadsheets/d/1Js6iDnBR53nk80Hr4UybEwV4poUpNEeOoUUWJDCpLjI/edit#gid=696564335';
 const DOWNLOAD_ICON = (
