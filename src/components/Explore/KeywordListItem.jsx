@@ -30,7 +30,7 @@ const BULLET_UNCHECKED = (
 );
 
 function KeywordListItem({
-  keyword, count, total, checked, onCheck,
+  keyword, checked, onCheck,
 }) {
   return (
     <tr
@@ -43,15 +43,15 @@ function KeywordListItem({
         {checked ? BULLET_CHECKED : BULLET_UNCHECKED}
       </td>
       <td className="py-4">
-        <span className="">{keyword}</span>
+        <span className="">{keyword.word}</span>
         <span className="text-[#828282] text-sm ml-2">
           (
-          {count}
+          {keyword.count}
           )
         </span>
       </td>
       <td className="text-right">
-        <span>{total.toLocaleString()}</span>
+        <span>{(keyword.summation / 1_000_000).toLocaleString()}</span>
       </td>
       <td className="rounded-r-md">{ARROW_DOWN}</td>
     </tr>

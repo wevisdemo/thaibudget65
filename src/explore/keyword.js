@@ -1,4 +1,6 @@
-export default [
+import { filterItems } from './filter';
+
+const keywords = [
   'อาคาร',
   'หลวง',
   'ค่าเช่ารถ',
@@ -38,3 +40,17 @@ export default [
   'จัดอีเวนต์',
   'ยากจนพุ่งเป้า',
 ];
+
+function extractingKeyword(items) {
+  return keywords.reduce((prevArray, keyword) => {
+    const filteredItems = filterItems(keyword, items);
+    if (filteredItems.length > 0) {
+      return [...prevArray, {
+        word: keyword,
+        count: filteredItems.length,
+        summation: filteredItems.map((i) => i.AMOUNT).reduce((last, next) => last + Number(next.replaceAll(',', '')), 0),
+      }];
+    }
+    return prevArray;
+  }, []);
+}

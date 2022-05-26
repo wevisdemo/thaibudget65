@@ -18,7 +18,7 @@ function ResultGroupBy({
     <Section title={groupName + TITLE_PATTERN_STRING}>
       <div>
         {items && items.slice(0, ITEM_PER_PAGE).map(({ name, total }, i) => (
-          <RowItem index={i} number={i + 1} name={name} amount={total} />
+          <RowItem key={`groupBy-row-item-${name}`} index={i} number={i + 1} name={name} amount={total} />
         ))}
       </div>
       <div className="ml-auto">
@@ -47,7 +47,6 @@ function RowItem({
       <div className="text-right inline">
         <p>
           {(amount / 1_000_000).toLocaleString()}
-
           {' '}
           <span className="text-[#828282] text-[13px]">{AMOUNT_UNIT_STRING}</span>
         </p>
