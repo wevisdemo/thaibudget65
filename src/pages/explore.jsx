@@ -9,6 +9,7 @@ import { provinces } from '../provinces';
 import selectedKeywords from '../selectedKeyword.json';
 
 const DOWNLOAD_DATA_BUTTON_STRING = 'ดาวน์โหลดข้อมูล';
+const DOWNLOAD_DATA_URL_STRING = 'https://docs.google.com/spreadsheets/d/1Js6iDnBR53nk80Hr4UybEwV4poUpNEeOoUUWJDCpLjI/edit#gid=696564335';
 const DOWNLOAD_ICON = (
   <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
     <g clipPath="url(#clip0_5321_4)">
@@ -57,10 +58,14 @@ const Explore = () => {
       </p>
       <div className="wv-font-anuphan flex p-6 justify-between items-center bg-[#3904E90A] rounded-xl mt-8">
         <p className="text-xl">{`จากงบประมาณทั้งหมด ${result && (result.totalYearBudget / 1_000_000).toLocaleString()} ล้านบาท`}</p>
-        <WvButton>
+        <a
+          type="button"
+          className="inline-flex space-x-3 items-center rounded-md bg-[#3904E9] text-white p-4"
+          href={DOWNLOAD_DATA_URL_STRING}
+        >
           {DOWNLOAD_ICON}
           <span>{DOWNLOAD_DATA_BUTTON_STRING}</span>
-        </WvButton>
+        </a>
       </div>
       <div className="wv-font-anuphan grid grid-cols-1 md:grid-cols-3 gap-6 mt-7">
         <KeywordList keywords={selectedKeywords} activeKeyword={selectedKeywords[activeKeywordIndex].word} onActiveKeywordIndex={setActiveKeywordIndex} />

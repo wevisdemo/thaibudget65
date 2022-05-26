@@ -8,7 +8,7 @@ function Pagination({
     const fullArray = Array.from({ length: pageLength }, (_, index) => index + 1);
     let returnedArray = [];
 
-    if (fullArray.length <= 4) {
+    if (fullArray.length <= 6) {
       return fullArray;
     }
 

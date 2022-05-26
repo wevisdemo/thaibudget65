@@ -6,7 +6,7 @@ const ItemDescriptionListRowItem = ({ item }) => (
       <p className="text-base">{item.ITEM_DESCRIPTION}</p>
       <div className="text-[10px] space-x-1">
         <span>{item.MINISTRY}</span>
-        <span>-</span>
+        <span>{item.CATEGORY_LV1 && '-'}</span>
         <span>{item.CATEGORY_LV1}</span>
         <span>{item.CATEGORY_LV2}</span>
         <span>{item.CATEGORY_LV3}</span>
