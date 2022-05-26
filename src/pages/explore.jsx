@@ -69,7 +69,7 @@ const Explore = () => {
     });
   }, []);
 
-  const result = useMemo(() => filter(keywords[activeKeywordIndex], allItems), [activeKeywordIndex])
+  const result = useMemo(() => filter(keywords[activeKeywordIndex], allItems), [allItems, activeKeywordIndex]);
 
   return (
     <div className="bg-[hsl(0,0%,98%)] text-black px-4 md:px-36 pt-6 md:pt-[73px]">
@@ -79,7 +79,7 @@ const Explore = () => {
         velit eget bibendum augue et, sit nisl.
       </p>
       <div className="wv-font-anuphan grid grid-cols-1 md:grid-cols-3 gap-6 mt-7">
-        <KeywordList keywords={keywords} activeKeyword={keywords[activeKeywordIndex]} onActiveKeywordIndex={setActiveKeywordIndex}/>
+        <KeywordList keywords={keywords} activeKeyword={keywords[activeKeywordIndex]} onActiveKeywordIndex={setActiveKeywordIndex} />
         <Result result={result} keyword={keywords[activeKeywordIndex]} />
       </div>
       <WvFooter />
