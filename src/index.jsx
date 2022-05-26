@@ -23,7 +23,7 @@ ReactDOM.render(
         href="https://design-systems.wevis.info/typography.css"
       />
       <div className="z-40 relative">
-        <WvNavbar title="THAILAND BUDGET 2566">
+        <WvNavbar title="THAILAND BUDGET 2566" homeHref={`${process.env.REACT_APP_BASE_PATH}`}>
           <Link to="/">
             <WvNavButton>Treemap</WvNavButton>
           </Link>
