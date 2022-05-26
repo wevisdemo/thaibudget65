@@ -17,7 +17,7 @@ import Explore from './pages/explore';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
+    <Router basename={`${process.env.REACT_APP_BASE_PATH}`}>
       <link
         rel="stylesheet"
         href="https://design-systems.wevis.info/typography.css"
