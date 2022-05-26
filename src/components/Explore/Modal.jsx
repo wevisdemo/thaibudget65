@@ -5,7 +5,7 @@ function Modal({
 }) {
   return (
     <div
-      className="fixed inset-0 flex bg-black/10 p-4 justify-center items-center z-5"
+      className="fixed inset-0 flex bg-black/10 p-4 justify-center items-center z-[2000]"
       onClick={onClose}
       aria-hidden="true"
     >
