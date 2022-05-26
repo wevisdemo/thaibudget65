@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import RatioCompare from './ResultRatioCompare';
 import ResultGroupBy from './ResultGroupBy';
 import ItemDescriptionList from './ItemDescriptionList';
+import Modal from './Modal';
+import ItemDescriptionModal from './ItemDescriptionModal';
 
 function Result({
   result, keyword,

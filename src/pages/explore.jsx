@@ -1,12 +1,12 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import * as d3 from 'd3';
 import WvFooter from '@wevisdemo/ui/components/footer';
-import WvButton from '@wevisdemo/ui/components/button';
 import KeywordList from '../components/Explore/KeywordList';
 import Result from '../components/Explore/Result';
 import { filter } from '../explore/filter';
 import { provinces } from '../provinces';
 import selectedKeywords from '../selectedKeyword.json';
+import Modal from '../components/Explore/Modal';
 
 const DOWNLOAD_DATA_BUTTON_STRING = 'ดาวน์โหลดข้อมูล';
 const DOWNLOAD_DATA_URL_STRING = 'https://docs.google.com/spreadsheets/d/1Js6iDnBR53nk80Hr4UybEwV4poUpNEeOoUUWJDCpLjI/edit#gid=696564335';
@@ -67,7 +67,7 @@ const Explore = () => {
           <span>{DOWNLOAD_DATA_BUTTON_STRING}</span>
         </a>
       </div>
-      <div className="wv-font-anuphan grid grid-cols-1 md:grid-cols-3 gap-6 mt-7">
+      <div className="wv-font-anuphan grid grid-cols-1 md:grid-cols-3 gap-6 my-7">
         <KeywordList keywords={selectedKeywords} activeKeyword={selectedKeywords[activeKeywordIndex].word} onActiveKeywordIndex={setActiveKeywordIndex} />
         <Result result={result} keyword={selectedKeywords[activeKeywordIndex].word} />
       </div>
