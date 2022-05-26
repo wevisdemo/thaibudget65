@@ -44,16 +44,17 @@ function KeywordListItem({
       </td>
       <td className="py-4">
         <span className="">{keyword.word}</span>
-        <span className="text-[#828282] text-sm ml-2">
+        {/* <span className="text-[#828282] text-sm ml-2">
           (
           {keyword.count}
           )
-        </span>
+        </span> */}
       </td>
-      <td className="text-right">
+      <td>{keyword.count}</td>
+      <td className="text-right pr-2">
         <span>{(keyword.summation / 1_000_000).toLocaleString()}</span>
       </td>
-      <td className="rounded-r-md">{ARROW_DOWN}</td>
+      {/* <td className="rounded-r-md">{ARROW_DOWN}</td> */}
     </tr>
   );
 }
