@@ -23,7 +23,7 @@ jobs:
         run: yarn build
         env:
           BUILD_ENV: STAGING
-          PUBLIC_URL: wevisdemo.github.io/thaibudget65/
+          PUBLIC_URL: https://wevisdemo.github.io/thaibudget65/
           CI: false
       - name: Deploy to Github page
         uses: peaceiris/actions-gh-pages@v3
