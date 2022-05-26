@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import RatioCompare from './ResultRatioCompare';
-import ResultGroupBy from './ResultGroupBy';
 import ItemDescriptionList from './ItemDescriptionList';
+import ResultSummary from './ResultSummary';
 
 function Result({
   result, keyword,
@@ -9,33 +8,10 @@ function Result({
   const count = result ? result.items.length : 0;
   const [activeTabIndex, setActiveTabIndex] = useState(0);
 
-  const groupByFields = [
-    {
-      name: 'หน่วยรับงบ',
-      key: 'budgetaryUnits',
-    },
-    {
-      name: 'แผนงาน',
-      key: 'plans',
-    },
-    {
-      name: 'โครงการ/ผลผลิต',
-      key: 'projects',
-    },
-    {
-      name: 'จังหวัด',
-      key: 'provinces',
-    },
-  ];
-
   const tabs = [
     {
       name: 'สรุปข้อมูล',
-      component: (
-        <>
-          <RatioCompare total={result && result.total} budgetYearTotal={result && result.totalYearBudget} />
-          {groupByFields.map(({ name, key }) => (<ResultGroupBy groupName={name} items={result && result.groupBy[[key]]} />))}
-        </>),
+      component: <ResultSummary result={result} />,
     },
     {
       name: 'รายการงบ',

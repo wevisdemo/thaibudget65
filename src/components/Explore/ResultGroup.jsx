@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useMemo, useState } from 'react';
 import Section from './Section';
+import Pagination from './Pagination';
 
-const ITEM_PER_PAGE = 5;
+const ITEM_PER_PAGE_BRIEF = 5;
+const ITEM_PER_PAGE = 10;
+
 const TITLE_PATTERN_STRING = 'และปริมาณงบที่เกี่ยวข้อง';
 const AMOUNT_UNIT_STRING = 'ล้านบาท';
 const SEE_MORE_BUTTON_STRING = 'ดูทั้งหมด';
@@ -11,21 +14,31 @@ const ARROW_RIGHT = (
   </svg>
 );
 
-function ResultGroupBy({
-  groupName, items,
+function ResultGroup({
+  groupName, items, onSeeMore, brief,
 }) {
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemPerPage = brief ? ITEM_PER_PAGE_BRIEF : ITEM_PER_PAGE;
+
+  const sortedItems = useMemo(() => items.sort((a, b) => b.total - a.total), [items]);
+
   return (
     <Section title={groupName + TITLE_PATTERN_STRING}>
       <div>
-        {items && items.slice(0, ITEM_PER_PAGE).map(({ name, total }, i) => (
-          <RowItem key={`groupBy-row-item-${name}`} index={i} number={i + 1} name={name} amount={total} />
-        ))}
+        {items && sortedItems.slice((currentPage - 1) * itemPerPage, itemPerPage + ((currentPage - 1) * itemPerPage))
+          .map(({ name, total }, i) => (
+            <RowItem key={`groupBy-row-item-${name}`} index={i} number={i + 1 + (currentPage - 1) * itemPerPage} name={name} amount={total} />
+          ))}
       </div>
-      <div className="ml-auto">
-        <button type="button" className="text-[#3904E9] mt-2 inline-flex items-center gap-x-5">
-          {SEE_MORE_BUTTON_STRING}
-          {ARROW_RIGHT}
-        </button>
+      <div className="ml-auto mt-3">
+        { brief
+          ? (
+            <button type="button" onClick={onSeeMore} className="text-[#3904E9] inline-flex items-center gap-x-5">
+              {SEE_MORE_BUTTON_STRING}
+              {ARROW_RIGHT}
+            </button>
+          )
+          : <Pagination currentPage={currentPage} pageLength={Math.ceil(sortedItems.length / itemPerPage)} setCurrentPage={setCurrentPage} />}
       </div>
     </Section>
   );
@@ -35,7 +48,7 @@ function RowItem({
   index, number, name, amount,
 }) {
   return (
-    <div className={`grid grid-cols-2 py-3 px-2 ${index % 1 ? 'bg-[#FAFAFA]' : 'bg-white'}`}>
+    <div className={`grid grid-cols-2 py-3 px-2 ${index % 2 ? 'bg-white' : 'bg-[#FAFAFA]'}`}>
       <div className="inline-flex items-center">
         <div>
           <span className="flex grow w-6 h-6 bg-[#4F4F4F] rounded-full justify-center mr-4 items-center">
@@ -55,4 +68,4 @@ function RowItem({
   );
 }
 
-export default ResultGroupBy;
+export default ResultGroup;

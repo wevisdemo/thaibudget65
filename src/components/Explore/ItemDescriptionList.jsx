@@ -20,7 +20,7 @@ function ItemDescriptionList({
         <Pagination currentPage={currentPage} pageLength={Math.ceil(itemDescriptions.length / ITEM_PER_PAGE)} setCurrentPage={setCurrentPage} />
       </div>
       {itemDescriptions && itemDescriptions
-        .slice(0 + ((currentPage - 1) * ITEM_PER_PAGE), ITEM_PER_PAGE + (((currentPage - 1) * ITEM_PER_PAGE)))
+        .slice((currentPage - 1) * ITEM_PER_PAGE, ITEM_PER_PAGE + (((currentPage - 1) * ITEM_PER_PAGE)))
         .map((v) => <ItemDescriptionListRowItem item={v} onItemClick={() => setModalItem(v)} />)}
     </div>
   );

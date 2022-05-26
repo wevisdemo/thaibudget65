@@ -1,7 +1,7 @@
 import React from 'react';
 
 function Modal({
-  title, onClose, children, className,
+  onClose, children, className,
 }) {
   return (
     <div
@@ -25,10 +25,7 @@ function Modal({
           </svg>
         </button>
 
-        <div className="grow py-6 pl-6 pr-14 flex flex-col">
-          <div className="flex flex-col mb-8">
-            <h5 className="text-[#333333] font-semibold text-lg flex-1">{title}</h5>
-          </div>
+        <div className="grow p-6 flex flex-col">
           {children}
         </div>
       </div>
