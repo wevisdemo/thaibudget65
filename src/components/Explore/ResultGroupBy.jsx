@@ -35,7 +35,7 @@ function RowItem({
   index, number, name, amount,
 }) {
   return (
-    <div className={`grid grid-cols-2 py-3 px-2 ${index & 1 ? 'bg-[#FAFAFA]' : 'bg-white'}`}>
+    <div className={`grid grid-cols-2 py-3 px-2 ${index % 1 ? 'bg-[#FAFAFA]' : 'bg-white'}`}>
       <div className="inline-flex items-center">
         <div>
           <span className="flex grow w-6 h-6 bg-[#4F4F4F] rounded-full justify-center mr-4 items-center">
@@ -47,6 +47,8 @@ function RowItem({
       <div className="text-right inline">
         <p>
           {(amount / 1_000_000).toLocaleString()}
+
+          {' '}
           <span className="text-[#828282] text-[13px]">{AMOUNT_UNIT_STRING}</span>
         </p>
       </div>

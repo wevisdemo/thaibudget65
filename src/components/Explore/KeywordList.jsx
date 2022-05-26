@@ -8,7 +8,6 @@ const TITLE_STRING = 'คำสำคัญในรายละเอียด�
 function KeywordList({
   keywords, activeKeyword, onActiveKeywordIndex,
 }) {
-
   return (
     <div className="flex flex-col w-full">
       <Section title={TITLE_STRING}>

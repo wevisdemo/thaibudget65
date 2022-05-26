@@ -69,9 +69,7 @@ const Explore = () => {
     });
   }, []);
 
-  const result = useMemo(() => {
-    return filter(keywords[activeKeywordIndex], allItems);
-  }, [activeKeywordIndex])
+  const result = useMemo(() => filter(keywords[activeKeywordIndex], allItems), [activeKeywordIndex])
 
   return (
     <div className="bg-[hsl(0,0%,98%)] text-black px-4 md:px-36 pt-6 md:pt-[73px]">

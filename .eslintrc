@@ -33,5 +33,9 @@
     "babelOptions": {
       "presets": ["@babel/preset-react"]
    }
-  }
+  },
+  "env": {
+    "jest/globals": true
+  },
+  "plugins": ["jest"]
 }
