@@ -7,6 +7,8 @@ import { filter } from '../explore/filter';
 import { provinces } from '../provinces';
 import selectedKeywords from '../selectedKeyword.json';
 
+const PAGE_TITLE_STRING = 'สำรวจงบประมาณปี 2566';
+const PAGE_SUB_TITLE_STRING = 'จากคำสำคัญที่พบได้บ่อย และคำที่น่าสนใจในงบประมาณ';
 const DOWNLOAD_DATA_BUTTON_STRING = 'ดาวน์โหลดข้อมูล';
 const DOWNLOAD_DATA_URL_STRING = 'https://docs.google.com/spreadsheets/d/1Js6iDnBR53nk80Hr4UybEwV4poUpNEeOoUUWJDCpLjI/edit#gid=696564335';
 const DOWNLOAD_ICON = (
@@ -50,11 +52,8 @@ const Explore = () => {
 
   return (
     <div className="bg-[hsl(0,0%,98%)] text-black px-4 md:px-36 pt-6 md:pt-[73px] gap-y-8">
-      <h1 className="wv-font-anuphan text-4xl font-bold">สำรวจงบประมาณปี 2566</h1>
-      <p className="text-[#828282] mt-6">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fames
-        velit eget bibendum augue et, sit nisl.
-      </p>
+      <h1 className="wv-font-anuphan text-4xl font-bold">{PAGE_TITLE_STRING}</h1>
+      <p className="text-[#828282] wv-font-anuphan mt-3">{PAGE_SUB_TITLE_STRING}</p>
       <div className="wv-font-anuphan flex p-6 justify-between items-center bg-[#3904E90A] rounded-xl mt-8">
         <p className="text-xl">{`จากงบประมาณทั้งหมด ${result && (result.totalYearBudget / 1_000_000).toLocaleString()} ล้านบาท`}</p>
         <a

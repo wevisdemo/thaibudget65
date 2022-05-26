@@ -61,7 +61,7 @@ export function groupBy(propName, items) {
  * @return {array} Matched items
  */
 export function filterItems(keyword, items) {
-  return items.filter((item) => (item.BUDGET_PLAN.includes(keyword)
+  return items.filter((item) => item.FISCAL_YEAR === '2023' && (item.BUDGET_PLAN.includes(keyword)
       || item.OUTPUT.includes(keyword)
       || item.PROJECT.includes(keyword)
       || item.CATEGORY_LV1.includes(keyword)
@@ -70,8 +70,7 @@ export function filterItems(keyword, items) {
       || item.CATEGORY_LV4.includes(keyword)
       || item.CATEGORY_LV5.includes(keyword)
       || item.CATEGORY_LV6.includes(keyword)
-      || item.ITEM_DESCRIPTION.includes(keyword))
-      && item.FISCAL_YEAR === '2023');
+      || item.ITEM_DESCRIPTION.includes(keyword)));
 }
 
 /**
@@ -90,7 +89,7 @@ export function filter(keyword, items) {
 
   return {
     keyword,
-    totalYearBudget: 3_000_302_000_000,
+    totalYearBudget: 3_185_000_000_000,
     total,
     groupBy: {
       budgetaryUnits,

@@ -1,5 +1,6 @@
 import React from 'react';
 
+// eslint-disable-next-line
 const INFO_ICON = (
   <svg
     width="20"
@@ -19,10 +20,10 @@ function Section({
   title, children,
 }) {
   return (
-    <div className="flex flex-col w-full">
+    <div className="flex flex-col w-full mt-6">
       <div className="flex flex-row items-center gap-2 mb-4">
         <h2 className="font-bold text-xl">{title}</h2>
-        {INFO_ICON}
+        {/* {INFO_ICON} */}
       </div>
       {children}
     </div>

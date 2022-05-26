@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Dropdown from './Dropdown';
 import ItemDescriptionListRowItem from './ItemDescriptionListRowItem';
 import ItemDescriptionModal from './ItemDescriptionModal';
 import Pagination from './Pagination';
@@ -16,7 +17,7 @@ function ItemDescriptionList({
     <div className="w-full mt-2">
       {modalItem && <ItemDescriptionModal item={modalItem} title="TITLENAME" onClose={() => setModalItem(null)} />}
       <div className="flex flex-row justify-between my-4">
-        <div>เรียงงบมากไปน้อย</div>
+        <Dropdown />
         <Pagination currentPage={currentPage} pageLength={Math.ceil(itemDescriptions.length / ITEM_PER_PAGE)} setCurrentPage={setCurrentPage} />
       </div>
       {itemDescriptions && itemDescriptions

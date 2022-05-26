@@ -6,7 +6,7 @@ function ResultGroupModal({
   groupName, items, onClose,
 }) {
   return (
-    <Modal onClose={onClose}>
+    <Modal onClose={onClose} className="max-w-2xl">
       <ResultGroup
         groupName={groupName}
         items={items}

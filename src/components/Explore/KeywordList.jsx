@@ -2,8 +2,8 @@ import React from 'react';
 import KeywordListItem from './KeywordListItem';
 import Section from './Section';
 
-const KEYWORD_HEADER_STRING = 'คำสำคัญ';
-const AMOUNT_UNIT_HEADER_STRING = 'ล้านบาท';
+const KEYWORD_HEADER_STRING = 'คำสำคัญ (จำนวนครั้งที่เจอ)';
+const AMOUNT_UNIT_HEADER_STRING = 'มูลค่า (ล้านบาท)';
 const TITLE_STRING = 'คำสำคัญในรายละเอียดงบ';
 
 function KeywordList({

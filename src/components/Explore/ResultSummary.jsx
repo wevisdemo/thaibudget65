@@ -27,7 +27,7 @@ function ResultSummary({
   ];
 
   return (
-    <>
+    <div>
       <RatioCompare total={result && result.total} budgetYearTotal={result && result.totalYearBudget} />
       {groupByFields.map((gby) => (
         <ResultGroup
@@ -45,7 +45,7 @@ function ResultSummary({
           onClose={() => setModalGroupByField(null)}
         />
         )}
-    </>
+    </div>
   );
 }
 
