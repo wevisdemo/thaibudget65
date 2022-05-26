@@ -42,7 +42,7 @@ function Pagination({
     <div className="space-x-3">
       <button type="button" onClick={() => setCurrentPage((prev) => (prev > 1 ? prev - 1 : prev))} className={`w-6 h-6 ${currentPage === 1 && 'hidden'}`}>{'<'}</button>
       {pageNumberArray.map((v) => {
-        if (v === '...') return <span className="w-6 h-6">{v}</span>;
+        if (v === '...') return <span>{v}</span>;
         return (
           <button
             type="button"
