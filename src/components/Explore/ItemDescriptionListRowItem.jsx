@@ -1,24 +1,26 @@
 import React from 'react';
 
-function ItemDescriptionListRowItem() {
-  const i = 0;
+function ItemDescriptionListRowItem({ item }) {
+  console.log(item);
   return (
     <div className="flex flex-row w-full py-4 hover:bg-[rgba(0,0,0,0.02)] border-b">
       <div className="flex-1 space-y-1">
-        <p className="text-base">{`ค่าธรรมเนียมสมาชิก cobsea (coordinating body on the sea of east asia)`}</p>
+        <p className="text-base">{item.ITEM_DESCRIPTION}</p>
         <div className="text-[10px] space-x-1">
-          <span>กรมทรัพยากรทางทะเลและชายฝั่ง</span>
+          <span>{item.MINISTRY}</span>
           <span>-</span>
-          <span>งบดำเนินงาน</span>
-          <span>งบเงินอุดหนุน</span>
-          <span>เงินอุดหนุนทั่วไป</span>
+          <span>{item.CATEGORY_LV1}</span>
+          <span>{item.CATEGORY_LV2}</span>
+          <span>{item.CATEGORY_LV3}</span>
+          <span>{item.CATEGORY_LV4}</span>
+          <span>{item.CATEGORY_LV5}</span>
         </div>
       </div>
       <div>
-        <p className="text-[#828282] text-right">{(Math.random() * 1_000_000).toLocaleString()}</p>
+        <p className="text-[#828282] text-right">{(item.AMOUNT).toLocaleString()}</p>
       </div>
     </div>
-  )
+  );
 }
 
 export default ItemDescriptionListRowItem;

@@ -1,59 +1,45 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import RatioCompare from './ResultRatioCompare';
 import ResultGroupBy from './ResultGroupBy';
 import ItemDescriptionList from './ItemDescriptionList';
-/*
-interface FilterResult {
-  keyword: string;
-  totalYearBudget: number;
-  total: number;
-  groupBy: {
-    ministries: GroupByResult;
-    budgetaryUnits: GroupByResult;
-    projects: GroupByResult;
-    outputs: GroupByResult;
-    provinces: GroupByResult;
-  };
-  items: Item[];
-}
 
-interface GroupByResult {
-  name: string;
-  total: number;
-  items: Item[];
-}
-*/
-
-function Result({ result }) {
-  const keyword = 'ค่าธรรมเนียม';
-  const count = 4123;
-  const total = 3_130_000_000_000 / 7;
-  const budgetYearTotal = 3_130_000_000_000;
+function Result({
+  result, keyword,
+}) {
+  const count = result ? result.items.length : 0;
   const [activeTabIndex, setActiveTabIndex] = useState(1);
 
   const groupByFields = [
-    'ระดับกระทรวง',
-    'หน่วยรับงบ',
-    'แผนงาน',
-    'โครงการ',
-    'ผลผลิต',
-    'จังหวัด',
+    {
+      name: 'หน่วยรับงบ',
+      key: 'budgetaryUnits',
+    },
+    {
+      name: 'แผนงาน',
+      key: 'plans',
+    },
+    {
+      name: 'โครงการ/ผลผลิต',
+      key: 'projects',
+    },
+    {
+      name: 'จังหวัด',
+      key: 'provinces',
+    },
   ];
-
-  console.log(result);
 
   const tabs = [
     {
       name: 'สรุปข้อมูล',
       component: (
         <>
-          <RatioCompare total={total} budgetYearTotal={budgetYearTotal} />
-          {groupByFields.map((v) => (<ResultGroupBy name={v} />))}
+          <RatioCompare total={result && result.total} budgetYearTotal={result && result.totalYearBudget} />
+          {groupByFields.map(({ name, key }) => (<ResultGroupBy groupName={name} items={result && result.groupBy[[key]]} />))}
         </>),
     },
     {
       name: 'รายการงบ',
-      component: <ItemDescriptionList />,
+      component: <ItemDescriptionList itemDescriptions={result ? result.items : []} />,
     },
   ];
 
