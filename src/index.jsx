@@ -23,18 +23,18 @@ ReactDOM.render(
         href="https://design-systems.wevis.info/typography.css"
       />
       <div className="z-40 relative">
-        <WvNavbar title="THAILAND BUDGET 2566" homeHref={`${process.env.PUBLIC_URL}/`}>
-          <Link to={`${process.env.PUBLIC_URL}/`}>
+        <WvNavbar title="THAILAND BUDGET 2566">
+          <Link to="/">
             <WvNavButton>Treemap</WvNavButton>
           </Link>
-          <Link to={`${process.env.PUBLIC_URL}/explore`}>
+          <Link to="/explore">
             <WvNavButton>Explore</WvNavButton>
           </Link>
         </WvNavbar>
       </div>
       <Switch>
-        <Route exact path={`${process.env.PUBLIC_URL}/`}><App /></Route>
-        <Route path={`${process.env.PUBLIC_URL}/explore`}><Explore /></Route>
+        <Route exact path="/"><App /></Route>
+        <Route path="/explore"><Explore /></Route>
       </Switch>
     </Router>
   </React.StrictMode>,
