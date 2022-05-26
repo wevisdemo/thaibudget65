@@ -2,7 +2,7 @@
   "name": "thaibudget65",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://taepras.github.io/",
+  "homepage": "./",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -31,8 +31,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "lint": "eslint --ext=js --ext=jsx ."
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -54,8 +53,6 @@
   },
   "devDependencies": {
     "@babel/preset-react": "^7.17.12",
-    "eslint-plugin-jest": "^26.2.2",
-    "gh-pages": "^3.2.3",
-    "jest": "^28.1.0"
+    "gh-pages": "^3.2.3"
   }
 }
