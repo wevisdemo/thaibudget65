@@ -333,6 +333,8 @@ function Treemap({
             backgroundColor: '#000c',
             alignItems: 'center',
             justifyContent: 'center',
+            zIndex: 40,
+            top: 0,
           }}
         >
           Loading...
