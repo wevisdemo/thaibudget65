@@ -23,14 +23,14 @@ function RatioCompare({
         </div>
         <div className=" space-y-6">
           <div>
-            <p className="text-[#828282]">{AMOUNT_UNIT_STRING}</p>
             <p className="text-[25px]">{(total / MILLION_INT).toLocaleString()}</p>
+            <p className="text-[#828282]">{AMOUNT_UNIT_STRING}</p>
           </div>
           <div>
-            <p className="text-[#828282]">{RATIO_STRING}</p>
             <p className="text-[25px]">
               { (total / budgetYearTotal).toLocaleString(undefined, { style: 'percent', minimumFractionDigits: 3 }) }
             </p>
+            <p className="text-[#828282]">{RATIO_STRING}</p>
           </div>
           <div>
             <p className="text-[#828282]">{`งบประมาณทั้งหมดของปีงบประมาณ 2566 คือ ${(budgetYearTotal / MILLION_INT).toLocaleString()} ล้านบาท`}</p>
