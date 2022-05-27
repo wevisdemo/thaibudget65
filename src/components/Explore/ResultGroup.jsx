@@ -8,6 +8,7 @@ const ITEM_PER_PAGE = 10;
 const TITLE_PATTERN_STRING = 'และปริมาณงบที่เกี่ยวข้อง';
 const AMOUNT_UNIT_STRING = 'ล้านบาท';
 const SEE_MORE_BUTTON_STRING = 'ดูทั้งหมด';
+const EMPTY_ITEM_LIST_STRING = 'ไม่มีข้อมูล';
 const ARROW_RIGHT = (
   <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M1.705 0.75L0.294998 2.16L4.875 6.75L0.294998 11.34L1.705 12.75L7.705 6.75L1.705 0.75Z" fill="#3904E9" />
@@ -25,20 +26,22 @@ function ResultGroup({
   return (
     <Section title={groupName + TITLE_PATTERN_STRING} className={brief && 'mt-6'}>
       <div>
-        {items && sortedItems.slice((currentPage - 1) * itemPerPage, itemPerPage + ((currentPage - 1) * itemPerPage))
-          .map(({ name, total }, i) => (
-            <RowItem key={`groupBy-row-item-${name}`} index={i} number={i + 1 + (currentPage - 1) * itemPerPage} name={name} amount={total} />
-          ))}
+        {items && (sortedItems.length > 0
+          ? sortedItems.slice((currentPage - 1) * itemPerPage, itemPerPage + ((currentPage - 1) * itemPerPage))
+            .map(({ name, total }, i) => (
+              <RowItem key={`groupBy-row-item-${name}`} index={i} number={i + 1 + (currentPage - 1) * itemPerPage} name={name} amount={total} />
+            ))
+          : <div>{EMPTY_ITEM_LIST_STRING}</div>)}
       </div>
       <div className="ml-auto mt-3">
-        { brief
+        {(items && sortedItems.length > itemPerPage) && (brief
           ? (
             <button type="button" onClick={onSeeMore} className="text-[#3904E9] inline-flex items-center gap-x-5">
               {SEE_MORE_BUTTON_STRING}
               {ARROW_RIGHT}
             </button>
           )
-          : <Pagination currentPage={currentPage} pageLength={Math.ceil(sortedItems.length / itemPerPage)} setCurrentPage={setCurrentPage} />}
+          : <Pagination currentPage={currentPage} pageLength={Math.ceil(sortedItems.length / itemPerPage)} setCurrentPage={setCurrentPage} />)}
       </div>
     </Section>
   );

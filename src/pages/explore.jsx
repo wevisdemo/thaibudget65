@@ -53,7 +53,7 @@ const Explore = () => {
   const result = filter(selectedKeywords[activeKeywordIndex].word, allItems);
 
   return (
-    <div className="bg-[hsl(0,0%,98%)] text-black px-4 md:px-36 pt-6 md:pt-[73px] gap-y-8">
+    <div className="bg-[hsl(0,0%,98%)] text-black px-4 xl:px-36 pt-6 md:pt-[73px] gap-y-8">
       <h1 className="wv-font-anuphan text-4xl font-bold">{PAGE_TITLE_STRING}</h1>
       <p className="text-[#828282] wv-font-anuphan mt-3">{PAGE_SUB_TITLE_STRING}</p>
       <div className="wv-font-anuphan flex p-6 justify-between items-center bg-[#3904E90A] rounded-xl mt-8">
