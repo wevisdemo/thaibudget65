@@ -38,6 +38,8 @@ const FEEDBACK_ICON = (
 const Explore = () => {
   const [allItems, setAllItems] = useState([]);
   const [activeKeywordIndex, setActiveKeywordIndex] = useState(0);
+  // show fab button state
+  const [showFab, setShowFab] = useState(false);
 
   const matchedProvinces = (province) => {
     let matched = [];
@@ -57,6 +59,18 @@ const Explore = () => {
     });
   }, []);
 
+  let prevScrollY = 0;
+  const onShowFab = () => {
+    const { scrollY } = window;
+    setShowFab(prevScrollY - scrollY > 0 || scrollY < 1);
+    prevScrollY = scrollY;
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', onShowFab);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const result = filter(selectedKeywords[activeKeywordIndex].word, allItems);
 
   return (
@@ -64,16 +78,13 @@ const Explore = () => {
       <div className="bg-[hsl(0,0%,98%)] text-black px-4 xl:px-36 py-6 md:pt-[73px] gap-y-8 relative">
         <div>
           <a
-            type="button"
-            className="wv-font-anuphan flex items-center space-x-3 rounded-md text-[#3904E9] bg-white shadow-xl p-4 fixed z-50 bottom-6 right-10"
+            className={`wv-font-anuphan flex items-center space-x-3 rounded-md text-[#3904E9] bg-white shadow-xl p-4 fixed z-50 bottom-6 right-10 duration-200 ${showFab || 'translate-y-20 opacity-0'}`}
             href={FEEDBACK_URL_STRING}
             target="_blank"
             rel="noopener noreferrer"
           >
             {FEEDBACK_ICON}
-            <span>
-              {FEEDBACK_BUTTON_STRING}
-            </span>
+            <span>{FEEDBACK_BUTTON_STRING}</span>
           </a>
         </div>
         <h1 className="wv-font-anuphan text-4xl font-bold">{PAGE_TITLE_STRING}</h1>
@@ -81,7 +92,6 @@ const Explore = () => {
         <div className="wv-font-anuphan flex p-6 justify-between items-center bg-[#3904E90A] rounded-xl mt-8">
           <p className="text-xl">{`จากงบประมาณทั้งหมด ${result && (result.totalYearBudget / 1_000_000).toLocaleString()} ล้านบาท`}</p>
           <a
-            type="button"
             className="inline-flex space-x-3 items-center rounded-md bg-[#3904E9] text-white p-4"
             href={DOWNLOAD_DATA_URL_STRING}
             target="_blank"
