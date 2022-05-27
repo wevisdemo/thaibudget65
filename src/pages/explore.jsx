@@ -5,7 +5,9 @@ import KeywordList from '../components/Explore/KeywordList';
 import Result from '../components/Explore/Result';
 import { filter } from '../explore/filter';
 import { provinces } from '../provinces';
-import selectedKeywords from '../selectedKeyword.json';
+import rawKeywords from '../selectedKeyword.json';
+
+const selectedKeywords = rawKeywords.map((d, index) => ({ index, ...d }));
 
 const PAGE_TITLE_STRING = 'สำรวจงบประมาณปี 2566';
 const PAGE_SUB_TITLE_STRING = 'ผ่านคำสำคัญที่พบได้บ่อย และคำที่น่าสนใจในงบประมาณ';

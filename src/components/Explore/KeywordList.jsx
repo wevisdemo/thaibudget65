@@ -76,12 +76,12 @@ function KeywordList({
             <th className="text-right text-sm text-[#828282] font-normal">{AMOUNT_UNIT_HEADER_STRING}</th>
             <th> </th>
           </tr>
-          {sorter(mappedOption[optionsState], filteredKeywords).map((keyword, i) => (
+          {sorter(mappedOption[optionsState], filteredKeywords).map((keyword) => (
             <KeywordListItem
               key={`keyword-item-${keyword.word}`}
               keyword={keyword}
               checked={activeKeyword === keyword.word}
-              onCheck={() => onActiveKeywordIndex(i)}
+              onCheck={() => onActiveKeywordIndex(keyword.index)}
             />
           ))}
         </table>
