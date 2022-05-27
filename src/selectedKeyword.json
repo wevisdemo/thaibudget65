@@ -1,4 +1,5 @@
 [
+  { "word": "ที่ดิน", "count": 2504, "summation": 237726297923 },
   { "word": "กษัตริย์", "count": 9, "summation": 170907200 },
   { "word": "ก่อสร้าง", "count": 2487, "summation": 237547387923 },
   { "word": "การแพทย์", "count": 23, "summation": 3560161600 },
@@ -32,7 +33,6 @@
   { "word": "ท่องเที่ยว", "count": 121, "summation": 3079074100 },
   { "word": "ทางหลวง", "count": 429, "summation": 90146177679 },
   { "word": "ท่าอากาศยาน", "count": 42, "summation": 5610467500 },
-  { "word": "ที่ดิน", "count": 2504, "summation": 237726297923 },
   { "word": "ที่ทำการ", "count": 111, "summation": 11013553150 },
   { "word": "ที่ปรึกษา", "count": 160, "summation": 3157037800 },
   { "word": "ที่พัก", "count": 57, "summation": 6423043650 },

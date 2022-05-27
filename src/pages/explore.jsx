@@ -62,6 +62,8 @@ const Explore = () => {
           type="button"
           className="inline-flex space-x-3 items-center rounded-md bg-[#3904E9] text-white p-4"
           href={DOWNLOAD_DATA_URL_STRING}
+          target="_blank"
+          rel="noopener noreferrer"
         >
           {DOWNLOAD_ICON}
           <span>{DOWNLOAD_DATA_BUTTON_STRING}</span>
