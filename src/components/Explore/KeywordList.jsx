@@ -74,7 +74,6 @@ function KeywordList({
             <th className="text-left text-sm text-[#828282] font-normal">{KEYWORD_HEADER_STRING}</th>
             <th className="text-left text-sm text-[#828282] font-normal">{KEYWORD_COUNT}</th>
             <th className="text-right text-sm text-[#828282] font-normal">{AMOUNT_UNIT_HEADER_STRING}</th>
-            <th> </th>
           </tr>
           {sorter(mappedOption[optionsState], filteredKeywords).map((keyword) => (
             <KeywordListItem

@@ -23,7 +23,7 @@ function ResultGroup({
   const sortedItems = useMemo(() => items.sort((a, b) => b.total - a.total), [items]);
 
   return (
-    <Section title={groupName + TITLE_PATTERN_STRING}>
+    <Section title={groupName + TITLE_PATTERN_STRING} className={brief && 'mt-6'}>
       <div>
         {items && sortedItems.slice((currentPage - 1) * itemPerPage, itemPerPage + ((currentPage - 1) * itemPerPage))
           .map(({ name, total }, i) => (
@@ -48,14 +48,14 @@ function RowItem({
   index, number, name, amount,
 }) {
   return (
-    <div className={`grid grid-cols-2 py-3 px-2 ${index % 2 ? 'bg-white' : 'bg-[#FAFAFA]'}`}>
-      <div className="inline-flex items-center">
+    <div className={`grid grid-cols-4 py-3 px-2 ${index % 2 ? 'bg-white' : 'bg-[#FAFAFA]'}`}>
+      <div className="inline-flex items-center col-span-3">
         <div>
           <span className="flex grow w-6 h-6 bg-[#4F4F4F] rounded-full justify-center mr-4 items-center">
             <p className="text-white font-semibold text-sm text-justify">{number}</p>
           </span>
         </div>
-        <p className="truncate">{name}</p>
+        <p>{name}</p>
       </div>
       <div className="text-right inline">
         <p>
