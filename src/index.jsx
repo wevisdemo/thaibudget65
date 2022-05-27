@@ -17,13 +17,13 @@ import Explore from './pages/explore';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router basename={`${process.env.PUBLIC_URL}`}>
+    <Router basename={`${process.env.REACT_APP_BASE_PATH}`}>
       <link
         rel="stylesheet"
         href="https://design-systems.wevis.info/typography.css"
       />
       <div className="z-40 relative">
-        <WvNavbar title="THAILAND BUDGET 2566 (BETA)" homeHref={`${process.env.PUBLIC_URL}`}>
+        <WvNavbar title="THAILAND BUDGET 2566 (BETA)" homeHref={`${process.env.REACT_APP_BASE_PATH}`}>
           <Link to="/">
             <WvNavButton>Treemap</WvNavButton>
           </Link>

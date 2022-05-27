@@ -28,7 +28,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "build:prod": "PUBLIC_URL=https://wevis.info/thbudget66 react-scripts build",
+    "build:prod": "PUBLIC_URL=https://wevis.info/thbudget66 REACT_APP_BASE_PATH=/thbudget66 react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
