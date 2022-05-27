@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import Section from './Section';
 import Pagination from './Pagination';
+import { toLocaleWithFixed3Digits } from '../../numberUtils';
 
 const ITEM_PER_PAGE_BRIEF = 5;
 const ITEM_PER_PAGE = 10;
@@ -62,7 +63,7 @@ function RowItem({
       </div>
       <div className="text-right inline">
         <p>
-          {(amount / 1_000_000).toFixed(3).toLocaleString()}
+          {toLocaleWithFixed3Digits(amount / 1_000_000)}
           {' '}
           <span className="text-[#828282] text-[13px]">{AMOUNT_UNIT_STRING}</span>
         </p>

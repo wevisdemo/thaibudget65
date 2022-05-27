@@ -1,4 +1,5 @@
 import React from 'react';
+import { toLocaleWithFixed3Digits } from '../../numberUtils';
 
 const ItemDescriptionListRowItem = ({
   item, onItemClick,
@@ -19,7 +20,7 @@ const ItemDescriptionListRowItem = ({
       </div>
     </div>
     <div>
-      <p className="text-[#828282] text-right">{(item.AMOUNT).toLocaleString()}</p>
+      <p className="text-[#828282] text-right">{toLocaleWithFixed3Digits(item.AMOUNT)}</p>
     </div>
   </div>
 );

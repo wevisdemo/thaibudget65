@@ -1,4 +1,5 @@
 import React from 'react';
+import { toLocaleWithFixed3Digits } from '../../numberUtils';
 import Section from './Section';
 
 const TITLE_STRING = 'งบที่เกี่ยวข้องเทียบกับงบทั้งหมด';
@@ -25,6 +26,7 @@ function RatioCompare({
           <div>
             <p className="text-[25px]">{(total / MILLION_INT).toFixed(3).toLocaleString()}</p>
             <p className="text-[#828282]">{AMOUNT_UNIT_STRING}</p>
+            <p className="text-[25px]">{toLocaleWithFixed3Digits(total / MILLION_INT)}</p>
           </div>
           <div>
             <p className="text-[25px]">

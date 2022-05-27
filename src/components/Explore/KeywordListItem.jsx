@@ -1,4 +1,5 @@
 import React from 'react';
+import { toLocaleWithFixed3Digits } from '../../numberUtils';
 
 const BULLET_CHECKED = (
   <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -30,7 +31,7 @@ function KeywordListItem({
       </td>
       <td>{keyword.count}</td>
       <td className="text-right">
-        <span>{(keyword.summation / 1_000_000).toLocaleString()}</span>
+        <span>{toLocaleWithFixed3Digits(keyword.summation / 1_000_000)}</span>
       </td>
     </tr>
   );
