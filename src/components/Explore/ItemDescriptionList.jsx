@@ -41,7 +41,7 @@ function ItemDescriptionList({
   return (
     <div className="w-full mt-2">
       {modalItem && <ItemDescriptionModal item={modalItem} title="TITLENAME" onClose={() => setModalItem(null)} />}
-      <div className="flex flex-row justify-between items-center my-4">
+      <div className="flex flex-col xl:flex-row xl:justify-between items-center my-4">
         {/* <div>เรียงงบมากไปน้อย</div> */}
         <div className="flex justify-end pb-6">
           <div className="pr-2">
