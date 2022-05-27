@@ -62,7 +62,7 @@ function RowItem({
       </div>
       <div className="text-right inline">
         <p>
-          {(amount / 1_000_000).toLocaleString()}
+          {(amount / 1_000_000).toFixed(3).toLocaleString()}
           {' '}
           <span className="text-[#828282] text-[13px]">{AMOUNT_UNIT_STRING}</span>
         </p>

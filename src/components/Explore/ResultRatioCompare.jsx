@@ -23,7 +23,7 @@ function RatioCompare({
         </div>
         <div className=" space-y-6">
           <div>
-            <p className="text-[25px]">{(total / MILLION_INT).toLocaleString()}</p>
+            <p className="text-[25px]">{(total / MILLION_INT).toFixed(3).toLocaleString()}</p>
             <p className="text-[#828282]">{AMOUNT_UNIT_STRING}</p>
           </div>
           <div>
