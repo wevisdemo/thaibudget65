@@ -23,7 +23,11 @@ function ItemDescriptionList({
 
   const [optionsState, setOptionsState] = useState('งบมากไปน้อย');
   const [searchQuery, setSearchQuery] = useState('');
-  const filteredItems = itemDescriptions.filter((keyword) => keyword.ITEM_DESCRIPTION.includes(searchQuery));
+  const filteredItems = itemDescriptions.filter((keyword) => (keyword.ITEM_DESCRIPTION.includes(searchQuery)
+  || keyword.MINISTRY.includes(searchQuery)
+  || keyword.CATEGORY_LV1.includes(searchQuery)
+  || keyword.CATEGORY_LV2.includes(searchQuery)
+  || keyword.CATEGORY_LV3.includes(searchQuery)));
 
   const handleDropdown = (e) => {
     setOptionsState(e.value);
@@ -67,11 +71,11 @@ function ItemDescriptionList({
 
             </label>
             <input
-              className="w-48 h-[40px] text-black rounded-sm p-2 bg-white border border-[#ccc] placeholder-[#767676]"
+              className="w-64 h-[40px] text-black rounded-sm p-2 bg-white border border-[#ccc] placeholder-[#767676]"
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="ค้นหาชื่องบ"
+              placeholder="ชื่อแผนงาน/ กระทรวง/ รายละเอียด"
             />
           </div>
         </div>
