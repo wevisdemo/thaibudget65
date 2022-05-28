@@ -11,6 +11,8 @@ function ItemDescriptionModal({
         <div className="space-x-1 text-[#828282]">
           <span>{item.MINISTRY}</span>
           <span>{item.BUDGETARY_UNIT}</span>
+          <span>{item.OUTPUT}</span>
+          <span>{item.PROJECT}</span>
           <span>{item.BUDGET_PLAN}</span>
           <span>{item.CATEGORY_LV1}</span>
           <span>{item.CATEGORY_LV2}</span>
