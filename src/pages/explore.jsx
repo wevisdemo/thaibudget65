@@ -51,7 +51,7 @@ const Explore = () => {
   };
 
   useEffect(() => {
-    d3.csv(`${process.env.PUBLIC_URL}/data65.csv`).then((items) => {
+    d3.csv(`${process.env.PUBLIC_URL}/data.csv`).then((items) => {
       setAllItems(items.map((item) => ({
         ...item,
         PROVINCE: matchedProvinces(item.ITEM_DESCRIPTION),
