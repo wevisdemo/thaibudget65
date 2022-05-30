@@ -15,15 +15,17 @@ import '@wevisdemo/ui/styles/typography.css';
 import '@wevisdemo/ui/styles/components.css';
 import Explore from './pages/explore';
 
+const basePath = process.env.REACT_APP_BASE_PATH || '/';
+
 ReactDOM.render(
   <React.StrictMode>
-    <Router basename={`${process.env.REACT_APP_BASE_PATH}`}>
+    <Router basename={basePath}>
       <link
         rel="stylesheet"
         href="https://design-systems.wevis.info/typography.css"
       />
       <div className="z-40 relative">
-        <WvNavbar title="THAILAND BUDGET 2566 (BETA)" homeHref={`${process.env.REACT_APP_BASE_PATH}`}>
+        <WvNavbar title="THAILAND BUDGET 2566 (BETA)" homeHref={basePath}>
           <Link to="/">
             <WvNavButton>Treemap</WvNavButton>
           </Link>
