@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Dropdown from 'react-dropdown';
-import '../../dropdown.css';
+import '../../styles/dropdown.css';
 import ItemDescriptionListRowItem from './ItemDescriptionListRowItem';
 import ItemDescriptionModal from './ItemDescriptionModal';
 import Pagination from './Pagination';

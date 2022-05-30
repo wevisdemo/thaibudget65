@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Dropdown from 'react-dropdown';
-import '../../dropdown.css';
+import '../../styles/dropdown.css';
 import KeywordListItem from './KeywordListItem';
 import Section from './Section';
 

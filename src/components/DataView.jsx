@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
 // import Dropdown from 'react-dropdown';
-import '../dropdown.css';
+import '../styles/dropdown.css';
 import Treemap from './Treemap';
 import FullView from './FullView';
 

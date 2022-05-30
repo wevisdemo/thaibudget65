@@ -1,14 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './styles/index.css';
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import WvNavbar from '@wevisdemo/ui/components/navbar';
 import WvNavButton from '@wevisdemo/ui/components/nav-button';
-import App from './App';
+import Treemap from './pages/treemap';
 import reportWebVitals from './reportWebVitals';
 import '@wevisdemo/ui/styles/typography.css';
 import '@wevisdemo/ui/styles/components.css';
 import Explore from './pages/explore';
+import IndexPage from './pages/index';
 
 const basePath = process.env.REACT_APP_BASE_PATH || '/';
 
@@ -20,8 +21,11 @@ ReactDOM.render(
         href="https://design-systems.wevis.info/typography.css"
       />
       <div className="z-40 relative">
-        <WvNavbar title="THAILAND BUDGET 2566 (BETA)" homeHref={basePath}>
+        <WvNavbar title="THAILAND BUDGET 2566 (BETA)">
           <Link to="/">
+            <WvNavButton>Home</WvNavButton>
+          </Link>
+          <Link to="/treemap">
             <WvNavButton>Treemap</WvNavButton>
           </Link>
           <Link to="/explore">
@@ -31,7 +35,10 @@ ReactDOM.render(
       </div>
       <Switch>
         <Route exact path="/">
-          <App />
+          <IndexPage />
+        </Route>
+        <Route exact path="/treemap">
+          <Treemap />
         </Route>
         <Route path="/explore">
           <Explore />

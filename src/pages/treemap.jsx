@@ -4,10 +4,10 @@ import styled from 'styled-components';
 import { useLocation } from 'react-router-dom';
 import ReactTooltip from 'react-tooltip';
 import Dropdown from 'react-dropdown';
-import './App.css';
-import DataView from './components/DataView';
-import FullView from './components/FullView';
-import { provinces } from './provinces';
+import '../styles/treemap.css';
+import DataView from '../components/DataView';
+import FullView from '../components/FullView';
+import { provinces } from '../provinces';
 
 const PageContainer = styled.div`
   display: flex;
