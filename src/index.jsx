@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import './styles/index.css';
 import '@wevisdemo/ui/styles/typography.css';
@@ -28,10 +28,21 @@ const routes = [
   ['/about', 'เกี่ยวกับโครงการ', <About />],
 ];
 
-const plausibleDomain = process.env.PUBLIC_URL.split('//')?.[1];
-
 const Navbar = () => {
   const location = useLocation();
+
+  useEffect(() => {
+    const plausibleDomain = process.env.PUBLIC_URL.split('//')?.[1];
+
+    if (plausibleDomain) {
+      const script = document.createElement('script');
+      script.async = true;
+      script.defer = true;
+      script.src = 'https://analytics.punchup.world/js/plausible.js';
+      script.setAttribute('data-domain', plausibleDomain);
+      document.head.appendChild(script);
+    }
+  }, []);
 
   return (
     <WvNavbar title="THAILAND BUDGET 2566">
@@ -50,13 +61,6 @@ ReactDOM.render(
       rel="stylesheet"
       href="https://design-systems.wevis.info/typography.css"
     />
-    {plausibleDomain && (
-      <script
-        defer
-        data-domain={plausibleDomain}
-        src="https://analytics.punchup.world/js/plausible.js"
-      />
-    )}
     <Router basename={basePath}>
       <div className="flex flex-col min-h-screen">
         <div className="z-40 relative">
