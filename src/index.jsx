@@ -4,7 +4,7 @@ import './styles/index.css';
 import '@wevisdemo/ui/styles/typography.css';
 import '@wevisdemo/ui/styles/components.css';
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Link,
   Route,
   Switch,
@@ -61,7 +61,7 @@ ReactDOM.render(
       rel="stylesheet"
       href="https://design-systems.wevis.info/typography.css"
     />
-    <Router basename={basePath}>
+    <Router>
       <div className="flex flex-col min-h-screen">
         <div className="z-40 relative">
           <Navbar />
