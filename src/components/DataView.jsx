@@ -1,6 +1,4 @@
-import React, { useCallback, useEffect, useMemo } from 'react';
-import { useLocation } from 'react-router-dom';
-// import Dropdown from 'react-dropdown';
+import React, { useCallback, useMemo } from 'react';
 import '../styles/dropdown.css';
 import Treemap from './Treemap';
 import FullView from './FullView';
@@ -51,10 +49,6 @@ function DataView({
   filters,
   setFilters,
 }) {
-  // const [searchQuery, setSearchQuery] = useState('');
-  // const [optionsState, setOptionsState] = useState('หน่วยงาน');
-  // const [filters, setFilters] = useState(['all']);
-
   const filterDataByQuery = useCallback((datum, query) => {
     const searchLevels = ['MINISTRY', 'BUDGETARY_UNIT', 'PROVINCE'];
     // eslint-disable-next-line guard-for-in, no-restricted-syntax
@@ -71,25 +65,11 @@ function DataView({
     [data, filterDataByQuery, searchQuery]
   );
 
-  const location = useLocation();
-
-  useEffect(() => {
-    const f = location.pathname.split('/').slice(1);
-    setFilters(f.length > 0 && f[0] ? f : ['all']);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [location]);
-
   const navigateTo = (x, i) => {
     const temp = [...filters];
     temp.splice(i + 1);
     setFilters(temp);
-    // history.push(`/${temp.join('/')}`);
   };
-
-  // const handleDropdown = (e) => {
-  //   setOptionsState(e.value);
-  //   setFilters(['all']);
-  // };
 
   return (
     <FullView className="wv-font-anuphan">

@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import * as d3 from 'd3';
 import styled from 'styled-components';
-import { useLocation } from 'react-router-dom';
+// import { useLocation } from 'react-router-dom';
 import ReactTooltip from 'react-tooltip';
 import Dropdown from 'react-dropdown';
 import '../styles/treemap.css';
@@ -197,12 +197,12 @@ function TreemapPage() {
     [data]
   );
 
-  const location = useLocation();
+  // const location = useLocation();
 
-  useEffect(() => {
-    const f = location.pathname.split('/').slice(1);
-    setFilters(f.length > 0 && f[0] ? f : ['all']);
-  }, [location]);
+  // useEffect(() => {
+  //   const f = location.pathname.split('/').slice(1);
+  //   setFilters(f.length > 0 && f[0] ? f : ['all']);
+  // }, [location]);
 
   return (
     <div className="flex-1 flex flex-col">
