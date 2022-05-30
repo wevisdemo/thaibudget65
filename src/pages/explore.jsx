@@ -11,6 +11,7 @@ const selectedKeywords = rawKeywords.map((d, index) => ({ index, ...d }));
 
 const PAGE_TITLE_STRING = 'สำรวจงบประมาณปี 2566';
 const PAGE_SUB_TITLE_STRING = 'ผ่านคีย์เวิร์ดที่พบได้บ่อย และคำที่น่าสนใจในงบประมาณ';
+const PAGE_NOTE_STRING = 'หมายเหตุ : คียเวิร์ดเหล่านี้เป็นการค้นหาและตัดคำเบื้องต้นโดยคอมพิวเตอร์ โดยรวบรวมจากทุกข้อมูลที่มีคำนั้นปรากฎ โปรดตรวจสอบบริบทของคำก่อนการใช้งาน';
 const DOWNLOAD_DATA_BUTTON_STRING = 'ดาวน์โหลดข้อมูล';
 const DOWNLOAD_DATA_URL_STRING = 'https://docs.google.com/spreadsheets/d/1Js6iDnBR53nk80Hr4UybEwV4poUpNEeOoUUWJDCpLjI/edit#gid=696564335';
 const DOWNLOAD_ICON = (
@@ -38,7 +39,6 @@ const FEEDBACK_ICON = (
 const Explore = () => {
   const [allItems, setAllItems] = useState([]);
   const [activeKeywordIndex, setActiveKeywordIndex] = useState(0);
-  // show fab button state
   const [showFab, setShowFab] = useState(false);
 
   const matchedProvinces = (province) => {
@@ -88,7 +88,11 @@ const Explore = () => {
           </a>
         </div>
         <h1 className="wv-font-anuphan text-4xl font-bold">{PAGE_TITLE_STRING}</h1>
-        <p className="text-[#828282] wv-font-anuphan mt-3">{PAGE_SUB_TITLE_STRING}</p>
+        <p className="text-[#828282] wv-font-anuphan mt-3">
+          {PAGE_SUB_TITLE_STRING}
+          <br />
+          {PAGE_NOTE_STRING}
+        </p>
         <div className="wv-font-anuphan flex p-6 justify-between items-center bg-[#3904E90A] rounded-xl mt-8">
           <p className="text-xl">{`จากงบประมาณทั้งหมด ${result && (result.totalYearBudget / 1_000_000).toLocaleString()} ล้านบาท`}</p>
           <a
