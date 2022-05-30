@@ -4,10 +4,10 @@ import '../../dropdown.css';
 import KeywordListItem from './KeywordListItem';
 import Section from './Section';
 
-const KEYWORD_HEADER_STRING = 'คำสำคัญ';
+const KEYWORD_HEADER_STRING = 'คีย์เวิร์ด';
 const KEYWORD_COUNT = 'จำนวนที่พบ';
 const AMOUNT_UNIT_HEADER_STRING = 'ล้านบาท';
-const TITLE_STRING = 'คำสำคัญในรายละเอียดงบ';
+const TITLE_STRING = 'คีย์เวิร์ดในรายละเอียดงบ';
 const options = ['งบมากไปน้อย', 'ตัวอักษร', 'จำนวนที่พบ'];
 const defaultOption = options[0];
 const mappedOption = {
@@ -64,7 +64,7 @@ function KeywordList({
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="ค้นคำสำคัญ"
+              placeholder="ค้นคีย์เวิร์ด"
             />
           </div>
         </div>
