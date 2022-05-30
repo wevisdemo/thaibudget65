@@ -17,6 +17,7 @@ import Treemap from './pages/treemap';
 import reportWebVitals from './reportWebVitals';
 import Explore from './pages/explore';
 import IndexPage from './pages/index';
+import About from './pages/about';
 
 const basePath = process.env.REACT_APP_BASE_PATH || '/';
 
@@ -24,6 +25,7 @@ const routes = [
   ['/', 'Home', <IndexPage />],
   ['/treemap', 'Treemap', <Treemap />],
   ['/explore', 'Explore', <Explore />],
+  ['/about', 'About', <About />],
 ];
 
 const Navbar = () => {
