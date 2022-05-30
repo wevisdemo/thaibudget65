@@ -6,6 +6,7 @@ import useDimensions from 'react-cool-dimensions';
 import ReactTooltip from 'react-tooltip';
 import FullView from './FullView';
 import Spinner from './spinner';
+import { useNumberingSystem } from '../utils/numbering-system';
 
 // const THAI_NAME = {
 //   MINISTRY: 'กระทรวงหรือเทียบเท่า',
@@ -45,6 +46,8 @@ function Treemap({
   const TREECOLOR = index === 0 ? '#3904E9' : '#5906cf';
 
   const svgRef = useRef(null);
+
+  const { formatInteger } = useNumberingSystem();
 
   // const [data, setData] = useState([]);
   const [sum, setSum] = useState(-1); // or 'bar'
@@ -141,7 +144,7 @@ function Treemap({
       )
       .attr(
         'data-tip',
-        (d) => `${d?.data?.key}<br>${d?.value?.toLocaleString?.()} บาท`
+        (d) => `${d?.data?.key}<br>${formatInteger(d?.value)} บาท`
       )
       .attr('transform', (d) => `translate(${d.x0 || 0},${d.y0 || 0})`);
     // .attr('opacity', 0);
@@ -251,7 +254,7 @@ function Treemap({
       .attr('opacity', 1)
       .attr(
         'data-tip',
-        (d) => `${d?.data?.key}<br>${d?.value?.toLocaleString?.()} บาท`
+        (d) => `${d?.data?.key}<br>${formatInteger(d?.value)} บาท`
       );
 
     treemapPieceMerged
@@ -288,7 +291,7 @@ function Treemap({
       .attr('fill-opacity', 0.7)
       .attr('dominant-baseline', 'hanging')
       .attr('opacity', 1)
-      .text((d) => `${d.value.toLocaleString()} บาท`);
+      .text((d) => `${formatInteger(d.value)} บาท`);
 
     treemapPieceGroup
       .exit()
@@ -317,6 +320,7 @@ function Treemap({
     isMultipleMaxSum,
     sumWindows,
     TREECOLOR,
+    formatInteger,
   ]);
 
   return (
@@ -350,7 +354,7 @@ function Treemap({
             : filters[filters.length - 1]}
         </b>
         <br />
-        <span style={{ opacity: 0.7 }}>{sum.toLocaleString()} บาท</span>
+        <span style={{ opacity: 0.7 }}>{formatInteger(sum)} บาท</span>
       </div>
       {isLoading && (
         <FullView

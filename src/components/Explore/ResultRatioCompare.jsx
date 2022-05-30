@@ -1,5 +1,5 @@
 import React from 'react';
-import { toLocaleWithFixed3Digits } from '../../numberUtils';
+import { useNumberingSystem } from '../../utils/numbering-system';
 import Section from './Section';
 
 const TITLE_STRING = 'งบที่เกี่ยวข้องเทียบกับงบทั้งหมด';
@@ -8,6 +8,7 @@ const RATIO_STRING = 'เทียบงบทั้งหมด';
 const MILLION_INT = 1_000_000;
 
 function RatioCompare({ total, budgetYearTotal }) {
+  const { formatNumber, formatInteger, formatFractions } = useNumberingSystem();
   return (
     <Section title={TITLE_STRING}>
       <div className="flex flex-row space-x-6">
@@ -23,23 +24,20 @@ function RatioCompare({ total, budgetYearTotal }) {
         <div className=" space-y-6">
           <div>
             <p className="text-[25px]">
-              {toLocaleWithFixed3Digits(total / MILLION_INT)}
+              {formatFractions(total / MILLION_INT)}
             </p>
             <p className="text-gray-2">{AMOUNT_UNIT_STRING}</p>
           </div>
           <div>
             <p className="text-[25px]">
-              {(total / budgetYearTotal).toLocaleString(undefined, {
-                style: 'percent',
-                minimumFractionDigits: 3,
-              })}
+              {formatFractions((total * 100) / budgetYearTotal)}%
             </p>
             <p className="text-gray-2">{RATIO_STRING}</p>
           </div>
           <div>
-            <p className="text-gray-2">{`งบประมาณทั้งหมดของปีงบประมาณ 2566 คือ ${(
-              budgetYearTotal / MILLION_INT
-            ).toLocaleString()} ล้านบาท`}</p>
+            <p className="text-gray-2">{`งบประมาณทั้งหมดของปีงบประมาณ ${formatNumber(
+              2566
+            )} คือ ${formatInteger(budgetYearTotal / MILLION_INT)} ล้านบาท`}</p>
           </div>
         </div>
       </div>

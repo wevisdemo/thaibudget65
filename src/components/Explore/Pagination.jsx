@@ -1,6 +1,8 @@
 import React, { useMemo } from 'react';
+import { useNumberingSystem } from '../../utils/numbering-system';
 
 function Pagination({ currentPage, pageLength, setCurrentPage }) {
+  const { formatInteger } = useNumberingSystem();
   const pageNumberArray = useMemo(() => {
     if (currentPage > pageLength || pageLength < 0 || currentPage < 0)
       return [];
@@ -59,7 +61,7 @@ function Pagination({ currentPage, pageLength, setCurrentPage }) {
               v === currentPage && 'bg-blue text-white'
             }`}
           >
-            {v}
+            {formatInteger(v)}
           </button>
         );
       })}

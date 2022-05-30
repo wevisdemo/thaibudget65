@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import Section from './Section';
 import Pagination from './Pagination';
-import { toLocaleWithFixed3Digits } from '../../numberUtils';
+import { useNumberingSystem } from '../../utils/numbering-system';
 
 const ITEM_PER_PAGE_BRIEF = 5;
 const ITEM_PER_PAGE = 10;
@@ -85,6 +85,8 @@ function ResultGroup({ groupName, items, onSeeMore, brief }) {
 }
 
 function RowItem({ index, number, name, amount }) {
+  const { formatFractions } = useNumberingSystem();
+
   return (
     <div
       className={`grid grid-cols-4 py-3 px-2 ${
@@ -103,7 +105,7 @@ function RowItem({ index, number, name, amount }) {
       </div>
       <div className="text-right inline">
         <p>
-          {toLocaleWithFixed3Digits(amount / 1_000_000)}{' '}
+          {formatFractions(amount / 1_000_000)}{' '}
           <span className="text-gray-2 text-[13px]">{AMOUNT_UNIT_STRING}</span>
         </p>
       </div>

@@ -2,6 +2,7 @@ import React, { useCallback, useMemo } from 'react';
 import '../styles/dropdown.css';
 import Treemap from './Treemap';
 import FullView from './FullView';
+import { useNumberingSystem } from '../utils/numbering-system';
 
 // const options = ['หน่วยงาน', 'จังหวัด'];
 // const defaultOption = options[0];
@@ -49,6 +50,7 @@ function DataView({
   filters,
   setFilters,
 }) {
+  const { formatNumber } = useNumberingSystem();
   const filterDataByQuery = useCallback((datum, query) => {
     const searchLevels = ['MINISTRY', 'BUDGETARY_UNIT', 'PROVINCE'];
     // eslint-disable-next-line guard-for-in, no-restricted-syntax
@@ -80,7 +82,9 @@ function DataView({
        */}
       <div className="ml-4 text-xs">
         งบประมาณปี{' '}
-        <span className="font-bold">{index === 0 ? 2566 : 2565}</span>
+        <span className="font-bold">
+          {formatNumber(index === 0 ? 2566 : 2565)}
+        </span>
       </div>
       <div
         style={{

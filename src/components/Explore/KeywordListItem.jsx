@@ -1,5 +1,5 @@
 import React from 'react';
-import { toLocaleWithFixed3Digits } from '../../numberUtils';
+import { useNumberingSystem } from '../../utils/numbering-system';
 
 const BULLET_CHECKED = (
   <svg
@@ -33,10 +33,11 @@ const BULLET_UNCHECKED = (
 );
 
 function KeywordListItem({ keyword, checked, onCheck }) {
+  const { formatFractions, formatInteger } = useNumberingSystem();
   return (
     <tr
-      className={`duration-100 border-b  ${
-        checked && 'bg-[#3904E90F] border-white/0'
+      className={`duration-100 border-b cursor-pointer ${
+        checked ? 'bg-[#3904E90F] border-white/0' : 'hover:bg-[#3904e906]'
       } items-center`}
       role="menuitemradio"
       aria-checked={checked}
@@ -46,11 +47,11 @@ function KeywordListItem({ keyword, checked, onCheck }) {
         {checked ? BULLET_CHECKED : BULLET_UNCHECKED}
       </td>
       <td className="py-4">
-        <span className="">{keyword.word}</span>
+        <span>{keyword.word}</span>
       </td>
-      <td>{keyword.count}</td>
+      <td>{formatInteger(keyword.count)}</td>
       <td className="text-right">
-        <span>{toLocaleWithFixed3Digits(keyword.summation / 1_000_000)}</span>
+        <span>{formatFractions(keyword.summation / 1_000_000)}</span>
       </td>
     </tr>
   );

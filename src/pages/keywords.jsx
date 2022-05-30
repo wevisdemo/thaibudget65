@@ -5,6 +5,7 @@ import Result from '../components/Explore/Result';
 import { filter } from '../explore/filter';
 import { provinces } from '../provinces';
 import rawKeywords from '../selectedKeyword.json';
+import { useNumberingSystem } from '../utils/numbering-system';
 
 const selectedKeywords = rawKeywords.map((d, index) => ({ index, ...d }));
 
@@ -80,6 +81,8 @@ const Explore = () => {
   const [activeKeywordIndex, setActiveKeywordIndex] = useState(0);
   const [showFab, setShowFab] = useState(false);
 
+  const { formatInteger } = useNumberingSystem();
+
   const matchedProvinces = (province) => {
     let matched = [];
     provinces.forEach((p) => {
@@ -140,7 +143,7 @@ const Explore = () => {
         </p>
         <div className="wv-font-anuphan flex p-6 justify-between items-center bg-[#3904E90A] rounded-xl mt-8">
           <p className="text-xl">{`จากงบประมาณทั้งหมด ${
-            result && (result.totalYearBudget / 1_000_000).toLocaleString()
+            result && formatInteger(result.totalYearBudget / 1_000_000)
           } ล้านบาท`}</p>
           <a
             className="inline-flex space-x-3 items-center rounded-md bg-blue text-white p-4"

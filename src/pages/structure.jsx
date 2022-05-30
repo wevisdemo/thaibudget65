@@ -7,6 +7,7 @@ import Dropdown from 'react-dropdown';
 import '../styles/treemap.css';
 import DataView from '../components/DataView';
 import { provinces } from '../provinces';
+import { useNumberingSystem } from '../utils/numbering-system';
 
 const PageContainer = styled.div`
   display: flex;
@@ -98,6 +99,8 @@ function TreemapPage() {
   const [optionsState, setOptionsState] = useState('หน่วยงาน');
   const options = ['หน่วยงาน', 'จังหวัด'];
   const defaultOption = options[0];
+
+  const { formatNumber } = useNumberingSystem();
 
   const handleDropdown = (e) => {
     setOptionsState(e.value);
@@ -337,7 +340,7 @@ function TreemapPage() {
             >
               {!isCompareView ? '+' : '×'}
             </span>
-            {!isCompareView ? 'เทียบงบ 65' : 'ปิดการเทียบ'}
+            {!isCompareView ? `เทียบงบ ${formatNumber(65)}` : 'ปิดการเทียบ'}
           </ActionButton>
           <div style={{ flexGrow: 1 }} />
 
@@ -345,13 +348,17 @@ function TreemapPage() {
             target="_blank"
             href="https://docs.google.com/spreadsheets/d/1Js6iDnBR53nk80Hr4UybEwV4poUpNEeOoUUWJDCpLjI/edit#gid=696564335"
           >
-            <small className="wv-font-anuphan text-xs">ดูข้อมูลปี 66</small>
+            <small className="wv-font-anuphan text-xs">
+              ดูข้อมูลปี {formatNumber(66)}
+            </small>
           </CreditLink>
           <CreditLink
             target="_blank"
             href="https://docs.google.com/spreadsheets/d/1yyWXSTbq3CD_gNxks-krcSBzbszv3c_2Nq54lckoQ24/edit#gid=343539850"
           >
-            <small className="wv-font-anuphan text-xs">ดูข้อมูลปี 65</small>
+            <small className="wv-font-anuphan text-xs">
+              ดูข้อมูลปี {formatNumber(65)}
+            </small>
           </CreditLink>
           <CreditLink target="_blank" href="https://taepras.com">
             {/* <small className="wv-font-anuphan text-xs">Visualized by</small> */}

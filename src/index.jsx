@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import './styles/index.css';
 import '@wevisdemo/ui/styles/typography.css';
@@ -18,8 +18,10 @@ import reportWebVitals from './reportWebVitals';
 import Keywords from './pages/keywords';
 import IndexPage from './pages/index';
 import About from './pages/about';
-
-const basePath = process.env.REACT_APP_BASE_PATH || '/';
+import {
+  numberingSystemContext,
+  useNumberingSystem,
+} from './utils/numbering-system';
 
 const routes = [
   ['/', 'หน้าแรก', <IndexPage />],
@@ -30,6 +32,31 @@ const routes = [
 
 const Navbar = () => {
   const location = useLocation();
+  const { numberingSystem, toggleNumberingSystem, formatNumber } =
+    useNumberingSystem();
+
+  return (
+    <WvNavbar title={`THAILAND BUDGET ${formatNumber(2566)}`}>
+      {routes.map(([path, label]) => (
+        <Link key={label} to={path}>
+          <WvNavButton active={location.pathname === path}>{label}</WvNavButton>
+        </Link>
+      ))}
+      <WvNavButton onClick={toggleNumberingSystem}>
+        <div
+          className={`rounded-full px-2 self-center place-self-center ${
+            numberingSystem ? 'bg-black text-white' : ''
+          }`}
+        >
+          🇹🇭
+        </div>
+      </WvNavButton>
+    </WvNavbar>
+  );
+};
+
+const App = () => {
+  const [numberingSystem, setNumberingSystem] = useState(null);
 
   useEffect(() => {
     const plausibleDomain = process.env.PUBLIC_URL.split('//')?.[1];
@@ -45,23 +72,9 @@ const Navbar = () => {
   }, []);
 
   return (
-    <WvNavbar title="THAILAND BUDGET 2566">
-      {routes.map(([path, label]) => (
-        <Link key={label} to={path}>
-          <WvNavButton active={location.pathname === path}>{label}</WvNavButton>
-        </Link>
-      ))}
-    </WvNavbar>
-  );
-};
-
-ReactDOM.render(
-  <React.StrictMode>
-    <link
-      rel="stylesheet"
-      href="https://design-systems.wevis.info/typography.css"
-    />
-    <Router>
+    <numberingSystemContext.Provider
+      value={[numberingSystem, setNumberingSystem]}
+    >
       <div className="flex flex-col min-h-screen">
         <div className="z-40 relative">
           <Navbar />
@@ -75,6 +88,18 @@ ReactDOM.render(
         </Switch>
         <WvFooter dark />
       </div>
+    </numberingSystemContext.Provider>
+  );
+};
+
+ReactDOM.render(
+  <React.StrictMode>
+    <link
+      rel="stylesheet"
+      href="https://design-systems.wevis.info/typography.css"
+    />
+    <Router>
+      <App />
     </Router>
   </React.StrictMode>,
   // eslint-disable-next-line no-undef
