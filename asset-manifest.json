@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "https://wevisdemo.github.io/thaibudget65/static/css/main.517b2abb.css",
-    "main.js": "https://wevisdemo.github.io/thaibudget65/static/js/main.f02c7da0.js",
+    "main.css": "https://wevisdemo.github.io/thaibudget65/static/css/main.f743bc20.css",
+    "main.js": "https://wevisdemo.github.io/thaibudget65/static/js/main.fed62faf.js",
     "static/js/787.f17f44c1.chunk.js": "https://wevisdemo.github.io/thaibudget65/static/js/787.f17f44c1.chunk.js",
     "index.html": "https://wevisdemo.github.io/thaibudget65/index.html",
-    "main.517b2abb.css.map": "https://wevisdemo.github.io/thaibudget65/static/css/main.517b2abb.css.map",
-    "main.f02c7da0.js.map": "https://wevisdemo.github.io/thaibudget65/static/js/main.f02c7da0.js.map",
+    "main.f743bc20.css.map": "https://wevisdemo.github.io/thaibudget65/static/css/main.f743bc20.css.map",
+    "main.fed62faf.js.map": "https://wevisdemo.github.io/thaibudget65/static/js/main.fed62faf.js.map",
     "787.f17f44c1.chunk.js.map": "https://wevisdemo.github.io/thaibudget65/static/js/787.f17f44c1.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.517b2abb.css",
-    "static/js/main.f02c7da0.js"
+    "static/css/main.f743bc20.css",
+    "static/js/main.fed62faf.js"
   ]
 }
