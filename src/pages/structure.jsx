@@ -207,7 +207,7 @@ function TreemapPage() {
   return (
     <div className="flex-1 flex flex-col">
       {/* <div className="absolute top-8 right-[83px] wv-font-anuphan z-30"> */}
-      <div className="flex justify-center text-white p-5 pt-[45px] md:pt-[63px]">
+      <div className="flex justify-center text-white p-5 pt-8 md:pt-10">
         <div className="wv-font-anuphan text-2xl font-bold flex items-center">
           <img
             className="w-[24px] h-[24px] mr-2"
@@ -215,7 +215,7 @@ function TreemapPage() {
             alt="inspect"
             title="inspect"
           />
-          สำรวจงบประมาณปี 2566
+          <h1>สำรวจงบประมาณผ่านโครงสร้าง</h1>
         </div>
       </div>
       <div>

@@ -13,19 +13,19 @@ import {
 import WvNavbar from '@wevisdemo/ui/components/navbar';
 import WvNavButton from '@wevisdemo/ui/components/nav-button';
 import WvFooter from '@wevisdemo/ui/components/footer';
-import Treemap from './pages/treemap';
+import Structure from './pages/structure';
 import reportWebVitals from './reportWebVitals';
-import Explore from './pages/explore';
+import Keywords from './pages/keywords';
 import IndexPage from './pages/index';
 import About from './pages/about';
 
 const basePath = process.env.REACT_APP_BASE_PATH || '/';
 
 const routes = [
-  ['/', 'Home', <IndexPage />],
-  ['/treemap', 'Treemap', <Treemap />],
-  ['/explore', 'Explore', <Explore />],
-  ['/about', 'About', <About />],
+  ['/', 'หน้าแรก', <IndexPage />],
+  ['/structure', 'โครงสร้าง', <Structure />],
+  ['/keywords', 'คีย์เวิร์ด', <Keywords />],
+  ['/about', 'เกี่ยวกับโครงการ', <About />],
 ];
 
 const Navbar = () => {

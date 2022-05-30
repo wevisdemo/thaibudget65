@@ -8,9 +8,9 @@ import rawKeywords from '../selectedKeyword.json';
 
 const selectedKeywords = rawKeywords.map((d, index) => ({ index, ...d }));
 
-const PAGE_TITLE_STRING = 'สำรวจงบประมาณปี 2566';
+const PAGE_TITLE_STRING = 'สำรวจงบประมาณผ่านคีย์เวิร์ด';
 const PAGE_SUB_TITLE_STRING =
-  'ผ่านคีย์เวิร์ดที่พบได้บ่อย และคำที่น่าสนใจในงบประมาณ';
+  'คีย์เวิร์ดที่พบได้บ่อย และคำที่น่าสนใจในงบประมาณ';
 const PAGE_NOTE_STRING =
   'หมายเหตุ : คียเวิร์ดเหล่านี้เป็นการค้นหาและตัดคำเบื้องต้นโดยคอมพิวเตอร์ โดยรวบรวมจากทุกข้อมูลที่มีคำนั้นปรากฎ โปรดตรวจสอบบริบทของคำก่อนการใช้งาน';
 const DOWNLOAD_DATA_BUTTON_STRING = 'ดาวน์โหลดข้อมูล';
