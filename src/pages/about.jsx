@@ -6,7 +6,7 @@ import WvButton from '@wevisdemo/ui/components/button';
 import WvSharer from '@wevisdemo/ui/components/sharer';
 
 const About = () => (
-  <div className="bg-white text-black">
+  <div className="bg-white text-black wv-font-anuphan">
     <WvContainer heading="เกี่ยวกับโครงการ">
       <WvParagraphGroup heading="เป้าหมาย">
         <p>
