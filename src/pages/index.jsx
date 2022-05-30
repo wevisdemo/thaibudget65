@@ -38,7 +38,7 @@ const IndexPage = () => (
           สำรวจงบประมาณปี 66 ผ่านคำที่พบบ่อยหรือคำที่น่าสนใจ
         </PageCard>
       </div>
-      <WvSharer />
+      <WvSharer url={process.env.PUBLIC_URL} />
     </div>
 
     <div className="flex flex-col items-center bg-black py-16 px-4 space-y-4">

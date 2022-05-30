@@ -165,7 +165,7 @@ const About = () => (
         </ExternalLink>
       </WvButtonGroup>
 
-      <WvSharer center url="PROJECT_MAIN_PAGE" />
+      <WvSharer center url={process.env.PUBLIC_URL} />
     </WvContainer>
   </div>
 );
