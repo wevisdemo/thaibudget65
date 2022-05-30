@@ -28,7 +28,7 @@ const IndexPage = () => {
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 my-12 gap-4">
           <PageCard
-            to="/treemap"
+            to="/structure"
             title="สำรวจผ่านโครงสร้าง"
             image="/images/tree-aw.webp"
           >
@@ -36,7 +36,7 @@ const IndexPage = () => {
             แบ่งตามหน่วยงานและจังหวัดที่ได้รับงบ
           </PageCard>
           <PageCard
-            to="/explore"
+            to="/keywords"
             title="สำรวจผ่านคีย์เวิร์ด"
             image="/images/keyword-aw.webp"
           >
