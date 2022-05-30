@@ -65,7 +65,7 @@ const IndexPage = () => (
 const PageCard = ({ to, title, children, image }) => (
   <Link to={to}>
     <div className="h-full bg-white flex flex-col items-center p-6 pb-0 rounded-lg hover:shadow-xl transition-shadow duration-300 ease-in-out">
-      <p className="wv-b2 wv-font-bold text-black pb-2">{title}</p>
+      <p className="wv-b2 wv-font-bold text-gray-1 pb-2">{title}</p>
       <p className="flex-1">{children}</p>
       <img src={`${process.env.PUBLIC_URL}${image}`} alt={title} />
     </div>
