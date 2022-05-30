@@ -105,15 +105,20 @@ function TreemapPage() {
   };
 
   useEffect(() => {
-    d3.csv(`${process.env.PUBLIC_URL}/data65.csv`).then((d) => {
-      setLoading65(false);
-      setData65(d);
-    });
     d3.csv(`${process.env.PUBLIC_URL}/data.csv`).then((d) => {
       setLoading(false);
       setData(d);
     });
   }, []);
+
+  useEffect(() => {
+    if (data65.length === 0 && isCompareView) {
+      d3.csv(`${process.env.PUBLIC_URL}/data65.csv`).then((d) => {
+        setLoading65(false);
+        setData65(d);
+      });
+    }
+  }, [data65, isCompareView]);
 
   const setSumWindowsIdx = (i, value) => {
     const temp = [...sumWindows];
