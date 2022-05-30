@@ -105,7 +105,7 @@ function TreemapPage() {
   };
 
   useEffect(() => {
-    d3.csv(`${process.env.PUBLIC_URL}/data.csv`).then((d) => {
+    d3.csv(`${process.env.PUBLIC_URL}/data/2566.csv`).then((d) => {
       setLoading(false);
       setData(d);
     });
@@ -113,7 +113,7 @@ function TreemapPage() {
 
   useEffect(() => {
     if (data65.length === 0 && isCompareView) {
-      d3.csv(`${process.env.PUBLIC_URL}/data65.csv`).then((d) => {
+      d3.csv(`${process.env.PUBLIC_URL}/data/2565.csv`).then((d) => {
         setLoading65(false);
         setData65(d);
       });
@@ -211,7 +211,7 @@ function TreemapPage() {
         <div className="wv-font-anuphan text-2xl font-bold flex items-center">
           <img
             className="w-[24px] h-[24px] mr-2"
-            src={`${process.env.PUBLIC_URL}/inspect.png`}
+            src={`${process.env.PUBLIC_URL}/images/inspect.png`}
             alt="inspect"
             title="inspect"
           />
@@ -350,7 +350,7 @@ function TreemapPage() {
           <CreditLink target="_blank" href="https://taepras.com">
             {/* <small className="wv-font-anuphan text-xs">Visualized by</small> */}
             <ResponsiveImage
-              src={`${process.env.PUBLIC_URL}/tp_logo_dark.svg`}
+              src={`${process.env.PUBLIC_URL}/images/tp_logo_dark.svg`}
               alt="kaogeek logo"
               title="Thanawit Prasongpongchai"
             />
@@ -358,7 +358,7 @@ function TreemapPage() {
           <CreditLink target="_blank" href="https://github.com/kaogeek">
             {/* <small className="wv-font-anuphan text-xs">Data Source</small> */}
             <ResponsiveImage
-              src={`${process.env.PUBLIC_URL}/kaogeek_logo_dark.png`}
+              src={`${process.env.PUBLIC_URL}/images/kaogeek_logo_dark.png`}
               alt="kaogeek logo"
               title="กลุ่มก้าว Geek"
             />
