@@ -119,7 +119,7 @@ const Explore = () => {
       <div className="bg-[hsl(0,0%,98%)] text-black px-4 xl:px-36 py-6 md:pt-[73px] gap-y-8 relative">
         <div>
           <a
-            className={`wv-font-anuphan flex items-center space-x-3 rounded-md text-[#3904E9] bg-white shadow-xl p-4 fixed z-50 bottom-6 right-10 duration-200 ${
+            className={`wv-font-anuphan flex items-center space-x-3 rounded-md text-blue bg-white shadow-xl p-4 fixed z-50 bottom-6 right-10 duration-200 ${
               showFab || 'translate-y-20 opacity-0'
             }`}
             href={FEEDBACK_URL_STRING}
@@ -133,7 +133,7 @@ const Explore = () => {
         <h1 className="wv-font-anuphan text-4xl font-bold">
           {PAGE_TITLE_STRING}
         </h1>
-        <p className="text-[#828282] wv-font-anuphan mt-3">
+        <p className="text-gray-2 wv-font-anuphan mt-3">
           {PAGE_SUB_TITLE_STRING}
           <br />
           {PAGE_NOTE_STRING}
@@ -143,7 +143,7 @@ const Explore = () => {
             result && (result.totalYearBudget / 1_000_000).toLocaleString()
           } ล้านบาท`}</p>
           <a
-            className="inline-flex space-x-3 items-center rounded-md bg-[#3904E9] text-white p-4"
+            className="inline-flex space-x-3 items-center rounded-md bg-blue text-white p-4"
             href={DOWNLOAD_DATA_URL_STRING}
             target="_blank"
             rel="noopener noreferrer"

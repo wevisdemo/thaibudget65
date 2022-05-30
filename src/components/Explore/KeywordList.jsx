@@ -74,13 +74,13 @@ function KeywordList({ keywords, activeKeyword, onActiveKeywordIndex }) {
         <table className="border-collapse w-full">
           <tr>
             <th> </th>
-            <th className="text-left text-sm text-[#828282] font-normal">
+            <th className="text-left text-sm text-gray-2 font-normal">
               {KEYWORD_HEADER_STRING}
             </th>
-            <th className="text-left text-sm text-[#828282] font-normal">
+            <th className="text-left text-sm text-gray-2 font-normal">
               {KEYWORD_COUNT}
             </th>
-            <th className="text-right text-sm text-[#828282] font-normal">
+            <th className="text-right text-sm text-gray-2 font-normal">
               {AMOUNT_UNIT_HEADER_STRING}
             </th>
           </tr>

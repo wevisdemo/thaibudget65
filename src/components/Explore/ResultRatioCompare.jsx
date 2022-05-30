@@ -13,7 +13,7 @@ function RatioCompare({ total, budgetYearTotal }) {
       <div className="flex flex-row space-x-6">
         <div className="flex relative w-64 h-64 bg-[#E0E0E0]">
           <div
-            className="flex absolute bg-[#3904E9] duration-200"
+            className="flex absolute bg-blue duration-200"
             style={{
               height: `${Math.sqrt(total / budgetYearTotal) * 100}%`,
               width: `${Math.sqrt(total / budgetYearTotal) * 100}%`,
@@ -25,7 +25,7 @@ function RatioCompare({ total, budgetYearTotal }) {
             <p className="text-[25px]">
               {toLocaleWithFixed3Digits(total / MILLION_INT)}
             </p>
-            <p className="text-[#828282]">{AMOUNT_UNIT_STRING}</p>
+            <p className="text-gray-2">{AMOUNT_UNIT_STRING}</p>
           </div>
           <div>
             <p className="text-[25px]">
@@ -34,10 +34,10 @@ function RatioCompare({ total, budgetYearTotal }) {
                 minimumFractionDigits: 3,
               })}
             </p>
-            <p className="text-[#828282]">{RATIO_STRING}</p>
+            <p className="text-gray-2">{RATIO_STRING}</p>
           </div>
           <div>
-            <p className="text-[#828282]">{`งบประมาณทั้งหมดของปีงบประมาณ 2566 คือ ${(
+            <p className="text-gray-2">{`งบประมาณทั้งหมดของปีงบประมาณ 2566 คือ ${(
               budgetYearTotal / MILLION_INT
             ).toLocaleString()} ล้านบาท`}</p>
           </div>

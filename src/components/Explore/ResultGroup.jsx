@@ -67,7 +67,7 @@ function ResultGroup({ groupName, items, onSeeMore, brief }) {
             <button
               type="button"
               onClick={onSeeMore}
-              className="text-[#3904E9] inline-flex items-center gap-x-5"
+              className="text-blue inline-flex items-center gap-x-5"
             >
               {SEE_MORE_BUTTON_STRING}
               {ARROW_RIGHT}
@@ -104,9 +104,7 @@ function RowItem({ index, number, name, amount }) {
       <div className="text-right inline">
         <p>
           {toLocaleWithFixed3Digits(amount / 1_000_000)}{' '}
-          <span className="text-[#828282] text-[13px]">
-            {AMOUNT_UNIT_STRING}
-          </span>
+          <span className="text-gray-2 text-[13px]">{AMOUNT_UNIT_STRING}</span>
         </p>
       </div>
     </div>

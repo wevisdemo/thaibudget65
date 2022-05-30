@@ -56,7 +56,7 @@ function Pagination({ currentPage, pageLength, setCurrentPage }) {
             type="button"
             onClick={() => setCurrentPage(v)}
             className={`wv-font-anuphan rounded-full font-semibold w-6 h-6 ${
-              v === currentPage && 'bg-[#3904E9] text-white'
+              v === currentPage && 'bg-blue text-white'
             }`}
           >
             {v}

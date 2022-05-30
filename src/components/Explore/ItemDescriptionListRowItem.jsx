@@ -18,7 +18,7 @@ const ItemDescriptionListRowItem = ({ item, onItemClick }) => (
       </div>
     </div>
     <div>
-      <p className="text-[#828282] text-right">
+      <p className="text-gray-2 text-right">
         {toLocaleWithFixed3Digits(item.AMOUNT)}
       </p>
     </div>
