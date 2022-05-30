@@ -1,15 +1,13 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import * as d3 from 'd3';
 import styled from 'styled-components';
-import { Link, Route, useHistory, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import ReactTooltip from 'react-tooltip';
 import Dropdown from 'react-dropdown';
-import logo from './logo.svg';
 import './App.css';
 import DataView from './components/DataView';
 import FullView from './components/FullView';
 import { provinces } from './provinces';
-// import Explore from './pages/explore';
 
 const PageContainer = styled.div`
   display: flex;
@@ -196,22 +194,11 @@ function App() {
   );
 
   const location = useLocation();
-  const history = useHistory();
 
   useEffect(() => {
     const f = location.pathname.split('/').slice(1);
-    console.log('f', f, f.length > 0 && f[0] ? f : ['all']);
     setFilters(f.length > 0 && f[0] ? f : ['all']);
   }, [location]);
-
-  const navigateTo = (x, i) => {
-    console.log(x, i);
-    const temp = [...filters];
-    temp.splice(i + 1);
-    // setFilters(temp);
-    console.log('temp', temp);
-    history.push(`/${temp.join('/')}`);
-  };
 
   return (
     <div>
@@ -281,10 +268,7 @@ function App() {
               data={preprocessedData}
               isLoading={isLoading}
               fullValue={maxSumValue}
-              setCurrentSum={(s) => {
-                console.log('setCurrentSum 0', s);
-                setSumWindowsIdx(0, s);
-              }}
+              setCurrentSum={(s) => setSumWindowsIdx(0, s)}
               isMultipleMaxSum={isMultipleMaxSum}
               sumWindows={[0, 0]}
               index={0}
@@ -305,10 +289,7 @@ function App() {
                 data={preprocessedData65}
                 isLoading={isLoading65}
                 fullValue={maxSumValue}
-                setCurrentSum={(s) => {
-                  console.log('setCurrentSum 1', s);
-                  setSumWindowsIdx(1, s);
-                }}
+                setCurrentSum={(s) => setSumWindowsIdx(1, s)}
                 isMultipleMaxSum={isMultipleMaxSum}
                 // sumWindows={sumWindows}
                 sumWindows={[sumWindows[1], 0]}

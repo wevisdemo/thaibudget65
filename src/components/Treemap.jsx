@@ -4,16 +4,15 @@ import * as d3 from 'd3';
 import { nest } from 'd3-collection';
 import useDimensions from 'react-cool-dimensions';
 import ReactTooltip from 'react-tooltip';
-import { useHistory, useLocation } from 'react-router-dom';
 import FullView from './FullView';
 
-const THAI_NAME = {
-  MINISTRY: 'กระทรวงหรือเทียบเท่า',
-  BUDGETARY_UNIT: 'หน่วยรับงบฯ',
-  BUDGET_PLAN: 'แผนงาน',
-  OUTPUT_PROJECT: 'ผลผลิต/โครงการ',
-  ITEM: 'รายการ',
-};
+// const THAI_NAME = {
+//   MINISTRY: 'กระทรวงหรือเทียบเท่า',
+//   BUDGETARY_UNIT: 'หน่วยรับงบฯ',
+//   BUDGET_PLAN: 'แผนงาน',
+//   OUTPUT_PROJECT: 'ผลผลิต/โครงการ',
+//   ITEM: 'รายการ',
+// };
 
 function Treemap({
   data = [],
@@ -48,11 +47,9 @@ function Treemap({
 
   // const [data, setData] = useState([]);
   const [sum, setSum] = useState(-1); // or 'bar'
-  const [displayMode, setDisplayMode] = useState('treemap'); // or 'bar'
+  const [displayMode] = useState('treemap'); // or 'bar'
 
   const nestedData = useMemo(() => {
-    console.log('filters', filters);
-
     let out = nest();
     // eslint-disable-next-line guard-for-in, no-restricted-syntax
     for (const i in filters) {
@@ -75,8 +72,6 @@ function Treemap({
       inData = inData?.values?.filter?.((d) => d.key === filters[i])[0];
     }
 
-    console.log('indata', inData);
-
     if (inData !== undefined) {
       return inData;
     }
@@ -85,7 +80,6 @@ function Treemap({
 
   useEffect(() => {
     const s = nestedData.values.reduce((a, b) => a + b.value, 0);
-    console.log('sum', s);
     if (sum !== s) {
       setCurrentSum(s);
     }
@@ -95,10 +89,7 @@ function Treemap({
   useEffect(() => {
     if (!svgRef.current) return;
 
-    console.log('fullVal', fullValue);
-    console.log('nested', nestedData);
     const svgHeight = svgRef.current.clientHeight;
-    console.log(svgHeight);
 
     const root = d3
       .hierarchy(nestedData, (d) => d?.values)
@@ -116,7 +107,6 @@ function Treemap({
     const treeFullArea = (width - 2 * padding) * (svgHeight - 2 * padding);
     const treeAspect = (width - 2 * padding) / (svgHeight - 2 * padding);
     const treeCurrentArea = (newSum / (fullVal || 1)) * treeFullArea;
-    console.log('sumw', index, sumWindows, newSumWin, sum, fullVal, newSum);
     const treeH =
       fullVal <= 0
         ? svgHeight - 2 * padding
@@ -126,14 +116,14 @@ function Treemap({
     const treemap = d3.treemap().size([treeW, treeH]).padding(0);
     // .round(true);
 
-    const nodes = treemap(root);
+    treemap(root);
 
     const svg = d3.select(svgRef.current).select('g.chart');
 
-    const barScale = d3
-      .scaleLinear()
-      .domain([0, d3.max(root.leaves(), (d) => d.value)])
-      .range([0, width - 2 * padding]);
+    // const barScale = d3
+    //   .scaleLinear()
+    //   .domain([0, d3.max(root.leaves(), (d) => d.value)])
+    //   .range([0, width - 2 * padding]);
 
     const treemapPieceGroup = svg
       .selectAll('g.treemap-piece')
@@ -222,7 +212,6 @@ function Treemap({
         const sx = newW / (d.x1 - d.x0);
         const sy = newH / (d.y1 - d.y0);
 
-        console.log('prp', d3.select(this), e, d, el);
         // const sx = 0.43;
         // const sy = 1.05;
 
@@ -310,20 +299,6 @@ function Treemap({
       .remove();
 
     ReactTooltip.rebuild();
-    console.log('rebuilding tooltip');
-
-    console.log(
-      'too small',
-      root.leaves().filter((d) => (d.x1 - d.x0) * (d.y1 - d.y0) < 100)
-    );
-    console.log(
-      'too narrow',
-      root.leaves().filter((d) => d.x1 - d.x0 < 20)
-    );
-    console.log(
-      'too short',
-      root.leaves().filter((d) => d.y1 - d.y0 < 20)
-    );
   }, [
     svgRef,
     nestedData,

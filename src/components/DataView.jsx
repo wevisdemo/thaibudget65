@@ -1,8 +1,5 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import * as d3 from 'd3';
-import styled from 'styled-components';
-import { useHistory, useLocation } from 'react-router-dom';
-import ReactTooltip from 'react-tooltip';
+import React, { useCallback, useEffect, useMemo } from 'react';
+import { useLocation } from 'react-router-dom';
 // import Dropdown from 'react-dropdown';
 import '../dropdown.css';
 import Treemap from './Treemap';
@@ -75,21 +72,16 @@ function DataView({
   );
 
   const location = useLocation();
-  const history = useHistory();
 
   useEffect(() => {
     const f = location.pathname.split('/').slice(1);
-    console.log('f', f, f.length > 0 && f[0] ? f : ['all']);
     setFilters(f.length > 0 && f[0] ? f : ['all']);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location]);
 
   const navigateTo = (x, i) => {
-    console.log(x, i);
     const temp = [...filters];
     temp.splice(i + 1);
-    // setFilters(temp);
-    console.log('temp', temp);
     setFilters(temp);
     // history.push(`/${temp.join('/')}`);
   };
@@ -251,10 +243,7 @@ function DataView({
                 : hierarchyByProvince
             }
             setFilters={setFilters}
-            setCurrentSum={(x) => {
-              // console.log('!!setting sum', x, setCurrentSum);
-              setCurrentSum(x);
-            }}
+            setCurrentSum={setCurrentSum}
             fullValue={fullValue}
             index={index}
             isMultipleMaxSum={isMultipleMaxSum}
