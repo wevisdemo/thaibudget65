@@ -5,6 +5,7 @@ import { nest } from 'd3-collection';
 import useDimensions from 'react-cool-dimensions';
 import ReactTooltip from 'react-tooltip';
 import FullView from './FullView';
+import Spinner from './spinner';
 
 // const THAI_NAME = {
 //   MINISTRY: 'กระทรวงหรือเทียบเท่า',
@@ -361,7 +362,7 @@ function Treemap({
             top: 0,
           }}
         >
-          Loading...
+          <Spinner />
         </FullView>
       )}
 
