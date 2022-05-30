@@ -28,6 +28,8 @@ const routes = [
   ['/about', 'เกี่ยวกับโครงการ', <About />],
 ];
 
+const plausibleDomain = process.env.PUBLIC_URL.split('//')?.[1];
+
 const Navbar = () => {
   const location = useLocation();
 
@@ -44,11 +46,18 @@ const Navbar = () => {
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router basename={basePath}>
-      <link
-        rel="stylesheet"
-        href="https://design-systems.wevis.info/typography.css"
+    <link
+      rel="stylesheet"
+      href="https://design-systems.wevis.info/typography.css"
+    />
+    {plausibleDomain && (
+      <script
+        defer
+        data-domain={plausibleDomain}
+        src="https://analytics.punchup.world/js/plausible.js"
       />
+    )}
+    <Router basename={basePath}>
       <div className="flex flex-col min-h-screen">
         <div className="z-40 relative">
           <Navbar />
