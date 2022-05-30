@@ -3,7 +3,13 @@ import ReactDOM from 'react-dom';
 import './styles/index.css';
 import '@wevisdemo/ui/styles/typography.css';
 import '@wevisdemo/ui/styles/components.css';
-import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Link,
+  Route,
+  Switch,
+  useLocation,
+} from 'react-router-dom';
 import WvNavbar from '@wevisdemo/ui/components/navbar';
 import WvNavButton from '@wevisdemo/ui/components/nav-button';
 import WvFooter from '@wevisdemo/ui/components/footer';
@@ -14,6 +20,26 @@ import IndexPage from './pages/index';
 
 const basePath = process.env.REACT_APP_BASE_PATH || '/';
 
+const routes = [
+  ['/', 'Home', <IndexPage />],
+  ['/treemap', 'Treemap', <Treemap />],
+  ['/explore', 'Explore', <Explore />],
+];
+
+const Navbar = () => {
+  const location = useLocation();
+
+  return (
+    <WvNavbar title="THAILAND BUDGET 2566">
+      {routes.map(([path, label]) => (
+        <Link key={label} to={path}>
+          <WvNavButton active={location.pathname === path}>{label}</WvNavButton>
+        </Link>
+      ))}
+    </WvNavbar>
+  );
+};
+
 ReactDOM.render(
   <React.StrictMode>
     <Router basename={basePath}>
@@ -23,28 +49,14 @@ ReactDOM.render(
       />
       <div className="flex flex-col min-h-screen">
         <div className="z-40 relative">
-          <WvNavbar title="THAILAND BUDGET 2566 (BETA)">
-            <Link to="/">
-              <WvNavButton>Home</WvNavButton>
-            </Link>
-            <Link to="/treemap">
-              <WvNavButton>Treemap</WvNavButton>
-            </Link>
-            <Link to="/explore">
-              <WvNavButton>Explore</WvNavButton>
-            </Link>
-          </WvNavbar>
+          <Navbar />
         </div>
         <Switch>
-          <Route exact path="/">
-            <IndexPage />
-          </Route>
-          <Route exact path="/treemap">
-            <Treemap />
-          </Route>
-          <Route path="/explore">
-            <Explore />
-          </Route>
+          {routes.map(([path, label, component]) => (
+            <Route key={label} exact path={path}>
+              {component}
+            </Route>
+          ))}
         </Switch>
         <WvFooter dark />
       </div>
