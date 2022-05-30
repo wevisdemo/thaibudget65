@@ -1,12 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import {
-  BrowserRouter as Router,
-  Link,
-  Route,
-  Switch,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import WvNavbar from '@wevisdemo/ui/components/navbar';
 import WvNavButton from '@wevisdemo/ui/components/nav-button';
 import App from './App';
@@ -35,13 +30,17 @@ ReactDOM.render(
         </WvNavbar>
       </div>
       <Switch>
-        <Route exact path="/"><App /></Route>
-        <Route path="/explore"><Explore /></Route>
+        <Route exact path="/">
+          <App />
+        </Route>
+        <Route path="/explore">
+          <Explore />
+        </Route>
       </Switch>
     </Router>
   </React.StrictMode>,
   // eslint-disable-next-line no-undef
-  document.getElementById('root'),
+  document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function

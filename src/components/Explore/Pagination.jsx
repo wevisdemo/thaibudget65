@@ -1,11 +1,13 @@
 import React, { useMemo } from 'react';
 
-function Pagination({
-  currentPage, pageLength, setCurrentPage,
-}) {
+function Pagination({ currentPage, pageLength, setCurrentPage }) {
   const pageNumberArray = useMemo(() => {
-    if (currentPage > pageLength || pageLength < 0 || currentPage < 0) return [];
-    const fullArray = Array.from({ length: pageLength }, (_, index) => index + 1);
+    if (currentPage > pageLength || pageLength < 0 || currentPage < 0)
+      return [];
+    const fullArray = Array.from(
+      { length: pageLength },
+      (_, index) => index + 1
+    );
     let returnedArray = [];
 
     if (fullArray.length <= 6) {
@@ -40,20 +42,36 @@ function Pagination({
 
   return (
     <div className="space-x-3">
-      <button type="button" onClick={() => setCurrentPage((prev) => (prev > 1 ? prev - 1 : prev))} className={`w-6 h-6 ${currentPage === 1 && 'hidden'}`}>{'<'}</button>
+      <button
+        type="button"
+        onClick={() => setCurrentPage((prev) => (prev > 1 ? prev - 1 : prev))}
+        className={`w-6 h-6 ${currentPage === 1 && 'hidden'}`}
+      >
+        {'<'}
+      </button>
       {pageNumberArray.map((v) => {
         if (v === '...') return <span className="w-6 h-6">{v}</span>;
         return (
           <button
             type="button"
             onClick={() => setCurrentPage(v)}
-            className={`wv-font-anuphan rounded-full font-semibold w-6 h-6 ${v === currentPage && 'bg-[#3904E9] text-white'}`}
+            className={`wv-font-anuphan rounded-full font-semibold w-6 h-6 ${
+              v === currentPage && 'bg-[#3904E9] text-white'
+            }`}
           >
             {v}
           </button>
         );
       })}
-      <button type="button" onClick={() => setCurrentPage((prev) => (prev < pageLength ? prev + 1 : prev))} className={`w-6 h-6 ${currentPage === pageLength && 'hidden'}`}>{'>'}</button>
+      <button
+        type="button"
+        onClick={() =>
+          setCurrentPage((prev) => (prev < pageLength ? prev + 1 : prev))
+        }
+        className={`w-6 h-6 ${currentPage === pageLength && 'hidden'}`}
+      >
+        {'>'}
+      </button>
     </div>
   );
 }

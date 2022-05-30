@@ -1,11 +1,7 @@
-import React, {
-  useCallback, useEffect, useMemo, useState,
-} from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import * as d3 from 'd3';
 import styled from 'styled-components';
-import {
-  Link, Route, useHistory, useLocation,
-} from 'react-router-dom';
+import { Link, Route, useHistory, useLocation } from 'react-router-dom';
 import ReactTooltip from 'react-tooltip';
 import Dropdown from 'react-dropdown';
 import logo from './logo.svg';
@@ -16,11 +12,11 @@ import { provinces } from './provinces';
 // import Explore from './pages/explore';
 
 const PageContainer = styled.div`
- display: flex;
- flex-direction: row;
- flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
 
-  @media screen and (orientation:portrait) {
+  @media screen and (orientation: portrait) {
     flex-direction: column;
   }
 `;
@@ -58,20 +54,20 @@ const Sidebar = styled.div`
   flex-direction: column;
   overflow: hidden;
   align-items: center;
-  
-  @media screen and (orientation:landscape) {
+
+  @media screen and (orientation: landscape) {
     width: 65px;
-    &>*:not(:last-child) {
+    & > *:not(:last-child) {
       margin-bottom: 16px;
     }
   }
 
-  @media screen and (orientation:portrait) {
+  @media screen and (orientation: portrait) {
     height: 64px;
     flex-direction: row;
     /* display: none !important; */
 
-    &>*:not(:last-child) {
+    & > *:not(:last-child) {
       margin-right: 16px;
     }
 
@@ -140,52 +136,64 @@ function App() {
     let matched = [];
     provinces.forEach((p) => {
       // eslint-disable-next-line no-unused-expressions
-      province.includes(p) ? matched = [...matched, p] : null;
+      province.includes(p) ? (matched = [...matched, p]) : null;
     });
     return matched.join('-');
   };
 
-  const preprocessedData65 = useMemo(() => data65
-    .map((d) => ({
-      ...d,
-      AMOUNT: parseFloat(d.AMOUNT.replace(/,/g, '')),
-      OUTPUT_PROJECT: (d.OUTPUT || d.PROJECT) ? (d.OUTPUT + d.PROJECT) : 'ไม่ระบุโครงการ/ผลผลิต',
-      MINISTRY: d.MINISTRY.replace(/\([0-9]+\)$/, '').trim(),
-      PROVINCE: matchedProvinces(d.ITEM_DESCRIPTION),
-      ITEM: [
-        d.ITEM_DESCRIPTION,
-        d.CATEGORY_LV2,
-        d.CATEGORY_LV3,
-        d.CATEGORY_LV4,
-        d.CATEGORY_LV5,
-        d.CATEGORY_LV6,
-      ]
-        .filter((x) => x)
-        .join(' - '),
-    }))
-    .filter((d) => +d.FISCAL_YEAR === 2022),
-  [data65]);
+  const preprocessedData65 = useMemo(
+    () =>
+      data65
+        .map((d) => ({
+          ...d,
+          AMOUNT: parseFloat(d.AMOUNT.replace(/,/g, '')),
+          OUTPUT_PROJECT:
+            d.OUTPUT || d.PROJECT
+              ? d.OUTPUT + d.PROJECT
+              : 'ไม่ระบุโครงการ/ผลผลิต',
+          MINISTRY: d.MINISTRY.replace(/\([0-9]+\)$/, '').trim(),
+          PROVINCE: matchedProvinces(d.ITEM_DESCRIPTION),
+          ITEM: [
+            d.ITEM_DESCRIPTION,
+            d.CATEGORY_LV2,
+            d.CATEGORY_LV3,
+            d.CATEGORY_LV4,
+            d.CATEGORY_LV5,
+            d.CATEGORY_LV6,
+          ]
+            .filter((x) => x)
+            .join(' - '),
+        }))
+        .filter((d) => +d.FISCAL_YEAR === 2022),
+    [data65]
+  );
 
-  const preprocessedData = useMemo(() => data
-    .map((d) => ({
-      ...d,
-      AMOUNT: parseFloat(d.AMOUNT.replace(/,/g, '')),
-      OUTPUT_PROJECT: (d.OUTPUT || d.PROJECT) ? (d.OUTPUT + d.PROJECT) : 'ไม่ระบุโครงการ/ผลผลิต',
-      MINISTRY: d.MINISTRY.replace(/\([0-9]+\)$/, '').trim(),
-      PROVINCE: matchedProvinces(d.ITEM_DESCRIPTION),
-      ITEM: [
-        d.ITEM_DESCRIPTION,
-        d.CATEGORY_LV2,
-        d.CATEGORY_LV3,
-        d.CATEGORY_LV4,
-        d.CATEGORY_LV5,
-        d.CATEGORY_LV6,
-      ]
-        .filter((x) => x)
-        .join(' - '),
-    }))
-    .filter((d) => +d.FISCAL_YEAR === 2023),
-  [data]);
+  const preprocessedData = useMemo(
+    () =>
+      data
+        .map((d) => ({
+          ...d,
+          AMOUNT: parseFloat(d.AMOUNT.replace(/,/g, '')),
+          OUTPUT_PROJECT:
+            d.OUTPUT || d.PROJECT
+              ? d.OUTPUT + d.PROJECT
+              : 'ไม่ระบุโครงการ/ผลผลิต',
+          MINISTRY: d.MINISTRY.replace(/\([0-9]+\)$/, '').trim(),
+          PROVINCE: matchedProvinces(d.ITEM_DESCRIPTION),
+          ITEM: [
+            d.ITEM_DESCRIPTION,
+            d.CATEGORY_LV2,
+            d.CATEGORY_LV3,
+            d.CATEGORY_LV4,
+            d.CATEGORY_LV5,
+            d.CATEGORY_LV6,
+          ]
+            .filter((x) => x)
+            .join(' - '),
+        }))
+        .filter((d) => +d.FISCAL_YEAR === 2023),
+    [data]
+  );
 
   const location = useLocation();
   const history = useHistory();
@@ -211,7 +219,12 @@ function App() {
         {/* <div className="absolute top-8 right-[83px] wv-font-anuphan z-30"> */}
         <div className="flex justify-center text-white p-5 pt-[45px] md:pt-[63px]">
           <div className="wv-font-anuphan text-2xl font-bold flex items-center">
-            <img className="w-[24px] h-[24px] mr-2" src={`${process.env.PUBLIC_URL}/inspect.png`} alt="inspect" title="inspect" />
+            <img
+              className="w-[24px] h-[24px] mr-2"
+              src={`${process.env.PUBLIC_URL}/inspect.png`}
+              alt="inspect"
+              title="inspect"
+            />
             สำรวจงบประมาณปี 2566
           </div>
         </div>
@@ -220,7 +233,13 @@ function App() {
             <div className="pr-2">
               <label className="flex text-xs items-center pb-2">แบ่งตาม</label>
 
-              <Dropdown className=" text-red-400" options={options} onChange={handleDropdown} value={defaultOption} placeholder="Select" />
+              <Dropdown
+                className=" text-red-400"
+                options={options}
+                onChange={handleDropdown}
+                value={defaultOption}
+                placeholder="Select"
+              />
             </div>
             <div>
               <label className="flex text-xs items-center pb-2">
@@ -235,25 +254,28 @@ function App() {
                 >
                   <path d="M 13 3 C 7.4889971 3 3 7.4889971 3 13 C 3 18.511003 7.4889971  23 13 23 C 15.396508 23 17.597385 22.148986 19.322266 20.736328 L 25.292969 26.707031 A 1.0001 1.0001 0 1 0 26.707031 25.292969 L 20.736328 19.322266 C 22.148986 17.597385 23 15.396508 23 13 C 23 7.4889971 18.511003 3 13 3 z M 13 5 C 17.430123 5 21 8.5698774 21 13 C 21 17.430123 17.430123 21 13 21 C 8.5698774 21 5 17.430123 5 13 C 5 8.5698774 8.5698774 5 13 5 z" />
                 </svg>
-
                 ค้นหา
-
               </label>
               <input
                 className="w-48 h-[40px] text-white rounded-sm p-2 bg-[#141414] border border-[#ccc] placeholder-[#767676]"
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder={optionsState === 'หน่วยงาน' ? 'หน่วยรับงบหรือกระทรวง' : 'จังหวัด'}
+                placeholder={
+                  optionsState === 'หน่วยงาน'
+                    ? 'หน่วยรับงบหรือกระทรวง'
+                    : 'จังหวัด'
+                }
               />
             </div>
           </div>
         </div>
         <PageContainer>
-          <div style={{
-            position: 'relative',
-            flexGrow: 1,
-          }}
+          <div
+            style={{
+              position: 'relative',
+              flexGrow: 1,
+            }}
           >
             <DataView
               data={preprocessedData}
@@ -273,51 +295,55 @@ function App() {
             />
           </div>
           {isCompareView && (
-          <div style={{
-            position: 'relative',
-            flexGrow: 1,
-          }}
-          >
-            <DataView
-              data={preprocessedData65}
-              isLoading={isLoading65}
-              fullValue={maxSumValue}
-              setCurrentSum={(s) => {
-                console.log('setCurrentSum 1', s);
-                setSumWindowsIdx(1, s);
+            <div
+              style={{
+                position: 'relative',
+                flexGrow: 1,
               }}
-              isMultipleMaxSum={isMultipleMaxSum}
-              // sumWindows={sumWindows}
-              sumWindows={[sumWindows[1], 0]}
-              index={1}
-              optionsState={optionsState}
-              searchQuery={searchQuery}
-              filters={filters}
-              setFilters={setFilters}
-            />
-          </div>
+            >
+              <DataView
+                data={preprocessedData65}
+                isLoading={isLoading65}
+                fullValue={maxSumValue}
+                setCurrentSum={(s) => {
+                  console.log('setCurrentSum 1', s);
+                  setSumWindowsIdx(1, s);
+                }}
+                isMultipleMaxSum={isMultipleMaxSum}
+                // sumWindows={sumWindows}
+                sumWindows={[sumWindows[1], 0]}
+                index={1}
+                optionsState={optionsState}
+                searchQuery={searchQuery}
+                filters={filters}
+                setFilters={setFilters}
+              />
+            </div>
           )}
           <Sidebar>
             <ActionButton
               type="button"
               className="wv-font-anuphan text-xs md:mt-[80px]"
               onClick={() => {
-                if (isCompareView) { setSumWindowsIdx(1, 0); }
+                if (isCompareView) {
+                  setSumWindowsIdx(1, 0);
+                }
                 setCompareView(!isCompareView);
               }}
             >
-              <span style={{
-                display: 'inline-flex',
-                fontSize: 24,
-                width: 32,
-                height: 32,
-                borderRadius: '50%',
-                backgroundColor: '#333',
-                color: 'white',
-                alignItems: 'center',
-                justifyContent: 'center',
-                marginBottom: 8,
-              }}
+              <span
+                style={{
+                  display: 'inline-flex',
+                  fontSize: 24,
+                  width: 32,
+                  height: 32,
+                  borderRadius: '50%',
+                  backgroundColor: '#333',
+                  color: 'white',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  marginBottom: 8,
+                }}
               >
                 {!isCompareView ? '+' : '×'}
               </span>
@@ -325,22 +351,40 @@ function App() {
             </ActionButton>
             <div style={{ flexGrow: 1 }} />
 
-            <CreditLink target="_blank" href="https://docs.google.com/spreadsheets/d/1Js6iDnBR53nk80Hr4UybEwV4poUpNEeOoUUWJDCpLjI/edit#gid=696564335">
+            <CreditLink
+              target="_blank"
+              href="https://docs.google.com/spreadsheets/d/1Js6iDnBR53nk80Hr4UybEwV4poUpNEeOoUUWJDCpLjI/edit#gid=696564335"
+            >
               <small className="wv-font-anuphan text-xs">ดูข้อมูลปี 66</small>
             </CreditLink>
-            <CreditLink target="_blank" href="https://docs.google.com/spreadsheets/d/1yyWXSTbq3CD_gNxks-krcSBzbszv3c_2Nq54lckoQ24/edit#gid=343539850">
+            <CreditLink
+              target="_blank"
+              href="https://docs.google.com/spreadsheets/d/1yyWXSTbq3CD_gNxks-krcSBzbszv3c_2Nq54lckoQ24/edit#gid=343539850"
+            >
               <small className="wv-font-anuphan text-xs">ดูข้อมูลปี 65</small>
             </CreditLink>
             <CreditLink target="_blank" href="https://taepras.com">
               {/* <small className="wv-font-anuphan text-xs">Visualized by</small> */}
-              <ResponsiveImage src={`${process.env.PUBLIC_URL}/tp_logo_dark.svg`} alt="kaogeek logo" title="Thanawit Prasongpongchai" />
+              <ResponsiveImage
+                src={`${process.env.PUBLIC_URL}/tp_logo_dark.svg`}
+                alt="kaogeek logo"
+                title="Thanawit Prasongpongchai"
+              />
             </CreditLink>
             <CreditLink target="_blank" href="https://wevis.info/">
-              <ResponsiveImage src={`${process.env.PUBLIC_URL}/wv_logo_dark.svg`} alt="kaogeek logo" title="WeVis" />
+              <ResponsiveImage
+                src={`${process.env.PUBLIC_URL}/wv_logo_dark.svg`}
+                alt="kaogeek logo"
+                title="WeVis"
+              />
             </CreditLink>
             <CreditLink target="_blank" href="https://github.com/kaogeek">
               {/* <small className="wv-font-anuphan text-xs">Data Source</small> */}
-              <ResponsiveImage src={`${process.env.PUBLIC_URL}/kaogeek_logo_dark.png`} alt="kaogeek logo" title="กลุ่มก้าว Geek" />
+              <ResponsiveImage
+                src={`${process.env.PUBLIC_URL}/kaogeek_logo_dark.png`}
+                alt="kaogeek logo"
+                title="กลุ่มก้าว Geek"
+              />
             </CreditLink>
             {/* <div style={{ opacity: 0.6, textAlign: 'center' }}>
             <small style={{ display: 'inline-block', lineHeight: 1.2 }}>

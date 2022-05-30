@@ -61,16 +61,20 @@ export function groupBy(propName, items) {
  * @return {array} Matched items
  */
 export function filterItems(keyword, items) {
-  return items.filter((item) => item.FISCAL_YEAR === '2023' && (item.BUDGET_PLAN.includes(keyword)
-      || item.OUTPUT.includes(keyword)
-      || item.PROJECT.includes(keyword)
-      || item.CATEGORY_LV1.includes(keyword)
-      || item.CATEGORY_LV2.includes(keyword)
-      || item.CATEGORY_LV3.includes(keyword)
-      || item.CATEGORY_LV4.includes(keyword)
-      || item.CATEGORY_LV5.includes(keyword)
-      || item.CATEGORY_LV6.includes(keyword)
-      || item.ITEM_DESCRIPTION.includes(keyword)));
+  return items.filter(
+    (item) =>
+      item.FISCAL_YEAR === '2023' &&
+      (item.BUDGET_PLAN.includes(keyword) ||
+        item.OUTPUT.includes(keyword) ||
+        item.PROJECT.includes(keyword) ||
+        item.CATEGORY_LV1.includes(keyword) ||
+        item.CATEGORY_LV2.includes(keyword) ||
+        item.CATEGORY_LV3.includes(keyword) ||
+        item.CATEGORY_LV4.includes(keyword) ||
+        item.CATEGORY_LV5.includes(keyword) ||
+        item.CATEGORY_LV6.includes(keyword) ||
+        item.ITEM_DESCRIPTION.includes(keyword))
+  );
 }
 
 /**
@@ -81,7 +85,9 @@ export function filterItems(keyword, items) {
  */
 export function filter(keyword, items) {
   const filtered = filterItems(keyword, items);
-  const total = filtered.map((i) => i.AMOUNT).reduce((last, next) => last + Number(next.replaceAll(',', '')), 0);
+  const total = filtered
+    .map((i) => i.AMOUNT)
+    .reduce((last, next) => last + Number(next.replaceAll(',', '')), 0);
   const budgetaryUnits = groupBy('BUDGETARY_UNIT', filtered);
   const projects = groupBy(['PROJECT', 'OUTPUT'], filtered);
   const plans = groupBy('BUDGET_PLAN', filtered);

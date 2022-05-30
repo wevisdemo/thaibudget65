@@ -1,6 +1,4 @@
-import React, {
-  useCallback, useEffect, useMemo, useState,
-} from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import * as d3 from 'd3';
 import styled from 'styled-components';
 import { useHistory, useLocation } from 'react-router-dom';
@@ -32,10 +30,7 @@ const hierarchyByMinistry = [
   // 'ITEM_DESCRIPTION',
 ];
 
-const hierarchyByProvince = [
-  'PROVINCE',
-  'ITEM',
-];
+const hierarchyByProvince = ['PROVINCE', 'ITEM'];
 
 const THAI_NAME = {
   MINISTRY: 'กระทรวงหรือเทียบเท่า',
@@ -49,7 +44,7 @@ const THAI_NAME = {
 function DataView({
   data,
   isLoading,
-  setCurrentSum = (sum) => { },
+  setCurrentSum = (sum) => {},
   fullValue = -1,
   index = 0,
   isMultipleMaxSum = false,
@@ -64,21 +59,19 @@ function DataView({
   // const [filters, setFilters] = useState(['all']);
 
   const filterDataByQuery = useCallback((datum, query) => {
-    const searchLevels = [
-      'MINISTRY',
-      'BUDGETARY_UNIT',
-      'PROVINCE',
-    ];
+    const searchLevels = ['MINISTRY', 'BUDGETARY_UNIT', 'PROVINCE'];
     // eslint-disable-next-line guard-for-in, no-restricted-syntax
     for (const i in searchLevels) {
-      if (datum[searchLevels[i]].includes(query)) { return true; }
+      if (datum[searchLevels[i]].includes(query)) {
+        return true;
+      }
     }
     return false;
   }, []);
 
   const filteredData = useMemo(
     () => data.filter((d) => filterDataByQuery(d, searchQuery)),
-    [data, filterDataByQuery, searchQuery],
+    [data, filterDataByQuery, searchQuery]
   );
 
   const location = useLocation();
@@ -88,7 +81,7 @@ function DataView({
     const f = location.pathname.split('/').slice(1);
     console.log('f', f, f.length > 0 && f[0] ? f : ['all']);
     setFilters(f.length > 0 && f[0] ? f : ['all']);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location]);
 
   const navigateTo = (x, i) => {
@@ -114,11 +107,8 @@ function DataView({
       </button>
        */}
       <div className="ml-4 text-xs">
-        งบประมาณปี
-        {' '}
-        <span className="font-bold">
-          {index === 0 ? 2566 : 2565}
-        </span>
+        งบประมาณปี{' '}
+        <span className="font-bold">{index === 0 ? 2566 : 2565}</span>
       </div>
       <div
         style={{
@@ -155,33 +145,56 @@ function DataView({
                   textAlign: 'left',
                 }}
               >
-                {optionsState === 'หน่วยงาน' ? <small style={{ opacity: '0.4', whiteSpace: 'nowrap' }}>{i > 0 && THAI_NAME[hierarchyByMinistry[i - 1]]}</small> : <small style={{ opacity: '0.4', whiteSpace: 'nowrap' }}>{i > 0 && THAI_NAME[hierarchyByProvince[i - 1]]}</small>}
+                {optionsState === 'หน่วยงาน' ? (
+                  <small style={{ opacity: '0.4', whiteSpace: 'nowrap' }}>
+                    {i > 0 && THAI_NAME[hierarchyByMinistry[i - 1]]}
+                  </small>
+                ) : (
+                  <small style={{ opacity: '0.4', whiteSpace: 'nowrap' }}>
+                    {i > 0 && THAI_NAME[hierarchyByProvince[i - 1]]}
+                  </small>
+                )}
                 {i > 0 && <br />}
-                <span style={{ textDecoration: i < filters.length - 1 ? 'underline' : 'none', whiteSpace: 'nowrap' }}>
+                <span
+                  style={{
+                    textDecoration:
+                      i < filters.length - 1 ? 'underline' : 'none',
+                    whiteSpace: 'nowrap',
+                  }}
+                >
                   {i === 0
-                    ? (
-                      searchQuery === ''
-                        ? optionsState === 'หน่วยงาน' ? 'หน่วยงานทั้งหมด' : 'จังหวัดทั้งหมด'
-                        : optionsState === 'หน่วยงาน' ? `หน่วยงานทั้งหมดที่ชื่อมีคำว่า "${searchQuery}"` : `จังหวัดทั้งหมดที่ชื่อมีคำว่า "${searchQuery}"`
-                    )
-                    : x.length < 20 ? x : `${x.substr(0, 20)}...`}
+                    ? searchQuery === ''
+                      ? optionsState === 'หน่วยงาน'
+                        ? 'หน่วยงานทั้งหมด'
+                        : 'จังหวัดทั้งหมด'
+                      : optionsState === 'หน่วยงาน'
+                      ? `หน่วยงานทั้งหมดที่ชื่อมีคำว่า "${searchQuery}"`
+                      : `จังหวัดทั้งหมดที่ชื่อมีคำว่า "${searchQuery}"`
+                    : x.length < 20
+                    ? x
+                    : `${x.substr(0, 20)}...`}
                 </span>
               </button>
-              {i === filters.length - 1
-                && (
-                  <>
-                    <small style={{ color: 'white', marginRight: 8, opacity: '0.4' }}>
-                      :
-                    </small>
-                    <small style={{ color: 'white', marginRight: 8, opacity: '0.4' }}>
-                      แบ่งตาม
-                      {' '}
-                      {optionsState === 'หน่วยงาน' ? THAI_NAME[hierarchyByMinistry[i]] : THAI_NAME[hierarchyByProvince[i]]}
-                    </small>
-                  </>
-                )}
-              {i < filters.length - 1
-                && <span style={{ color: 'white', marginRight: 8 }}>&gt;</span>}
+              {i === filters.length - 1 && (
+                <>
+                  <small
+                    style={{ color: 'white', marginRight: 8, opacity: '0.4' }}
+                  >
+                    :
+                  </small>
+                  <small
+                    style={{ color: 'white', marginRight: 8, opacity: '0.4' }}
+                  >
+                    แบ่งตาม{' '}
+                    {optionsState === 'หน่วยงาน'
+                      ? THAI_NAME[hierarchyByMinistry[i]]
+                      : THAI_NAME[hierarchyByProvince[i]]}
+                  </small>
+                </>
+              )}
+              {i < filters.length - 1 && (
+                <span style={{ color: 'white', marginRight: 8 }}>&gt;</span>
+              )}
             </>
           ))}
           {/* {JSON.stringify(filters)} */}
@@ -218,16 +231,25 @@ function DataView({
         </div> */}
       </div>
       <div style={{ display: 'flex', flexDirection: 'row', flexGrow: 1 }}>
-        <div style={{
-          position: 'relative',
-          flexGrow: 1,
-        }}
+        <div
+          style={{
+            position: 'relative',
+            flexGrow: 1,
+          }}
         >
           <Treemap
-            data={optionsState === 'หน่วยงาน' ? filteredData : filteredData.filter((d) => d.PROVINCE !== '')}
+            data={
+              optionsState === 'หน่วยงาน'
+                ? filteredData
+                : filteredData.filter((d) => d.PROVINCE !== '')
+            }
             isLoading={isLoading}
             filters={filters}
-            hierarchyBy={optionsState === 'หน่วยงาน' ? hierarchyByMinistry : hierarchyByProvince}
+            hierarchyBy={
+              optionsState === 'หน่วยงาน'
+                ? hierarchyByMinistry
+                : hierarchyByProvince
+            }
             setFilters={setFilters}
             setCurrentSum={(x) => {
               // console.log('!!setting sum', x, setCurrentSum);

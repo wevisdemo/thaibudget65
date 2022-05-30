@@ -2,9 +2,7 @@ import React, { useState } from 'react';
 import ItemDescriptionList from './ItemDescriptionList';
 import ResultSummary from './ResultSummary';
 
-function Result({
-  result, keyword,
-}) {
+function Result({ result, keyword }) {
   const count = result ? result.items.length : 0;
   const [activeTabIndex, setActiveTabIndex] = useState(0);
 
@@ -15,7 +13,9 @@ function Result({
     },
     {
       name: 'รายการงบ',
-      component: <ItemDescriptionList itemDescriptions={result ? result.items : []} />,
+      component: (
+        <ItemDescriptionList itemDescriptions={result ? result.items : []} />
+      ),
     },
   ];
 
@@ -29,7 +29,11 @@ function Result({
         <div className="grid grid-flow-col gap-1 h-12">
           {tabs.map(({ name }, i) => (
             <button
-              className={`rounded-md duration-100 ${i === activeTabIndex ? 'bg-[rgba(57,4,233,0.06)] hover:bg-[rgba(57,4,233,0.08)] text-[#3904E9]' : 'hover:bg-[rgba(0,0,0,0.03)]'}`}
+              className={`rounded-md duration-100 ${
+                i === activeTabIndex
+                  ? 'bg-[rgba(57,4,233,0.06)] hover:bg-[rgba(57,4,233,0.08)] text-[#3904E9]'
+                  : 'hover:bg-[rgba(0,0,0,0.03)]'
+              }`}
               type="button"
               onClick={() => setActiveTabIndex(i)}
             >

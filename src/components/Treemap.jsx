@@ -1,6 +1,4 @@
-import React, {
-  useEffect, useMemo, useRef, useState,
-} from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 
 import * as d3 from 'd3';
 import { nest } from 'd3-collection';
@@ -23,20 +21,19 @@ function Treemap({
   padding = 16,
   gutter = 4,
   filters = ['all'],
-  setFilters = () => { },
+  setFilters = () => {},
   hierarchyBy = [],
-  setCurrentSum = (sum) => { },
+  setCurrentSum = (sum) => {},
   fullValue = -1,
   index = 0,
   isMultipleMaxSum = false,
   sumWindows = [],
 }) {
-  const {
-    observe, unobserve, width, height, entry,
-  } = useDimensions({
+  const { observe, width, height } = useDimensions({
     onResize: ({
       /* eslint-disable-next-line no-shadow */
-      observe, unobserve, w, h, entr,
+      observe,
+      unobserve,
     }) => {
       unobserve();
       observe();
@@ -89,7 +86,9 @@ function Treemap({
   useEffect(() => {
     const s = nestedData.values.reduce((a, b) => a + b.value, 0);
     console.log('sum', s);
-    if (sum !== s) { setCurrentSum(s); }
+    if (sum !== s) {
+      setCurrentSum(s);
+    }
     setSum(s);
   }, [nestedData, setCurrentSum, sum]);
 
@@ -101,7 +100,8 @@ function Treemap({
     const svgHeight = svgRef.current.clientHeight;
     console.log(svgHeight);
 
-    const root = d3.hierarchy(nestedData, (d) => d?.values)
+    const root = d3
+      .hierarchy(nestedData, (d) => d?.values)
       .sum((d) => d?.value)
       .sort((a, b) => b?.value - a?.value);
 
@@ -117,19 +117,21 @@ function Treemap({
     const treeAspect = (width - 2 * padding) / (svgHeight - 2 * padding);
     const treeCurrentArea = (newSum / (fullVal || 1)) * treeFullArea;
     console.log('sumw', index, sumWindows, newSumWin, sum, fullVal, newSum);
-    const treeH = fullVal <= 0 ? svgHeight - 2 * padding : Math.sqrt(treeCurrentArea / treeAspect);
+    const treeH =
+      fullVal <= 0
+        ? svgHeight - 2 * padding
+        : Math.sqrt(treeCurrentArea / treeAspect);
     const treeW = fullVal <= 0 ? width - 2 * padding : treeCurrentArea / treeH;
 
-    const treemap = d3.treemap()
-      .size([treeW, treeH])
-      .padding(0);
-      // .round(true);
+    const treemap = d3.treemap().size([treeW, treeH]).padding(0);
+    // .round(true);
 
     const nodes = treemap(root);
 
     const svg = d3.select(svgRef.current).select('g.chart');
 
-    const barScale = d3.scaleLinear()
+    const barScale = d3
+      .scaleLinear()
       .domain([0, d3.max(root.leaves(), (d) => d.value)])
       .range([0, width - 2 * padding]);
 
@@ -142,8 +144,14 @@ function Treemap({
       .append('g')
       .attr('class', 'treemap-piece')
       .attr('id', (d) => `${d?.data?.key.replaceAll(/[ ()]/g, '')}-${index}`)
-      .style('mask', (d) => `url(#mask-${d?.data?.key.replaceAll(/[ ()]/g, '')}-${index})`)
-      .attr('data-tip', (d) => `${d?.data?.key}<br>${d?.value?.toLocaleString?.()} บาท`)
+      .style(
+        'mask',
+        (d) => `url(#mask-${d?.data?.key.replaceAll(/[ ()]/g, '')}-${index})`
+      )
+      .attr(
+        'data-tip',
+        (d) => `${d?.data?.key}<br>${d?.value?.toLocaleString?.()} บาท`
+      )
       .attr('transform', (d) => `translate(${d.x0 || 0},${d.y0 || 0})`);
     // .attr('opacity', 0);
 
@@ -152,8 +160,8 @@ function Treemap({
       .attr('class', 'box')
       .attr('rx', 3)
       .style('fill', TREECOLOR)
-      .attr('width', (d) => (d.x1 - d.x0) || 0)
-      .attr('height', (d) => (d.y1 - d.y0) || 0);
+      .attr('width', (d) => d.x1 - d.x0 || 0)
+      .attr('height', (d) => d.y1 - d.y0 || 0);
     // .attr('x', d => d.x0)
     // .attr('y', d => d.y0)
     // .style('stroke', 'black')
@@ -162,13 +170,16 @@ function Treemap({
 
     treemapPieceGroupEnter
       .append('mask')
-      .attr('id', (d) => `mask-${d?.data?.key.replaceAll(/[ ()]/g, '')}-${index}`)
+      .attr(
+        'id',
+        (d) => `mask-${d?.data?.key.replaceAll(/[ ()]/g, '')}-${index}`
+      )
       .append('rect')
       .attr('class', 'mask')
       .attr('rx', 3)
       .style('fill', 'white')
-      .attr('width', (d) => (d.x1 - d.x0) || 0)
-      .attr('height', (d) => (d.y1 - d.y0) || 0);
+      .attr('width', (d) => d.x1 - d.x0 || 0)
+      .attr('height', (d) => d.y1 - d.y0 || 0);
 
     treemapPieceGroupEnter
       .append('text')
@@ -220,15 +231,20 @@ function Treemap({
         treemapPieceMerged
           .transition()
           .duration(300)
-          .attr('transform', (p) => `translate(${(p.x0 - dx) * sx},${(p.y0 - dy) * sy})`);
+          .attr(
+            'transform',
+            (p) => `translate(${(p.x0 - dx) * sx},${(p.y0 - dy) * sy})`
+          );
 
-        treemapPieceMerged.select('rect.box')
+        treemapPieceMerged
+          .select('rect.box')
           .transition()
           .duration(300)
           .attr('width', (p) => Math.max(sx * (p.x1 - p.x0), 0))
           .attr('height', (p) => Math.max(sy * (p.y1 - p.y0), 0));
 
-        treemapPieceMerged.select('rect.mask')
+        treemapPieceMerged
+          .select('rect.mask')
           .transition()
           .duration(300)
           .attr('width', (p) => Math.max(sx * (p.x1 - p.x0), 0))
@@ -243,33 +259,40 @@ function Treemap({
       .duration(300)
       .attr('transform', (d) => `translate(${d.x0},${d.y0})`)
       .attr('opacity', 1)
-      .attr('data-tip', (d) => `${d?.data?.key}<br>${d?.value?.toLocaleString?.()} บาท`);
+      .attr(
+        'data-tip',
+        (d) => `${d?.data?.key}<br>${d?.value?.toLocaleString?.()} บาท`
+      );
 
-    treemapPieceMerged.select('rect.box')
+    treemapPieceMerged
+      .select('rect.box')
       .transition()
       .duration(300)
       .attr('rx', 3)
       .attr('fill', TREECOLOR)
       .attr('stroke', 'black')
       .attr('stroke-width', gutter)
-      .attr('width', (d) => Math.max((d.x1 - d.x0) || 0, 0))
-      .attr('height', (d) => Math.max((d.y1 - d.y0) || 0, 0));
+      .attr('width', (d) => Math.max(d.x1 - d.x0 || 0, 0))
+      .attr('height', (d) => Math.max(d.y1 - d.y0 || 0, 0));
 
-    treemapPieceMerged.select('rect.mask')
+    treemapPieceMerged
+      .select('rect.mask')
       .transition()
       .duration(300)
       .attr('rx', 3)
       .style('fill', 'white')
-      .attr('width', (d) => Math.max((d.x1 - d.x0) || 0, 0))
-      .attr('height', (d) => Math.max((d.y1 - d.y0) || 0, 0));
+      .attr('width', (d) => Math.max(d.x1 - d.x0 || 0, 0))
+      .attr('height', (d) => Math.max(d.y1 - d.y0 || 0, 0));
 
-    treemapPieceMerged.select('text.text-name')
+    treemapPieceMerged
+      .select('text.text-name')
       .attr('x', 5)
       .attr('y', 8)
       .attr('dominant-baseline', 'hanging')
       .text((d) => d?.data?.key);
 
-    treemapPieceMerged.select('text.text-value')
+    treemapPieceMerged
+      .select('text.text-value')
       .attr('x', 5)
       .attr('y', 24)
       .attr('fill-opacity', 0.7)
@@ -277,7 +300,8 @@ function Treemap({
       .attr('opacity', 1)
       .text((d) => `${d.value.toLocaleString()} บาท`);
 
-    treemapPieceGroup.exit()
+    treemapPieceGroup
+      .exit()
       .transition()
       .delay(150)
       .duration(600)
@@ -288,10 +312,36 @@ function Treemap({
     ReactTooltip.rebuild();
     console.log('rebuilding tooltip');
 
-    console.log('too small', root.leaves().filter((d) => (d.x1 - d.x0) * (d.y1 - d.y0) < 100));
-    console.log('too narrow', root.leaves().filter((d) => d.x1 - d.x0 < 20));
-    console.log('too short', root.leaves().filter((d) => d.y1 - d.y0 < 20));
-  }, [svgRef, nestedData, filters, width, height, displayMode, padding, gutter, hierarchyBy, setFilters, fullValue, sum, index, isMultipleMaxSum, sumWindows, TREECOLOR]);
+    console.log(
+      'too small',
+      root.leaves().filter((d) => (d.x1 - d.x0) * (d.y1 - d.y0) < 100)
+    );
+    console.log(
+      'too narrow',
+      root.leaves().filter((d) => d.x1 - d.x0 < 20)
+    );
+    console.log(
+      'too short',
+      root.leaves().filter((d) => d.y1 - d.y0 < 20)
+    );
+  }, [
+    svgRef,
+    nestedData,
+    filters,
+    width,
+    height,
+    displayMode,
+    padding,
+    gutter,
+    hierarchyBy,
+    setFilters,
+    fullValue,
+    sum,
+    index,
+    isMultipleMaxSum,
+    sumWindows,
+    TREECOLOR,
+  ]);
 
   return (
     <div
@@ -318,16 +368,15 @@ function Treemap({
           backgroundColor: '#141414',
         }}
       >
-        <b style={{ whiteSpace: 'nowrap' }}>{filters[filters.length - 1] === 'all' ? 'รวมทั้งหมด' : filters[filters.length - 1]}</b>
+        <b style={{ whiteSpace: 'nowrap' }}>
+          {filters[filters.length - 1] === 'all'
+            ? 'รวมทั้งหมด'
+            : filters[filters.length - 1]}
+        </b>
         <br />
-        <span style={{ opacity: 0.7 }}>
-          {sum.toLocaleString()}
-          {' '}
-          บาท
-        </span>
+        <span style={{ opacity: 0.7 }}>{sum.toLocaleString()} บาท</span>
       </div>
-      {isLoading
-        && (
+      {isLoading && (
         <FullView
           style={{
             backgroundColor: '#000c',
@@ -339,7 +388,7 @@ function Treemap({
         >
           Loading...
         </FullView>
-        )}
+      )}
 
       <div
         style={{
@@ -366,7 +415,10 @@ function Treemap({
           ref={observe}
         >
           <svg ref={svgRef} width={width} height={height}>
-            <g transform={`translate(${padding}, ${padding})`} className="chart" />
+            <g
+              transform={`translate(${padding}, ${padding})`}
+              className="chart"
+            />
           </svg>
         </div>
       </div>

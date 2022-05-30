@@ -1,9 +1,7 @@
 import React from 'react';
 import { toLocaleWithFixed3Digits } from '../../numberUtils';
 
-const ItemDescriptionListRowItem = ({
-  item, onItemClick,
-}) => (
+const ItemDescriptionListRowItem = ({ item, onItemClick }) => (
   <div
     className="flex flex-row w-full py-4 hover:bg-[rgba(0,0,0,0.02)] border-b"
     onClick={onItemClick}
@@ -20,7 +18,9 @@ const ItemDescriptionListRowItem = ({
       </div>
     </div>
     <div>
-      <p className="text-[#828282] text-right">{toLocaleWithFixed3Digits(item.AMOUNT)}</p>
+      <p className="text-[#828282] text-right">
+        {toLocaleWithFixed3Digits(item.AMOUNT)}
+      </p>
     </div>
   </div>
 );
