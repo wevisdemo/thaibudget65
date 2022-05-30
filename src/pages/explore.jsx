@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import * as d3 from 'd3';
-import WvFooter from '@wevisdemo/ui/components/footer';
 import KeywordList from '../components/Explore/KeywordList';
 import Result from '../components/Explore/Result';
 import { filter } from '../explore/filter';
@@ -165,7 +164,6 @@ const Explore = () => {
           />
         </div>
       </div>
-      <WvFooter />
     </div>
   );
 };

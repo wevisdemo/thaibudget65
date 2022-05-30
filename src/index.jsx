@@ -1,13 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './styles/index.css';
+import '@wevisdemo/ui/styles/typography.css';
+import '@wevisdemo/ui/styles/components.css';
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import WvNavbar from '@wevisdemo/ui/components/navbar';
 import WvNavButton from '@wevisdemo/ui/components/nav-button';
+import WvFooter from '@wevisdemo/ui/components/footer';
 import Treemap from './pages/treemap';
 import reportWebVitals from './reportWebVitals';
-import '@wevisdemo/ui/styles/typography.css';
-import '@wevisdemo/ui/styles/components.css';
 import Explore from './pages/explore';
 import IndexPage from './pages/index';
 
@@ -20,30 +21,33 @@ ReactDOM.render(
         rel="stylesheet"
         href="https://design-systems.wevis.info/typography.css"
       />
-      <div className="z-40 relative">
-        <WvNavbar title="THAILAND BUDGET 2566 (BETA)">
-          <Link to="/">
-            <WvNavButton>Home</WvNavButton>
-          </Link>
-          <Link to="/treemap">
-            <WvNavButton>Treemap</WvNavButton>
-          </Link>
-          <Link to="/explore">
-            <WvNavButton>Explore</WvNavButton>
-          </Link>
-        </WvNavbar>
+      <div className="flex flex-col min-h-screen">
+        <div className="z-40 relative">
+          <WvNavbar title="THAILAND BUDGET 2566 (BETA)">
+            <Link to="/">
+              <WvNavButton>Home</WvNavButton>
+            </Link>
+            <Link to="/treemap">
+              <WvNavButton>Treemap</WvNavButton>
+            </Link>
+            <Link to="/explore">
+              <WvNavButton>Explore</WvNavButton>
+            </Link>
+          </WvNavbar>
+        </div>
+        <Switch>
+          <Route exact path="/">
+            <IndexPage />
+          </Route>
+          <Route exact path="/treemap">
+            <Treemap />
+          </Route>
+          <Route path="/explore">
+            <Explore />
+          </Route>
+        </Switch>
+        <WvFooter dark />
       </div>
-      <Switch>
-        <Route exact path="/">
-          <IndexPage />
-        </Route>
-        <Route exact path="/treemap">
-          <Treemap />
-        </Route>
-        <Route path="/explore">
-          <Explore />
-        </Route>
-      </Switch>
     </Router>
   </React.StrictMode>,
   // eslint-disable-next-line no-undef

@@ -6,7 +6,6 @@ import ReactTooltip from 'react-tooltip';
 import Dropdown from 'react-dropdown';
 import '../styles/treemap.css';
 import DataView from '../components/DataView';
-import FullView from '../components/FullView';
 import { provinces } from '../provinces';
 
 const PageContainer = styled.div`
@@ -86,7 +85,7 @@ const ActionButton = styled.button`
   justify-content: center;
 `;
 
-function App() {
+function TreemapPage() {
   const [data, setData] = useState([]);
   const [isLoading, setLoading] = useState(true);
   const [data65, setData65] = useState([]);
@@ -123,7 +122,7 @@ function App() {
   };
 
   const maxSumValue = useMemo(() => d3.max(sumWindows), [sumWindows]);
-  const minSumValue = useMemo(() => d3.min(sumWindows), [sumWindows]);
+  // const minSumValue = useMemo(() => d3.min(sumWindows), [sumWindows]);
 
   const isMultipleMaxSum = useMemo(() => {
     const mx = d3.max(sumWindows);
@@ -201,63 +200,83 @@ function App() {
   }, [location]);
 
   return (
-    <div>
-      <FullView>
-        {/* <div className="absolute top-8 right-[83px] wv-font-anuphan z-30"> */}
-        <div className="flex justify-center text-white p-5 pt-[45px] md:pt-[63px]">
-          <div className="wv-font-anuphan text-2xl font-bold flex items-center">
-            <img
-              className="w-[24px] h-[24px] mr-2"
-              src={`${process.env.PUBLIC_URL}/inspect.png`}
-              alt="inspect"
-              title="inspect"
-            />
-            สำรวจงบประมาณปี 2566
-          </div>
+    <div className="flex-1 flex flex-col">
+      {/* <div className="absolute top-8 right-[83px] wv-font-anuphan z-30"> */}
+      <div className="flex justify-center text-white p-5 pt-[45px] md:pt-[63px]">
+        <div className="wv-font-anuphan text-2xl font-bold flex items-center">
+          <img
+            className="w-[24px] h-[24px] mr-2"
+            src={`${process.env.PUBLIC_URL}/inspect.png`}
+            alt="inspect"
+            title="inspect"
+          />
+          สำรวจงบประมาณปี 2566
         </div>
-        <div>
-          <div className="wv-font-anuphan flex justify-center">
-            <div className="pr-2">
-              <label className="flex text-xs items-center pb-2">แบ่งตาม</label>
+      </div>
+      <div>
+        <div className="wv-font-anuphan flex justify-center">
+          <div className="pr-2">
+            <label className="flex text-xs items-center pb-2">แบ่งตาม</label>
 
-              <Dropdown
-                className=" text-red-400"
-                options={options}
-                onChange={handleDropdown}
-                value={defaultOption}
-                placeholder="Select"
-              />
-            </div>
-            <div>
-              <label className="flex text-xs items-center pb-2">
-                <svg
-                  className="h-4 w-4 mr-1 fill-white"
-                  xmlns="http://www.w3.org/2000/svg"
-                  x="0px"
-                  y="0px"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 30 30"
-                >
-                  <path d="M 13 3 C 7.4889971 3 3 7.4889971 3 13 C 3 18.511003 7.4889971  23 13 23 C 15.396508 23 17.597385 22.148986 19.322266 20.736328 L 25.292969 26.707031 A 1.0001 1.0001 0 1 0 26.707031 25.292969 L 20.736328 19.322266 C 22.148986 17.597385 23 15.396508 23 13 C 23 7.4889971 18.511003 3 13 3 z M 13 5 C 17.430123 5 21 8.5698774 21 13 C 21 17.430123 17.430123 21 13 21 C 8.5698774 21 5 17.430123 5 13 C 5 8.5698774 8.5698774 5 13 5 z" />
-                </svg>
-                ค้นหา
-              </label>
-              <input
-                className="w-48 h-[40px] text-white rounded-sm p-2 bg-[#141414] border border-[#ccc] placeholder-[#767676]"
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder={
-                  optionsState === 'หน่วยงาน'
-                    ? 'หน่วยรับงบหรือกระทรวง'
-                    : 'จังหวัด'
-                }
-              />
-            </div>
+            <Dropdown
+              className=" text-red-400"
+              options={options}
+              onChange={handleDropdown}
+              value={defaultOption}
+              placeholder="Select"
+            />
+          </div>
+          <div>
+            <label className="flex text-xs items-center pb-2">
+              <svg
+                className="h-4 w-4 mr-1 fill-white"
+                xmlns="http://www.w3.org/2000/svg"
+                x="0px"
+                y="0px"
+                width="20"
+                height="20"
+                viewBox="0 0 30 30"
+              >
+                <path d="M 13 3 C 7.4889971 3 3 7.4889971 3 13 C 3 18.511003 7.4889971  23 13 23 C 15.396508 23 17.597385 22.148986 19.322266 20.736328 L 25.292969 26.707031 A 1.0001 1.0001 0 1 0 26.707031 25.292969 L 20.736328 19.322266 C 22.148986 17.597385 23 15.396508 23 13 C 23 7.4889971 18.511003 3 13 3 z M 13 5 C 17.430123 5 21 8.5698774 21 13 C 21 17.430123 17.430123 21 13 21 C 8.5698774 21 5 17.430123 5 13 C 5 8.5698774 8.5698774 5 13 5 z" />
+              </svg>
+              ค้นหา
+            </label>
+            <input
+              className="w-48 h-[40px] text-white rounded-sm p-2 bg-[#141414] border border-[#ccc] placeholder-[#767676]"
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder={
+                optionsState === 'หน่วยงาน'
+                  ? 'หน่วยรับงบหรือกระทรวง'
+                  : 'จังหวัด'
+              }
+            />
           </div>
         </div>
-        <PageContainer>
+      </div>
+      <PageContainer>
+        <div
+          style={{
+            position: 'relative',
+            flexGrow: 1,
+          }}
+        >
+          <DataView
+            data={preprocessedData}
+            isLoading={isLoading}
+            fullValue={maxSumValue}
+            setCurrentSum={(s) => setSumWindowsIdx(0, s)}
+            isMultipleMaxSum={isMultipleMaxSum}
+            sumWindows={[0, 0]}
+            index={0}
+            optionsState={optionsState}
+            searchQuery={searchQuery}
+            filters={filters}
+            setFilters={setFilters}
+          />
+        </div>
+        {isCompareView && (
           <div
             style={{
               position: 'relative',
@@ -265,116 +284,88 @@ function App() {
             }}
           >
             <DataView
-              data={preprocessedData}
-              isLoading={isLoading}
+              data={preprocessedData65}
+              isLoading={isLoading65}
               fullValue={maxSumValue}
-              setCurrentSum={(s) => setSumWindowsIdx(0, s)}
+              setCurrentSum={(s) => setSumWindowsIdx(1, s)}
               isMultipleMaxSum={isMultipleMaxSum}
-              sumWindows={[0, 0]}
-              index={0}
+              // sumWindows={sumWindows}
+              sumWindows={[sumWindows[1], 0]}
+              index={1}
               optionsState={optionsState}
               searchQuery={searchQuery}
               filters={filters}
               setFilters={setFilters}
             />
           </div>
-          {isCompareView && (
-            <div
+        )}
+        <Sidebar>
+          <ActionButton
+            type="button"
+            className="wv-font-anuphan text-xs md:mt-[80px]"
+            onClick={() => {
+              if (isCompareView) {
+                setSumWindowsIdx(1, 0);
+              }
+              setCompareView(!isCompareView);
+            }}
+          >
+            <span
               style={{
-                position: 'relative',
-                flexGrow: 1,
+                display: 'inline-flex',
+                fontSize: 24,
+                width: 32,
+                height: 32,
+                borderRadius: '50%',
+                backgroundColor: '#333',
+                color: 'white',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginBottom: 8,
               }}
             >
-              <DataView
-                data={preprocessedData65}
-                isLoading={isLoading65}
-                fullValue={maxSumValue}
-                setCurrentSum={(s) => setSumWindowsIdx(1, s)}
-                isMultipleMaxSum={isMultipleMaxSum}
-                // sumWindows={sumWindows}
-                sumWindows={[sumWindows[1], 0]}
-                index={1}
-                optionsState={optionsState}
-                searchQuery={searchQuery}
-                filters={filters}
-                setFilters={setFilters}
-              />
-            </div>
-          )}
-          <Sidebar>
-            <ActionButton
-              type="button"
-              className="wv-font-anuphan text-xs md:mt-[80px]"
-              onClick={() => {
-                if (isCompareView) {
-                  setSumWindowsIdx(1, 0);
-                }
-                setCompareView(!isCompareView);
-              }}
-            >
-              <span
-                style={{
-                  display: 'inline-flex',
-                  fontSize: 24,
-                  width: 32,
-                  height: 32,
-                  borderRadius: '50%',
-                  backgroundColor: '#333',
-                  color: 'white',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  marginBottom: 8,
-                }}
-              >
-                {!isCompareView ? '+' : '×'}
-              </span>
-              {!isCompareView ? 'เทียบงบ 65' : 'ปิดการเทียบ'}
-            </ActionButton>
-            <div style={{ flexGrow: 1 }} />
+              {!isCompareView ? '+' : '×'}
+            </span>
+            {!isCompareView ? 'เทียบงบ 65' : 'ปิดการเทียบ'}
+          </ActionButton>
+          <div style={{ flexGrow: 1 }} />
 
-            <CreditLink
-              target="_blank"
-              href="https://docs.google.com/spreadsheets/d/1Js6iDnBR53nk80Hr4UybEwV4poUpNEeOoUUWJDCpLjI/edit#gid=696564335"
-            >
-              <small className="wv-font-anuphan text-xs">ดูข้อมูลปี 66</small>
-            </CreditLink>
-            <CreditLink
-              target="_blank"
-              href="https://docs.google.com/spreadsheets/d/1yyWXSTbq3CD_gNxks-krcSBzbszv3c_2Nq54lckoQ24/edit#gid=343539850"
-            >
-              <small className="wv-font-anuphan text-xs">ดูข้อมูลปี 65</small>
-            </CreditLink>
-            <CreditLink target="_blank" href="https://taepras.com">
-              {/* <small className="wv-font-anuphan text-xs">Visualized by</small> */}
-              <ResponsiveImage
-                src={`${process.env.PUBLIC_URL}/tp_logo_dark.svg`}
-                alt="kaogeek logo"
-                title="Thanawit Prasongpongchai"
-              />
-            </CreditLink>
-            <CreditLink target="_blank" href="https://wevis.info/">
-              <ResponsiveImage
-                src={`${process.env.PUBLIC_URL}/wv_logo_dark.svg`}
-                alt="kaogeek logo"
-                title="WeVis"
-              />
-            </CreditLink>
-            <CreditLink target="_blank" href="https://github.com/kaogeek">
-              {/* <small className="wv-font-anuphan text-xs">Data Source</small> */}
-              <ResponsiveImage
-                src={`${process.env.PUBLIC_URL}/kaogeek_logo_dark.png`}
-                alt="kaogeek logo"
-                title="กลุ่มก้าว Geek"
-              />
-            </CreditLink>
-            {/* <div style={{ opacity: 0.6, textAlign: 'center' }}>
+          <CreditLink
+            target="_blank"
+            href="https://docs.google.com/spreadsheets/d/1Js6iDnBR53nk80Hr4UybEwV4poUpNEeOoUUWJDCpLjI/edit#gid=696564335"
+          >
+            <small className="wv-font-anuphan text-xs">ดูข้อมูลปี 66</small>
+          </CreditLink>
+          <CreditLink
+            target="_blank"
+            href="https://docs.google.com/spreadsheets/d/1yyWXSTbq3CD_gNxks-krcSBzbszv3c_2Nq54lckoQ24/edit#gid=343539850"
+          >
+            <small className="wv-font-anuphan text-xs">ดูข้อมูลปี 65</small>
+          </CreditLink>
+          <CreditLink target="_blank" href="https://taepras.com">
+            {/* <small className="wv-font-anuphan text-xs">Visualized by</small> */}
+            <ResponsiveImage
+              src={`${process.env.PUBLIC_URL}/tp_logo_dark.svg`}
+              alt="kaogeek logo"
+              title="Thanawit Prasongpongchai"
+            />
+          </CreditLink>
+          <CreditLink target="_blank" href="https://github.com/kaogeek">
+            {/* <small className="wv-font-anuphan text-xs">Data Source</small> */}
+            <ResponsiveImage
+              src={`${process.env.PUBLIC_URL}/kaogeek_logo_dark.png`}
+              alt="kaogeek logo"
+              title="กลุ่มก้าว Geek"
+            />
+          </CreditLink>
+          {/* <div style={{ opacity: 0.6, textAlign: 'center' }}>
             <small style={{ display: 'inline-block', lineHeight: 1.2 }}>
               ** This is a work-in-progress.
             </small>
           </div> */}
-          </Sidebar>
-        </PageContainer>
-        {/* <div
+        </Sidebar>
+      </PageContainer>
+      {/* <div
         style={{
           padding: 16,
           paddingTop: 8,
@@ -385,10 +376,9 @@ function App() {
       >
 
       </div> */}
-        <ReactTooltip className="wv-font-anuphan" multiline />
-      </FullView>
+      <ReactTooltip className="wv-font-anuphan" multiline />
     </div>
   );
 }
 
-export default App;
+export default TreemapPage;
