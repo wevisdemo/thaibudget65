@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import * as d3 from 'd3';
 import KeywordList from '../components/Explore/KeywordList';
 import Result from '../components/Explore/Result';
@@ -115,7 +115,10 @@ const Explore = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const result = filter(selectedKeywords[activeKeywordIndex].word, allItems);
+  const result = useMemo(
+    () => filter(selectedKeywords[activeKeywordIndex].word, allItems),
+    [activeKeywordIndex, allItems]
+  );
 
   return (
     <div>

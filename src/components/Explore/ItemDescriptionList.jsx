@@ -57,8 +57,7 @@ function ItemDescriptionList({ itemDescriptions }) {
         />
       )}
       <div className="flex flex-col xl:flex-row xl:justify-between items-center my-4">
-        {/* <div>เรียงงบมากไปน้อย</div> */}
-        <div className="flex justify-end pb-6">
+        <div className="flex justify-end">
           <div className="pr-2">
             <label className="flex text-xs items-center pb-2">เรียงจาก</label>
 
@@ -93,11 +92,6 @@ function ItemDescriptionList({ itemDescriptions }) {
             />
           </div>
         </div>
-        <Pagination
-          currentPage={currentPage}
-          pageLength={Math.ceil(items.length / ITEM_PER_PAGE)}
-          setCurrentPage={setCurrentPage}
-        />
       </div>
       {items &&
         items
@@ -111,6 +105,13 @@ function ItemDescriptionList({ itemDescriptions }) {
               onItemClick={() => setModalItem(v)}
             />
           ))}
+      <div className="flex justify-end mt-6">
+        <Pagination
+          currentPage={currentPage}
+          pageLength={Math.ceil(items.length / ITEM_PER_PAGE)}
+          setCurrentPage={setCurrentPage}
+        />
+      </div>
     </div>
   );
 }

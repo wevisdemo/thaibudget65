@@ -17,9 +17,10 @@ function Pagination({ currentPage, pageLength, setCurrentPage }) {
     }
 
     if (currentPage < 4) {
-      returnedArray = [1, 2, 3, 4, '...', fullArray.length];
+      returnedArray = [1, 2, 3, 4, 5, '...', fullArray.length];
     } else if (currentPage >= 3 && currentPage < fullArray.length - 2) {
       returnedArray = [
+        1,
         '...',
         currentPage - 1,
         currentPage,
@@ -29,6 +30,7 @@ function Pagination({ currentPage, pageLength, setCurrentPage }) {
       ];
     } else if (currentPage >= fullArray.length - 4) {
       returnedArray = [
+        1,
         '...',
         fullArray.length - 4,
         fullArray.length - 3,
@@ -47,17 +49,19 @@ function Pagination({ currentPage, pageLength, setCurrentPage }) {
       <button
         type="button"
         onClick={() => setCurrentPage((prev) => (prev > 1 ? prev - 1 : prev))}
-        className={`w-6 h-6 ${currentPage === 1 && 'hidden'}`}
+        className={`min-h-[24px] min-w-[24px] px-1 ${
+          currentPage === 1 && 'hidden'
+        }`}
       >
         {'<'}
       </button>
       {pageNumberArray.map((v) => {
-        if (v === '...') return <span className="w-6 h-6">{v}</span>;
+        if (v === '...') return <span className="">{v}</span>;
         return (
           <button
             type="button"
             onClick={() => setCurrentPage(v)}
-            className={`wv-font-anuphan rounded-full font-semibold w-6 h-6 ${
+            className={`wv-font-anuphan rounded-full font-semibold min-h-[24px] min-w-[24px] px-1 ${
               v === currentPage && 'bg-blue text-white'
             }`}
           >
@@ -70,7 +74,9 @@ function Pagination({ currentPage, pageLength, setCurrentPage }) {
         onClick={() =>
           setCurrentPage((prev) => (prev < pageLength ? prev + 1 : prev))
         }
-        className={`w-6 h-6 ${currentPage === pageLength && 'hidden'}`}
+        className={`min-h-[24px] min-w-[24px] px-1 ${
+          currentPage === pageLength && 'hidden'
+        }`}
       >
         {'>'}
       </button>
