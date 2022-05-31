@@ -3,39 +3,30 @@
     // "eslint:recommended",
     // "plugin:react/recommended",
     "airbnb",
-    "airbnb/hooks"
+    "airbnb/hooks",
+    "prettier"
   ],
   "rules": {
     "import/prefer-default-export": ["off"],
     "max-len": ["off"],
-    "no-unused-vars": [
-      "warn"
-    ],
-    "react/prop-types": [
-      "off"
-    ],
-    "no-nested-ternary": [
-      "off"
-    ],
-    "no-plusplus": [
-      "off"
-    ],
-    "react/jsx-props-no-spreading": [
-      "off"
-    ],
-    "jsx-a11y/label-has-associated-control": [
-      "warn"
-    ]
+    "no-unused-vars": ["warn"],
+    "react/prop-types": ["off"],
+    "no-nested-ternary": ["off"],
+    "no-plusplus": ["off"],
+    "react/jsx-props-no-spreading": ["off"],
+    "jsx-a11y/label-has-associated-control": ["warn"],
+    "prettier/prettier": ["error"]
   },
   "parser": "@babel/eslint-parser",
   "parserOptions": {
     "requireConfigFile": false,
     "babelOptions": {
       "presets": ["@babel/preset-react"]
-   }
+    }
   },
   "env": {
-    "jest/globals": true
+    "jest/globals": true,
+    "browser": true
   },
-  "plugins": ["jest"]
+  "plugins": ["jest", "prettier"]
 }

@@ -16,9 +16,7 @@ const INFO_ICON = (
     />
   </svg>
 );
-function Section({
-  title, children, className,
-}) {
+function Section({ title, children, className }) {
   return (
     <div className={`flex flex-col w-full ${className}`}>
       <div className="flex flex-row items-center gap-2 mb-4">

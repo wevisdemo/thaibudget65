@@ -1,8 +1,6 @@
 import React from 'react';
 
-function Modal({
-  onClose, children, className,
-}) {
+function Modal({ onClose, children, className }) {
   return (
     <div
       className="fixed inset-0 flex bg-black/10 p-4 justify-center items-center z-[2000]"
@@ -25,9 +23,7 @@ function Modal({
           </svg>
         </button>
 
-        <div className="grow p-6 flex flex-col">
-          {children}
-        </div>
+        <div className="grow p-6 flex flex-col">{children}</div>
       </div>
     </div>
   );
