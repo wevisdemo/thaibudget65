@@ -22,6 +22,7 @@ import {
   numberingSystemContext,
   useNumberingSystem,
 } from './utils/numbering-system';
+import { CURRRENT_FISCAL_YEAR } from './constants';
 
 const routes = [
   ['/', 'หน้าแรก', <IndexPage />],
@@ -36,7 +37,7 @@ const Navbar = () => {
     useNumberingSystem();
 
   return (
-    <WvNavbar title={`THAILAND BUDGET ${formatNumber(2566)}`}>
+    <WvNavbar title={`THAILAND BUDGET ${formatNumber(CURRRENT_FISCAL_YEAR)}`}>
       {routes.map(([path, label]) => (
         <Link key={label} to={path}>
           <WvNavButton active={location.pathname === path}>{label}</WvNavButton>

@@ -1,3 +1,4 @@
+import { CURRENT_FISCAL_YEAR_TOTAL_BUDGET } from '../constants';
 /*
 interface FilterResult {
   keyword: string;
@@ -95,7 +96,7 @@ export function filter(keyword, items) {
 
   return {
     keyword,
-    totalYearBudget: 3_185_000_000_000,
+    totalYearBudget: CURRENT_FISCAL_YEAR_TOTAL_BUDGET,
     total,
     groupBy: {
       budgetaryUnits,

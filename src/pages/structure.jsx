@@ -8,6 +8,7 @@ import '../styles/treemap.css';
 import DataView from '../components/DataView';
 import { provinces } from '../provinces';
 import { useNumberingSystem } from '../utils/numbering-system';
+import { CURRRENT_FISCAL_YEAR } from '../constants';
 
 const PageContainer = styled.div`
   display: flex;
@@ -89,8 +90,8 @@ const ActionButton = styled.button`
 function TreemapPage() {
   const [data, setData] = useState([]);
   const [isLoading, setLoading] = useState(true);
-  const [data65, setData65] = useState([]);
-  const [isLoading65, setLoading65] = useState(true);
+  const [dataPrevYear, setDataPrevYear] = useState([]);
+  const [isLoadingPrevYear, setLoadingPrevYear] = useState(true);
   const [isCompareView, setCompareView] = useState(false);
   const [filters, setFilters] = useState(['all']);
   const [sumWindows, setSumWindows] = useState([0, 0]);
@@ -108,20 +109,24 @@ function TreemapPage() {
   };
 
   useEffect(() => {
-    d3.csv(`${process.env.PUBLIC_URL}/data/2566.csv`).then((d) => {
-      setLoading(false);
-      setData(d);
-    });
+    d3.csv(`${process.env.PUBLIC_URL}/data/${CURRRENT_FISCAL_YEAR}.csv`).then(
+      (d) => {
+        setLoading(false);
+        setData(d);
+      }
+    );
   }, []);
 
   useEffect(() => {
-    if (data65.length === 0 && isCompareView) {
-      d3.csv(`${process.env.PUBLIC_URL}/data/2565.csv`).then((d) => {
-        setLoading65(false);
-        setData65(d);
+    if (dataPrevYear.length === 0 && isCompareView) {
+      d3.csv(
+        `${process.env.PUBLIC_URL}/data/${CURRRENT_FISCAL_YEAR - 1}.csv`
+      ).then((d) => {
+        setLoadingPrevYear(false);
+        setDataPrevYear(d);
       });
     }
-  }, [data65, isCompareView]);
+  }, [dataPrevYear, isCompareView]);
 
   const setSumWindowsIdx = (i, value) => {
     const temp = [...sumWindows];
@@ -148,7 +153,7 @@ function TreemapPage() {
 
   const preprocessedData65 = useMemo(
     () =>
-      data65
+      dataPrevYear
         .map((d) => ({
           ...d,
           AMOUNT: parseFloat(d.AMOUNT.replace(/,/g, '')),
@@ -170,7 +175,7 @@ function TreemapPage() {
             .join(' - '),
         }))
         .filter((d) => +d.FISCAL_YEAR === 2022),
-    [data65]
+    [dataPrevYear]
   );
 
   const preprocessedData = useMemo(
@@ -299,7 +304,7 @@ function TreemapPage() {
           >
             <DataView
               data={preprocessedData65}
-              isLoading={isLoading65}
+              isLoading={isLoadingPrevYear}
               fullValue={maxSumValue}
               setCurrentSum={(s) => setSumWindowsIdx(1, s)}
               isMultipleMaxSum={isMultipleMaxSum}

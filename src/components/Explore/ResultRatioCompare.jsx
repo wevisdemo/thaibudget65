@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNumberingSystem } from '../../utils/numbering-system';
 import Section from './Section';
+import { CURRRENT_FISCAL_YEAR } from '../../constants';
 
 const TITLE_STRING = 'งบที่เกี่ยวข้องเทียบกับงบทั้งหมด';
 const AMOUNT_UNIT_STRING = 'ล้านบาท';
@@ -36,7 +37,7 @@ function RatioCompare({ total, budgetYearTotal }) {
           </div>
           <div>
             <p className="text-gray-2">{`งบประมาณทั้งหมดของปีงบประมาณ ${formatNumber(
-              2566
+              CURRRENT_FISCAL_YEAR
             )} คือ ${formatInteger(budgetYearTotal / MILLION_INT)} ล้านบาท`}</p>
           </div>
         </div>

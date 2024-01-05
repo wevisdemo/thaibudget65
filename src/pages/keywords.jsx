@@ -93,7 +93,7 @@ const Explore = () => {
   };
 
   useEffect(() => {
-    d3.csv(`${process.env.PUBLIC_URL}/data/2566.csv`).then((items) => {
+    d3.csv(`${process.env.PUBLIC_URL}/data/2567.csv`).then((items) => {
       setAllItems(
         items.map((item) => ({
           ...item,
