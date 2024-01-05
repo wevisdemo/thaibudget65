@@ -8,7 +8,12 @@ import '../styles/treemap.css';
 import DataView from '../components/DataView';
 import { provinces } from '../provinces';
 import { useNumberingSystem } from '../utils/numbering-system';
-import { CURRRENT_FISCAL_YEAR } from '../constants';
+import {
+  CURRRENT_FISCAL_YEAR,
+  CURRRENT_FISCAL_YEAR_SHORT,
+  CURRENT_DATA_URL,
+  PREV_DATA_URL,
+} from '../constants';
 
 const PageContainer = styled.div`
   display: flex;
@@ -345,24 +350,20 @@ function TreemapPage() {
             >
               {!isCompareView ? '+' : '×'}
             </span>
-            {!isCompareView ? `เทียบงบ ${formatNumber(65)}` : 'ปิดการเทียบ'}
+            {!isCompareView
+              ? `เทียบงบ ${formatNumber(CURRRENT_FISCAL_YEAR_SHORT - 1)}`
+              : 'ปิดการเทียบ'}
           </ActionButton>
           <div style={{ flexGrow: 1 }} />
 
-          <CreditLink
-            target="_blank"
-            href="https://docs.google.com/spreadsheets/d/1Js6iDnBR53nk80Hr4UybEwV4poUpNEeOoUUWJDCpLjI/edit#gid=696564335"
-          >
+          <CreditLink target="_blank" href={CURRENT_DATA_URL}>
             <small className="wv-font-anuphan text-xs">
-              ดูข้อมูลปี {formatNumber(66)}
+              ดูข้อมูลปี {formatNumber(CURRRENT_FISCAL_YEAR_SHORT)}
             </small>
           </CreditLink>
-          <CreditLink
-            target="_blank"
-            href="https://docs.google.com/spreadsheets/d/1yyWXSTbq3CD_gNxks-krcSBzbszv3c_2Nq54lckoQ24/edit#gid=343539850"
-          >
+          <CreditLink target="_blank" href={PREV_DATA_URL}>
             <small className="wv-font-anuphan text-xs">
-              ดูข้อมูลปี {formatNumber(65)}
+              ดูข้อมูลปี {formatNumber(CURRRENT_FISCAL_YEAR_SHORT - 1)}
             </small>
           </CreditLink>
           <CreditLink target="_blank" href="https://taepras.com">

@@ -6,6 +6,7 @@ import { filter } from '../explore/filter';
 import { provinces } from '../provinces';
 import rawKeywords from '../selectedKeyword.json';
 import { useNumberingSystem } from '../utils/numbering-system';
+import { CURRENT_DATA_URL } from '../constants';
 
 const selectedKeywords = rawKeywords.map((d, index) => ({ index, ...d }));
 
@@ -15,8 +16,6 @@ const PAGE_SUB_TITLE_STRING =
 const PAGE_NOTE_STRING =
   'หมายเหตุ : คียเวิร์ดเหล่านี้เป็นการค้นหาและตัดคำเบื้องต้นโดยคอมพิวเตอร์ โดยรวบรวมจากทุกข้อมูลที่มีคำนั้นปรากฎ โปรดตรวจสอบบริบทของคำก่อนการใช้งาน';
 const DOWNLOAD_DATA_BUTTON_STRING = 'ดาวน์โหลดข้อมูล';
-const DOWNLOAD_DATA_URL_STRING =
-  'https://docs.google.com/spreadsheets/d/1Js6iDnBR53nk80Hr4UybEwV4poUpNEeOoUUWJDCpLjI/edit#gid=696564335';
 const DOWNLOAD_ICON = (
   <svg
     width="21"
@@ -150,7 +149,7 @@ const Explore = () => {
           } ล้านบาท`}</p>
           <a
             className="inline-flex space-x-3 items-center rounded-md bg-blue text-white p-4"
-            href={DOWNLOAD_DATA_URL_STRING}
+            href={CURRENT_DATA_URL}
             target="_blank"
             rel="noopener noreferrer"
           >
