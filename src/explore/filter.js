@@ -64,7 +64,7 @@ export function groupBy(propName, items) {
 export function filterItems(keyword, items) {
   return items.filter(
     (item) =>
-      item.FISCAL_YEAR === '2023' &&
+      item.FISCAL_YEAR === '2024' &&
       (item.BUDGET_PLAN.includes(keyword) ||
         item.OUTPUT.includes(keyword) ||
         item.PROJECT.includes(keyword) ||

@@ -179,7 +179,7 @@ function TreemapPage() {
             .filter((x) => x)
             .join(' - '),
         }))
-        .filter((d) => +d.FISCAL_YEAR === 2022),
+        .filter((d) => +d.FISCAL_YEAR === CURRRENT_FISCAL_YEAR - 543 - 1),
     [dataPrevYear]
   );
 
@@ -206,7 +206,7 @@ function TreemapPage() {
             .filter((x) => x)
             .join(' - '),
         }))
-        .filter((d) => +d.FISCAL_YEAR === 2023),
+        .filter((d) => +d.FISCAL_YEAR === CURRRENT_FISCAL_YEAR - 543),
     [data]
   );
 
