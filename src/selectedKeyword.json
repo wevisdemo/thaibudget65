@@ -1,108 +1,532 @@
 [
-  { "word": "กองทุน", "count": 458, "summation": 112715728100 },
-  { "word": "กษัตริย์", "count": 78, "summation": 12301496000 },
-  { "word": "ก่อสร้าง", "count": 17545, "summation": 523294190000 },
-  { "word": "การแพทย์", "count": 2182, "summation": 13851573300 },
-  { "word": "การศึกษา", "count": 5359, "summation": 178135280900 },
-  { "word": "กีฬา", "count": 412, "summation": 5594897400 },
-  { "word": "เกษตร", "count": 2992, "summation": 90423600200 },
-  { "word": "ขนส่ง", "count": 1784, "summation": 19721941400 },
-  { "word": "ขยะ", "count": 435, "summation": 1592247200 },
-  { "word": "ขับเคลื่อน", "count": 1780, "summation": 31580824300 },
-  { "word": "ข้าราชการ", "count": 314, "summation": 184756824480 },
-  { "word": "ครุภัณฑ์", "count": 19280, "summation": 460756713300 },
-  { "word": "ควบคุม", "count": 1238, "summation": 22430339900 },
-  { "word": "คอมพิวเตอร์", "count": 1181, "summation": 14073050100 },
-  { "word": "ค่าก่อสร้าง", "count": 5630, "summation": 223871075400 },
-  { "word": "ค่าจ้าง", "count": 1788, "summation": 657125752850 },
-  { "word": "ค่าเช่า", "count": 1540, "summation": 22056703220 },
-  { "word": "ค่าตอบแทน", "count": 9672, "summation": 211027409500 },
-  { "word": "ค่าเบี้ยเลี้ยง", "count": 591, "summation": 14904182620 },
-  { "word": "ค่าปรับ", "count": 2263, "summation": 78577003000 },
-  { "word": "ค่าพาหนะ", "count": 564, "summation": 3211112520 },
-  { "word": "ค่าไฟฟ้า", "count": 211, "summation": 7963961900 },
-  { "word": "เครื่องแบบ", "count": 69, "summation": 5306154600 },
-  { "word": "โฆษณา", "count": 319, "summation": 594691500 },
-  { "word": "งานก่อสร้าง", "count": 649, "summation": 16571928400 },
-  { "word": "เงินเดือน", "count": 640, "summation": 594127746200 },
-  { "word": "เงินสมทบ", "count": 411, "summation": 143483836600 },
-  { "word": "เงินอุดหนุน", "count": 7613, "summation": 792233999200 },
-  { "word": "เฉลิมพระเกียรติ", "count": 336, "summation": 10504506900 },
-  { "word": "ชลประทาน", "count": 1259, "summation": 58551227900 },
-  { "word": "ชุมชน", "count": 955, "summation": 45275606400 },
-  { "word": "เชื้อเพลิง", "count": 412, "summation": 6138516200 },
-  { "word": "ซ่อมแซม", "count": 754, "summation": 43355158300 },
-  { "word": "เด็กเล็ก", "count": 33, "summation": 16073178500 },
-  { "word": "ตรวจสอบ", "count": 295, "summation": 4955967100 },
-  { "word": "ตลิ่ง", "count": 1166, "summation": 21861863000 },
-  { "word": "ถนน", "count": 1628, "summation": 75639026700 },
-  { "word": "ถ่ายโอน", "count": 348, "summation": 52760137200 },
-  { "word": "ท่องเที่ยว", "count": 1153, "summation": 23290150300 },
-  { "word": "ทางหลวง", "count": 3870, "summation": 193987869100 },
-  { "word": "ท่าอากาศยาน", "count": 176, "summation": 4914611500 },
-  { "word": "ที่ดิน", "count": 17524, "summation": 515688315900 },
-  { "word": "ที่ทำการ", "count": 297, "summation": 10643446500 },
-  { "word": "ที่ปรึกษา", "count": 295, "summation": 3981724000 },
-  { "word": "ที่พัก", "count": 951, "summation": 17392865320 },
-  { "word": "เทคโนโลยี", "count": 2529, "summation": 26904646700 },
-  { "word": "นวัตกรรม", "count": 584, "summation": 29786636200 },
-  { "word": "น้ำท่วม", "count": 200, "summation": 5439332400 },
-  { "word": "บรรเทา", "count": 261, "summation": 10862356900 },
-  { "word": "บริการ", "count": 7515, "summation": 216512259050 },
-  { "word": "บ้านพัก", "count": 97, "summation": 1563005900 },
-  { "word": "บำนาญ", "count": 2, "summation": 330210560500 },
-  { "word": "บำรุง", "count": 2373, "summation": 79082159300 },
-  { "word": "บำเหน็จ", "count": 14, "summation": 331065154900 },
-  { "word": "บุคลากร", "count": 2995, "summation": 859442564400 },
-  { "word": "บูรณาการ", "count": 6965, "summation": 245166723200 },
-  { "word": "ปฏิบัติการ", "count": 1289, "summation": 15533548500 },
-  { "word": "ประจำตำแหน่ง", "count": 183, "summation": 990448800 },
-  { "word": "ประตูระบายน้ำ", "count": 107, "summation": 5299335100 },
-  { "word": "ประปา", "count": 382, "summation": 7048345300 },
-  { "word": "ปลอดภัย", "count": 1158, "summation": 37886779100 },
-  { "word": "ป้องกัน", "count": 3748, "summation": 158779795500 },
-  { "word": "ผิวจราจร", "count": 192, "summation": 4309843600 },
-  { "word": "ผู้สูงอายุ", "count": 120, "summation": 85493119100 },
-  { "word": "แผ่นดินไหว", "count": 261, "summation": 3037745600 },
-  { "word": "ฝึกอบรม", "count": 907, "summation": 4827975500 },
-  { "word": "พนักงาน", "count": 389, "summation": 201719589220 },
-  { "word": "พระราชดำริ", "count": 348, "summation": 15033844900 },
-  { "word": "พัฒนา", "count": 23116, "summation": 1051440370600 },
-  { "word": "พิการ", "count": 179, "summation": 21080457900 },
-  { "word": "ภูมิทัศน์", "count": 392, "summation": 7550066000 },
-  { "word": "ยังชีพ", "count": 14, "summation": 103353069800 },
-  { "word": "ยานพาหนะ", "count": 1449, "summation": 11557999000 },
-  { "word": "รถโดยสาร", "count": 373, "summation": 692393300 },
-  { "word": "รถบรรทุก", "count": 948, "summation": 3852923900 },
-  { "word": "รถยนต์", "count": 429, "summation": 9351977100 },
-  { "word": "ริมแม่น้ำ", "count": 1056, "summation": 19727946400 },
-  { "word": "โรงพยาบาล", "count": 1807, "summation": 10411724000 },
-  { "word": "โรงเรียน", "count": 495, "summation": 11434575000 },
-  { "word": "วิทยากร", "count": 205, "summation": 125865550 },
-  { "word": "วิทยาลัย", "count": 732, "summation": 71494876400 },
-  { "word": "วิทยาศาสตร์", "count": 3161, "summation": 28759517800 },
-  { "word": "ศาลา", "count": 308, "summation": 3849752900 },
-  { "word": "ศึกษา", "count": 5643, "summation": 212816269200 },
-  { "word": "เศรษฐกิจ", "count": 1178, "summation": 70776591700 },
-  { "word": "สงเคราะห์", "count": 53, "summation": 107176008100 },
-  { "word": "สถาบัน", "count": 413, "summation": 21773549600 },
-  { "word": "สนับสนุน", "count": 3550, "summation": 714515733900 },
-  { "word": "สมเด็จ", "count": 290, "summation": 3489441000 },
-  { "word": "สะพาน", "count": 4037, "summation": 173076279200 },
-  { "word": "สัมมนา", "count": 851, "summation": 3718526900 },
-  { "word": "สาธารณสุข", "count": 809, "summation": 48097160600 },
-  { "word": "สำนักงาน", "count": 1275, "summation": 13927566030 },
-  { "word": "สำรวจ", "count": 348, "summation": 5331147300 },
-  { "word": "สิ่งก่อสร้าง", "count": 17159, "summation": 510928060900 },
-  { "word": "สูบน้ำ", "count": 224, "summation": 13444267900 },
-  { "word": "หนังสือเรียน", "count": 68, "summation": 8563147400 },
-  { "word": "ห้องปฏิบัติการ", "count": 396, "summation": 2365272100 },
-  { "word": "ไหล่ทาง", "count": 209, "summation": 5192806900 },
-  { "word": "ออกแบบ", "count": 387, "summation": 5347905100 },
-  { "word": "อัตโนมัติ", "count": 478, "summation": 3379240600 },
-  { "word": "อาคาร", "count": 2627, "summation": 84043385700 },
-  { "word": "อาหาร", "count": 512, "summation": 44189457300 },
-  { "word": "อุตสาหกรรม", "count": 927, "summation": 12775971600 },
-  { "word": "อุโมงค์", "count": 50, "summation": 2301730000 },
-  { "word": "เอดส์", "count": 26, "summation": 857975400 }
+  {
+    "word": "กองทุน",
+    "count": 475,
+    "summation": 338425729300
+  },
+  {
+    "word": "กษัตริย์",
+    "count": 49,
+    "summation": 1459875132
+  },
+  {
+    "word": "ก่อสร้าง",
+    "count": 8644,
+    "summation": 507013642387
+  },
+  {
+    "word": "การแพทย์",
+    "count": 397,
+    "summation": 15011403200
+  },
+  {
+    "word": "การศึกษา",
+    "count": 3021,
+    "summation": 175933624250
+  },
+  {
+    "word": "กีฬา",
+    "count": 416,
+    "summation": 7356262700
+  },
+  {
+    "word": "เกษตร",
+    "count": 2021,
+    "summation": 87341019350
+  },
+  {
+    "word": "ขนส่ง",
+    "count": 581,
+    "summation": 4805824400
+  },
+  {
+    "word": "ขยะ",
+    "count": 679,
+    "summation": 3582248031
+  },
+  {
+    "word": "ขับเคลื่อน",
+    "count": 1560,
+    "summation": 15353875100
+  },
+  {
+    "word": "ข้าราชการ",
+    "count": 483,
+    "summation": 227226938400
+  },
+  {
+    "word": "ครุภัณฑ์",
+    "count": 2516,
+    "summation": 28030383030
+  },
+  {
+    "word": "ควบคุม",
+    "count": 2070,
+    "summation": 24737922925
+  },
+  {
+    "word": "คอมพิวเตอร์",
+    "count": 881,
+    "summation": 13942102218
+  },
+  {
+    "word": "ค่าก่อสร้าง",
+    "count": 3172,
+    "summation": 111195648377
+  },
+  {
+    "word": "ค่าจ้าง",
+    "count": 1850,
+    "summation": 117198886380
+  },
+  {
+    "word": "ค่าเช่า",
+    "count": 5222,
+    "summation": 280672079609
+  },
+  {
+    "word": "ค่าตอบแทน",
+    "count": 1368,
+    "summation": 100201066100
+  },
+  {
+    "word": "ค่าเบี้ยเลี้ยง",
+    "count": 625,
+    "summation": 16235396230
+  },
+  {
+    "word": "ค่าปรับ",
+    "count": 1549,
+    "summation": 44412092250
+  },
+  {
+    "word": "ค่าพาหนะ",
+    "count": 594,
+    "summation": 3901983250
+  },
+  {
+    "word": "ค่าไฟฟ้า",
+    "count": 208,
+    "summation": 8020090600
+  },
+  {
+    "word": "เครื่องแบบ",
+    "count": 68,
+    "summation": 5111143000
+  },
+  {
+    "word": "โฆษณา",
+    "count": 275,
+    "summation": 279863550
+  },
+  {
+    "word": "งานก่อสร้าง",
+    "count": 1573,
+    "summation": 37255273442
+  },
+  {
+    "word": "เงินเดือน",
+    "count": 459,
+    "summation": 581768363500
+  },
+  {
+    "word": "เงินสมทบ",
+    "count": 417,
+    "summation": 150726855400
+  },
+  {
+    "word": "เงินอุดหนุน",
+    "count": 3554,
+    "summation": 307701231900
+  },
+  {
+    "word": "เฉลิมพระเกียรติ",
+    "count": 268,
+    "summation": 110871068040
+  },
+  {
+    "word": "ชลประทาน",
+    "count": 338,
+    "summation": 11448044972
+  },
+  {
+    "word": "ชุมชน",
+    "count": 1903,
+    "summation": 71810777170
+  },
+  {
+    "word": "เชื้อเพลิง",
+    "count": 459,
+    "summation": 8287705431
+  },
+  {
+    "word": "ซ่อมแซม",
+    "count": 803,
+    "summation": 38635530200
+  },
+  {
+    "word": "เด็กเล็ก",
+    "count": 15,
+    "summation": 10502817900
+  },
+  {
+    "word": "ตรวจสอบ",
+    "count": 323,
+    "summation": 9157184300
+  },
+  {
+    "word": "ตลิ่ง",
+    "count": 3779,
+    "summation": 78900273790
+  },
+  {
+    "word": "ถนน",
+    "count": 2385,
+    "summation": 140910787918
+  },
+  {
+    "word": "ถ่ายโอน",
+    "count": 2566,
+    "summation": 57964303600
+  },
+  {
+    "word": "ท่องเที่ยว",
+    "count": 1002,
+    "summation": 28120890792
+  },
+  {
+    "word": "ทางหลวง",
+    "count": 4050,
+    "summation": 315195105893
+  },
+  {
+    "word": "ท่าอากาศยาน",
+    "count": 373,
+    "summation": 18620762775
+  },
+  {
+    "word": "ที่ดิน",
+    "count": 688,
+    "summation": 38306958939
+  },
+  {
+    "word": "ที่ทำการ",
+    "count": 728,
+    "summation": 27495512234
+  },
+  {
+    "word": "ที่ปรึกษา",
+    "count": 468,
+    "summation": 7287496566
+  },
+  {
+    "word": "ที่พัก",
+    "count": 927,
+    "summation": 34355597723
+  },
+  {
+    "word": "เทคโนโลยี",
+    "count": 521,
+    "summation": 14868959700
+  },
+  {
+    "word": "นวัตกรรม",
+    "count": 344,
+    "summation": 40724251200
+  },
+  {
+    "word": "น้ำท่วม",
+    "count": 838,
+    "summation": 28682501363
+  },
+  {
+    "word": "บรรเทา",
+    "count": 418,
+    "summation": 17921482850
+  },
+  {
+    "word": "บริการ",
+    "count": 2883,
+    "summation": 284999431543
+  },
+  {
+    "word": "บ้านพัก",
+    "count": 382,
+    "summation": 10391637525
+  },
+  {
+    "word": "บำนาญ",
+    "count": 3,
+    "summation": 354924422300
+  },
+  {
+    "word": "บำรุง",
+    "count": 2222,
+    "summation": 79500648200
+  },
+  {
+    "word": "บำเหน็จ",
+    "count": 37,
+    "summation": 356404597600
+  },
+  {
+    "word": "บุคลากร",
+    "count": 5092,
+    "summation": 863995883650
+  },
+  {
+    "word": "บูรณาการ",
+    "count": 9571,
+    "summation": 623665461041
+  },
+  {
+    "word": "ปฏิบัติการ",
+    "count": 1296,
+    "summation": 23744734120
+  },
+  {
+    "word": "ประจำตำแหน่ง",
+    "count": 737,
+    "summation": 2699257250
+  },
+  {
+    "word": "ประตูระบายน้ำ",
+    "count": 233,
+    "summation": 20683692669
+  },
+  {
+    "word": "ประปา",
+    "count": 462,
+    "summation": 13073359700
+  },
+  {
+    "word": "ปลอดภัย",
+    "count": 595,
+    "summation": 20590303000
+  },
+  {
+    "word": "ป้องกัน",
+    "count": 5677,
+    "summation": 321168274750
+  },
+  {
+    "word": "ผิวจราจร",
+    "count": 197,
+    "summation": 4303013900
+  },
+  {
+    "word": "ผู้สูงอายุ",
+    "count": 67,
+    "summation": 63821869050
+  },
+  {
+    "word": "แผ่นดินไหว",
+    "count": 662,
+    "summation": 17858211970
+  },
+  {
+    "word": "ฝึกอบรม",
+    "count": 893,
+    "summation": 20958986490
+  },
+  {
+    "word": "พนักงาน",
+    "count": 614,
+    "summation": 227386444200
+  },
+  {
+    "word": "พระราชดำริ",
+    "count": 235,
+    "summation": 12483637636
+  },
+  {
+    "word": "พัฒนา",
+    "count": 25864,
+    "summation": 1748858143431
+  },
+  {
+    "word": "พิการ",
+    "count": 67,
+    "summation": 15168505400
+  },
+  {
+    "word": "ภูมิทัศน์",
+    "count": 1568,
+    "summation": 40862145050
+  },
+  {
+    "word": "ยังชีพ",
+    "count": 12,
+    "summation": 75776045900
+  },
+  {
+    "word": "ยานพาหนะ",
+    "count": 547,
+    "summation": 14925250500
+  },
+  {
+    "word": "รถโดยสาร",
+    "count": 793,
+    "summation": 20280527350
+  },
+  {
+    "word": "รถบรรทุก",
+    "count": 1610,
+    "summation": 9354431550
+  },
+  {
+    "word": "รถยนต์",
+    "count": 2437,
+    "summation": 47377769325
+  },
+  {
+    "word": "ริมแม่น้ำ",
+    "count": 2613,
+    "summation": 55656942300
+  },
+  {
+    "word": "โรงพยาบาล",
+    "count": 2233,
+    "summation": 57414374679
+  },
+  {
+    "word": "โรงเรียน",
+    "count": 905,
+    "summation": 15798701757
+  },
+  {
+    "word": "วิทยากร",
+    "count": 199,
+    "summation": 108180300
+  },
+  {
+    "word": "วิทยาลัย",
+    "count": 994,
+    "summation": 86783468036
+  },
+  {
+    "word": "วิทยาศาสตร์",
+    "count": 552,
+    "summation": 33455433520
+  },
+  {
+    "word": "ศาลา",
+    "count": 369,
+    "summation": 9350845100
+  },
+  {
+    "word": "ศึกษา",
+    "count": 3505,
+    "summation": 208362273900
+  },
+  {
+    "word": "เศรษฐกิจ",
+    "count": 795,
+    "summation": 217550480507
+  },
+  {
+    "word": "สงเคราะห์",
+    "count": 57,
+    "summation": 80320550550
+  },
+  {
+    "word": "สถาบัน",
+    "count": 424,
+    "summation": 25934977300
+  },
+  {
+    "word": "สนับสนุน",
+    "count": 1205,
+    "summation": 653723156250
+  },
+  {
+    "word": "สมเด็จ",
+    "count": 290,
+    "summation": 7045466250
+  },
+  {
+    "word": "สะพาน",
+    "count": 2985,
+    "summation": 80156854270
+  },
+  {
+    "word": "สัมมนา",
+    "count": 834,
+    "summation": 3639959640
+  },
+  {
+    "word": "สาธารณสุข",
+    "count": 115,
+    "summation": 39869421800
+  },
+  {
+    "word": "สำนักงาน",
+    "count": 2841,
+    "summation": 46656499910
+  },
+  {
+    "word": "สำรวจ",
+    "count": 466,
+    "summation": 7937075200
+  },
+  {
+    "word": "สิ่งก่อสร้าง",
+    "count": 1732,
+    "summation": 62606097613
+  },
+  {
+    "word": "สูบน้ำ",
+    "count": 314,
+    "summation": 24662085155
+  },
+  {
+    "word": "หนังสือเรียน",
+    "count": 68,
+    "summation": 8336668000
+  },
+  {
+    "word": "ห้องปฏิบัติการ",
+    "count": 339,
+    "summation": 3643068000
+  },
+  {
+    "word": "ไหล่ทาง",
+    "count": 194,
+    "summation": 4972633700
+  },
+  {
+    "word": "ออกแบบ",
+    "count": 590,
+    "summation": 10324074768
+  },
+  {
+    "word": "อัตโนมัติ",
+    "count": 488,
+    "summation": 6355644936
+  },
+  {
+    "word": "อาคาร",
+    "count": 6032,
+    "summation": 313960721411
+  },
+  {
+    "word": "อาหาร",
+    "count": 460,
+    "summation": 35184921800
+  },
+  {
+    "word": "อุตสาหกรรม",
+    "count": 401,
+    "summation": 19599450400
+  },
+  {
+    "word": "อุโมงค์",
+    "count": 171,
+    "summation": 18603606696
+  },
+  {
+    "word": "เอดส์",
+    "count": 12,
+    "summation": 452962600
+  }
 ]
