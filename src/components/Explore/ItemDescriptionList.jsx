@@ -36,11 +36,7 @@ function ItemDescriptionList({ itemDescriptions }) {
 
   const sorter = (sortBy, data) => {
     if (sortBy === 'AMOUNT') {
-      return data.sort(
-        (a, b) =>
-          parseFloat(b[sortBy].replaceAll(',', '')) -
-          parseFloat(a[sortBy].replaceAll(',', ''))
-      );
+      return data.sort((a, b) => parseFloat(b[sortBy]) - parseFloat(a[sortBy]));
     }
     return data.sort((a, b) => a[sortBy].localeCompare(b[sortBy]));
   };

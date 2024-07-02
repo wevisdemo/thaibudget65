@@ -3,7 +3,7 @@ import ResultGroup from './ResultGroup';
 import ResultGroupModal from './ResultGroupModal';
 import RatioCompare from './ResultRatioCompare';
 
-function ResultSummary({ result }) {
+function ResultSummary({ result, totalYearBudget }) {
   const [modalGroupByField, setModalGroupByField] = useState(null);
   const groupByFields = [
     {
@@ -28,7 +28,7 @@ function ResultSummary({ result }) {
     <div>
       <RatioCompare
         total={result && result.total}
-        budgetYearTotal={result && result.totalYearBudget}
+        budgetYearTotal={totalYearBudget}
       />
       {groupByFields.map((gby) => (
         <ResultGroup

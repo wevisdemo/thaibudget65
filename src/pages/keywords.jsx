@@ -17,13 +17,7 @@ const PAGE_NOTE_STRING =
   'หมายเหตุ : คียเวิร์ดเหล่านี้เป็นการค้นหาและตัดคำเบื้องต้นโดยคอมพิวเตอร์ โดยรวบรวมจากทุกข้อมูลที่มีคำนั้นปรากฎ โปรดตรวจสอบบริบทของคำก่อนการใช้งาน';
 const DOWNLOAD_DATA_BUTTON_STRING = 'ดาวน์โหลดข้อมูล';
 const DOWNLOAD_ICON = (
-  <svg
-    width="21"
-    height="21"
-    viewBox="0 0 21 21"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
+  <svg width="21" height="21" viewBox="0 0 21 21" fill="none">
     <g clipPath="url(#clip0_5321_4)">
       <path
         d="M7.03576 2.86356H1.17523V19.4081H19.8247V2.86356C19.8247 2.86356 15.3059 2.86356 13.9641 2.86356"
@@ -61,13 +55,7 @@ const DOWNLOAD_ICON = (
 const FEEDBACK_BUTTON_STRING = 'เสนอแนะติชม';
 const FEEDBACK_URL_STRING = 'https://airtable.com/shryu4errnlj1LWsM';
 const FEEDBACK_ICON = (
-  <svg
-    width="19"
-    height="19"
-    viewBox="0 0 19 19"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
+  <svg width="19" height="19" viewBox="0 0 19 19" fill="none">
     <path
       d="M0.498749 14.7513V18.5013H4.24875L15.3087 7.44128L11.5587 3.69128L0.498749 14.7513ZM18.2087 4.54128C18.5987 4.15128 18.5987 3.52128 18.2087 3.13128L15.8687 0.791279C15.4787 0.401279 14.8487 0.401279 14.4587 0.791279L12.6287 2.62128L16.3787 6.37128L18.2087 4.54128Z"
       fill="#3904E9"
@@ -92,16 +80,17 @@ const Explore = () => {
   };
 
   useEffect(() => {
-    d3.csv(`${process.env.PUBLIC_URL}/data/${CURRENT_FISCAL_YEAR}.csv`).then(
-      (items) => {
-        setAllItems(
-          items.map((item) => ({
-            ...item,
-            PROVINCE: matchedProvinces(item.ITEM_DESCRIPTION),
-          }))
-        );
-      }
-    );
+    d3.csv(
+      `${process.env.PUBLIC_URL}/data/${CURRENT_FISCAL_YEAR}.csv`,
+      d3.autoType
+    ).then((items) => {
+      setAllItems(
+        items.map((item) => ({
+          ...item,
+          PROVINCE: matchedProvinces(item.ITEM_DESCRIPTION),
+        }))
+      );
+    });
   }, []);
 
   let prevScrollY = 0;
@@ -119,6 +108,11 @@ const Explore = () => {
   const result = useMemo(
     () => filter(selectedKeywords[activeKeywordIndex].word, allItems),
     [activeKeywordIndex, allItems]
+  );
+
+  const totalYearBudget = useMemo(
+    () => allItems.reduce((sum, { AMOUNT }) => sum + AMOUNT, 0),
+    [allItems]
   );
 
   return (
@@ -146,9 +140,14 @@ const Explore = () => {
           {PAGE_NOTE_STRING}
         </p>
         <div className="wv-font-anuphan flex p-6 justify-between items-center bg-[#3904E90A] rounded-xl mt-8">
-          <p className="text-xl">{`จากงบประมาณทั้งหมด ${
-            result && formatInteger(result.totalYearBudget / 1_000_000)
-          } ล้านบาท`}</p>
+          <p className="text-xl">
+            {`จากงบประมาณทั้งหมด ${
+              allItems.length > 0
+                ? formatInteger(totalYearBudget / 1_000_000)
+                : '...'
+            } ล้านบาท`}
+          </p>
+
           <a
             className="inline-flex space-x-3 items-center rounded-md bg-blue text-white p-4"
             href={CURRENT_DATA_URL}
@@ -168,6 +167,7 @@ const Explore = () => {
           <Result
             result={result}
             keyword={selectedKeywords[activeKeywordIndex].word}
+            totalYearBudget={totalYearBudget}
           />
         </div>
       </div>

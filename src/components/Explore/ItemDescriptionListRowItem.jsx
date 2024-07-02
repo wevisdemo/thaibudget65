@@ -20,9 +20,7 @@ const ItemDescriptionListRowItem = ({ item, onItemClick }) => {
         </div>
       </div>
       <div>
-        <p className="text-gray-2 text-right">
-          {formatInteger(+item.AMOUNT.replaceAll(',', ''))}
-        </p>
+        <p className="text-gray-2 text-right">{formatInteger(item.AMOUNT)}</p>
       </div>
     </div>
   );

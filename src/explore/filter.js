@@ -1,4 +1,3 @@
-import { CURRENT_FISCAL_YEAR_TOTAL_BUDGET } from '../constants';
 /*
 interface FilterResult {
   keyword: string;
@@ -19,6 +18,8 @@ interface GroupByResult {
   items: Item[];
 }
 */
+
+import { CURRENT_FISCAL_YEAR } from '../constants';
 
 /**
  * Group items using propName (or multiple propNames) and return array of `GroupByResult`
@@ -47,7 +48,7 @@ export function groupBy(propName, items) {
     }
 
     // eslint-disable-next-line no-param-reassign
-    result[key].total += Number(item.AMOUNT.replaceAll(',', ''));
+    result[key].total += item.AMOUNT;
     result[key].items.push(item);
     return result;
   }, {});
@@ -62,9 +63,10 @@ export function groupBy(propName, items) {
  * @return {array} Matched items
  */
 export function filterItems(keyword, items) {
+  const CURRENT_FISCAL_YEAR_BC = CURRENT_FISCAL_YEAR - 543;
   return items.filter(
     (item) =>
-      item.FISCAL_YEAR === '2024' &&
+      item.FISCAL_YEAR === CURRENT_FISCAL_YEAR_BC &&
       (item.BUDGET_PLAN.includes(keyword) ||
         item.OUTPUT.includes(keyword) ||
         item.PROJECT.includes(keyword) ||
@@ -88,7 +90,7 @@ export function filter(keyword, items) {
   const filtered = filterItems(keyword, items);
   const total = filtered
     .map((i) => i.AMOUNT)
-    .reduce((last, next) => last + Number(next.replaceAll(',', '')), 0);
+    .reduce((last, next) => last + next, 0);
   const budgetaryUnits = groupBy('BUDGETARY_UNIT', filtered);
   const projects = groupBy(['PROJECT', 'OUTPUT'], filtered);
   const plans = groupBy('BUDGET_PLAN', filtered);
@@ -96,7 +98,6 @@ export function filter(keyword, items) {
 
   return {
     keyword,
-    totalYearBudget: CURRENT_FISCAL_YEAR_TOTAL_BUDGET,
     total,
     groupBy: {
       budgetaryUnits,

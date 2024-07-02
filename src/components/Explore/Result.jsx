@@ -3,7 +3,7 @@ import { useNumberingSystem } from '../../utils/numbering-system';
 import ItemDescriptionList from './ItemDescriptionList';
 import ResultSummary from './ResultSummary';
 
-function Result({ result, keyword }) {
+function Result({ result, keyword, totalYearBudget }) {
   const count = result ? result.items.length : 0;
   const [activeTabIndex, setActiveTabIndex] = useState(0);
 
@@ -12,7 +12,9 @@ function Result({ result, keyword }) {
   const tabs = [
     {
       name: 'สรุปข้อมูล',
-      component: <ResultSummary result={result} />,
+      component: (
+        <ResultSummary result={result} totalYearBudget={totalYearBudget} />
+      ),
     },
     {
       name: 'รายการงบ',

@@ -121,7 +121,7 @@ export function extractingKeyword(items) {
           count: filteredItems.length,
           summation: filteredItems
             .map((i) => i.AMOUNT)
-            .reduce((last, next) => last + Number(next.replaceAll(',', '')), 0),
+            .reduce((last, next) => last + next, 0),
         },
       ];
     }
