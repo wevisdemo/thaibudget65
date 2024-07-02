@@ -9,6 +9,9 @@ import { useNumberingSystem } from '../utils/numbering-system';
 import { CURRENT_DATA_URL, CURRENT_FISCAL_YEAR } from '../constants';
 
 const selectedKeywords = rawKeywords.map((d, index) => ({ index, ...d }));
+const maxSumKeyword = Math.max(
+  ...selectedKeywords.map(({ summation }) => summation)
+);
 
 const PAGE_TITLE_STRING = 'สำรวจงบประมาณผ่านคีย์เวิร์ด';
 const PAGE_SUB_TITLE_STRING =
@@ -65,7 +68,9 @@ const FEEDBACK_ICON = (
 
 const Explore = () => {
   const [allItems, setAllItems] = useState([]);
-  const [activeKeywordIndex, setActiveKeywordIndex] = useState(0);
+  const [activeKeywordIndex, setActiveKeywordIndex] = useState(
+    selectedKeywords.findIndex((k) => k.summation === maxSumKeyword)
+  );
   const [showFab, setShowFab] = useState(false);
 
   const { formatInteger } = useNumberingSystem();
