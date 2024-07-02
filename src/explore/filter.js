@@ -68,15 +68,15 @@ export function filterItems(keyword, items) {
     (item) =>
       item.FISCAL_YEAR === CURRENT_FISCAL_YEAR_BC &&
       (item.BUDGET_PLAN.includes(keyword) ||
-        item.OUTPUT.includes(keyword) ||
-        item.PROJECT.includes(keyword) ||
-        item.CATEGORY_LV1.includes(keyword) ||
-        item.CATEGORY_LV2.includes(keyword) ||
-        item.CATEGORY_LV3.includes(keyword) ||
-        item.CATEGORY_LV4.includes(keyword) ||
-        item.CATEGORY_LV5.includes(keyword) ||
-        item.CATEGORY_LV6.includes(keyword) ||
-        item.ITEM_DESCRIPTION.includes(keyword))
+        item.OUTPUT?.includes(keyword) ||
+        item.PROJECT?.includes(keyword) ||
+        item.CATEGORY_LV1?.includes(keyword) ||
+        item.CATEGORY_LV2?.includes(keyword) ||
+        item.CATEGORY_LV3?.includes(keyword) ||
+        item.CATEGORY_LV4?.includes(keyword) ||
+        item.CATEGORY_LV5?.includes(keyword) ||
+        item.CATEGORY_LV6?.includes(keyword) ||
+        item.ITEM_DESCRIPTION?.includes(keyword))
   );
 }
 
