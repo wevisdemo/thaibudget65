@@ -32,6 +32,7 @@ function ResultSummary({ result, totalYearBudget }) {
       />
       {groupByFields.map((gby) => (
         <ResultGroup
+          key={gby.name}
           groupName={gby.name}
           items={result && result.groupBy[[gby.key]]}
           onSeeMore={() => setModalGroupByField(gby)}

@@ -36,6 +36,7 @@ function Result({ result, keyword, totalYearBudget }) {
         <div className="grid grid-flow-col gap-1 h-12">
           {tabs.map(({ name }, i) => (
             <button
+              key={name}
               className={`rounded-md duration-100 ${
                 i === activeTabIndex
                   ? 'bg-[rgba(57,4,233,0.06)] hover:bg-[rgba(57,4,233,0.08)] text-blue'

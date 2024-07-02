@@ -72,28 +72,32 @@ function KeywordList({ keywords, activeKeyword, onActiveKeywordIndex }) {
           </div>
         </div>
         <table className="border-collapse w-full">
-          <tr>
-            <th> </th>
-            <th className="text-left text-sm text-gray-2 font-normal">
-              {KEYWORD_HEADER_STRING}
-            </th>
-            <th className="text-left text-sm text-gray-2 font-normal">
-              {KEYWORD_COUNT}
-            </th>
-            <th className="text-right text-sm text-gray-2 font-normal">
-              {AMOUNT_UNIT_HEADER_STRING}
-            </th>
-          </tr>
-          {sorter(mappedOption[optionsState], filteredKeywords).map(
-            (keyword) => (
-              <KeywordListItem
-                key={`keyword-item-${keyword.word}`}
-                keyword={keyword}
-                checked={activeKeyword === keyword.word}
-                onCheck={() => onActiveKeywordIndex(keyword.index)}
-              />
-            )
-          )}
+          <thead>
+            <tr>
+              <th> </th>
+              <th className="text-left text-sm text-gray-2 font-normal">
+                {KEYWORD_HEADER_STRING}
+              </th>
+              <th className="text-left text-sm text-gray-2 font-normal">
+                {KEYWORD_COUNT}
+              </th>
+              <th className="text-right text-sm text-gray-2 font-normal">
+                {AMOUNT_UNIT_HEADER_STRING}
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {sorter(mappedOption[optionsState], filteredKeywords).map(
+              (keyword) => (
+                <KeywordListItem
+                  key={`keyword-item-${keyword.word}`}
+                  keyword={keyword}
+                  checked={activeKeyword === keyword.word}
+                  onCheck={() => onActiveKeywordIndex(keyword.index)}
+                />
+              )
+            )}
+          </tbody>
         </table>
       </Section>
     </div>
