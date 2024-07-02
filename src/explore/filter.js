@@ -19,8 +19,6 @@ interface GroupByResult {
 }
 */
 
-import { CURRENT_FISCAL_YEAR } from '../constants';
-
 /**
  * Group items using propName (or multiple propNames) and return array of `GroupByResult`
  * @param {(string|string[])} propName(s) The property name to group by
@@ -63,20 +61,18 @@ export function groupBy(propName, items) {
  * @return {array} Matched items
  */
 export function filterItems(keyword, items) {
-  const CURRENT_FISCAL_YEAR_BC = CURRENT_FISCAL_YEAR - 543;
   return items.filter(
     (item) =>
-      item.FISCAL_YEAR === CURRENT_FISCAL_YEAR_BC &&
-      (item.BUDGET_PLAN.includes(keyword) ||
-        item.OUTPUT?.includes(keyword) ||
-        item.PROJECT?.includes(keyword) ||
-        item.CATEGORY_LV1?.includes(keyword) ||
-        item.CATEGORY_LV2?.includes(keyword) ||
-        item.CATEGORY_LV3?.includes(keyword) ||
-        item.CATEGORY_LV4?.includes(keyword) ||
-        item.CATEGORY_LV5?.includes(keyword) ||
-        item.CATEGORY_LV6?.includes(keyword) ||
-        item.ITEM_DESCRIPTION?.includes(keyword))
+      item.BUDGET_PLAN.includes(keyword) ||
+      item.OUTPUT?.includes(keyword) ||
+      item.PROJECT?.includes(keyword) ||
+      item.CATEGORY_LV1?.includes(keyword) ||
+      item.CATEGORY_LV2?.includes(keyword) ||
+      item.CATEGORY_LV3?.includes(keyword) ||
+      item.CATEGORY_LV4?.includes(keyword) ||
+      item.CATEGORY_LV5?.includes(keyword) ||
+      item.CATEGORY_LV6?.includes(keyword) ||
+      item.ITEM_DESCRIPTION?.includes(keyword)
   );
 }
 
