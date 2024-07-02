@@ -1,7 +1,10 @@
 import React from 'react';
 import Modal from './Modal';
+import { useNumberingSystem } from '../../utils/numbering-system';
 
 function ItemDescriptionModal({ item, onClose }) {
+  const { formatInteger } = useNumberingSystem();
+
   return (
     <Modal onClose={onClose}>
       <div className="space-y-3 pr-6">
@@ -21,7 +24,7 @@ function ItemDescriptionModal({ item, onClose }) {
           <span>{item.CATEGORY_LV5}</span>
           <span>{item.CATEGORY_LV6}</span>
         </div>
-        <p className="text-gray-1">{item.AMOUNT}</p>
+        <p className="text-gray-1">{formatInteger(item.AMOUNT)}</p>
       </div>
     </Modal>
   );
