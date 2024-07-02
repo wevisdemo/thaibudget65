@@ -3,7 +3,7 @@ import '../styles/dropdown.css';
 import Treemap from './Treemap';
 import FullView from './FullView';
 import { useNumberingSystem } from '../utils/numbering-system';
-import { CURRRENT_FISCAL_YEAR } from '../constants';
+import { CURRENT_FISCAL_YEAR } from '../constants';
 
 // const options = ['หน่วยงาน', 'จังหวัด'];
 // const defaultOption = options[0];
@@ -85,7 +85,7 @@ function DataView({
         งบประมาณปี{' '}
         <span className="font-bold">
           {formatNumber(
-            index === 0 ? CURRRENT_FISCAL_YEAR : CURRRENT_FISCAL_YEAR - 1
+            index === 0 ? CURRENT_FISCAL_YEAR : CURRENT_FISCAL_YEAR - 1
           )}
         </span>
       </div>

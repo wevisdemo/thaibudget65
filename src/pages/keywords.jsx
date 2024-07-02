@@ -6,7 +6,7 @@ import { filter } from '../explore/filter';
 import { provinces } from '../provinces';
 import rawKeywords from '../selectedKeyword.json';
 import { useNumberingSystem } from '../utils/numbering-system';
-import { CURRENT_DATA_URL } from '../constants';
+import { CURRENT_DATA_URL, CURRENT_FISCAL_YEAR } from '../constants';
 
 const selectedKeywords = rawKeywords.map((d, index) => ({ index, ...d }));
 
@@ -92,14 +92,16 @@ const Explore = () => {
   };
 
   useEffect(() => {
-    d3.csv(`${process.env.PUBLIC_URL}/data/2567.csv`).then((items) => {
-      setAllItems(
-        items.map((item) => ({
-          ...item,
-          PROVINCE: matchedProvinces(item.ITEM_DESCRIPTION),
-        }))
-      );
-    });
+    d3.csv(`${process.env.PUBLIC_URL}/data/${CURRENT_FISCAL_YEAR}.csv`).then(
+      (items) => {
+        setAllItems(
+          items.map((item) => ({
+            ...item,
+            PROVINCE: matchedProvinces(item.ITEM_DESCRIPTION),
+          }))
+        );
+      }
+    );
   }, []);
 
   let prevScrollY = 0;

@@ -9,8 +9,8 @@ import DataView from '../components/DataView';
 import { provinces } from '../provinces';
 import { useNumberingSystem } from '../utils/numbering-system';
 import {
-  CURRRENT_FISCAL_YEAR,
-  CURRRENT_FISCAL_YEAR_SHORT,
+  CURRENT_FISCAL_YEAR,
+  CURRENT_FISCAL_YEAR_SHORT,
   CURRENT_DATA_URL,
   PREV_DATA_URL,
 } from '../constants';
@@ -114,7 +114,7 @@ function TreemapPage() {
   };
 
   useEffect(() => {
-    d3.csv(`${process.env.PUBLIC_URL}/data/${CURRRENT_FISCAL_YEAR}.csv`).then(
+    d3.csv(`${process.env.PUBLIC_URL}/data/${CURRENT_FISCAL_YEAR}.csv`).then(
       (d) => {
         setLoading(false);
         setData(d);
@@ -125,7 +125,7 @@ function TreemapPage() {
   useEffect(() => {
     if (dataPrevYear.length === 0 && isCompareView) {
       d3.csv(
-        `${process.env.PUBLIC_URL}/data/${CURRRENT_FISCAL_YEAR - 1}.csv`
+        `${process.env.PUBLIC_URL}/data/${CURRENT_FISCAL_YEAR - 1}.csv`
       ).then((d) => {
         setLoadingPrevYear(false);
         setDataPrevYear(d);
@@ -179,7 +179,7 @@ function TreemapPage() {
             .filter((x) => x)
             .join(' - '),
         }))
-        .filter((d) => +d.FISCAL_YEAR === CURRRENT_FISCAL_YEAR - 543 - 1),
+        .filter((d) => +d.FISCAL_YEAR === CURRENT_FISCAL_YEAR - 543 - 1),
     [dataPrevYear]
   );
 
@@ -206,7 +206,7 @@ function TreemapPage() {
             .filter((x) => x)
             .join(' - '),
         }))
-        .filter((d) => +d.FISCAL_YEAR === CURRRENT_FISCAL_YEAR - 543),
+        .filter((d) => +d.FISCAL_YEAR === CURRENT_FISCAL_YEAR - 543),
     [data]
   );
 
@@ -351,19 +351,19 @@ function TreemapPage() {
               {!isCompareView ? '+' : '×'}
             </span>
             {!isCompareView
-              ? `เทียบงบ ${formatNumber(CURRRENT_FISCAL_YEAR_SHORT - 1)}`
+              ? `เทียบงบ ${formatNumber(CURRENT_FISCAL_YEAR_SHORT - 1)}`
               : 'ปิดการเทียบ'}
           </ActionButton>
           <div style={{ flexGrow: 1 }} />
 
           <CreditLink target="_blank" href={CURRENT_DATA_URL}>
             <small className="wv-font-anuphan text-xs">
-              ดูข้อมูลปี {formatNumber(CURRRENT_FISCAL_YEAR_SHORT)}
+              ดูข้อมูลปี {formatNumber(CURRENT_FISCAL_YEAR_SHORT)}
             </small>
           </CreditLink>
           <CreditLink target="_blank" href={PREV_DATA_URL}>
             <small className="wv-font-anuphan text-xs">
-              ดูข้อมูลปี {formatNumber(CURRRENT_FISCAL_YEAR_SHORT - 1)}
+              ดูข้อมูลปี {formatNumber(CURRENT_FISCAL_YEAR_SHORT - 1)}
             </small>
           </CreditLink>
           <CreditLink target="_blank" href="https://taepras.com">

@@ -5,7 +5,7 @@ import WvButtonGroup from '@wevisdemo/ui/components/button-group';
 import WvButton from '@wevisdemo/ui/components/button';
 import WvSharer from '@wevisdemo/ui/components/sharer';
 import { useNumberingSystem } from '../utils/numbering-system';
-import { CURRRENT_FISCAL_YEAR } from '../constants';
+import { CURRENT_FISCAL_YEAR } from '../constants';
 
 const About = () => {
   const { formatInteger, formatNumber } = useNumberingSystem();
@@ -109,7 +109,7 @@ const About = () => {
           <p>
             <ExternalLink href="https://www.bb.go.th/topic3.php?catID=1377&gid=860&mid=544">
               ร่างพระราชบัญญัติงบประมาณรายจ่าย ประจำปีงบประมาณ พ.ศ.{' '}
-              {formatNumber(CURRRENT_FISCAL_YEAR)} โดยสำนักงบประมาณ
+              {formatNumber(CURRENT_FISCAL_YEAR)} โดยสำนักงบประมาณ
             </ExternalLink>
           </p>
         </WvParagraphGroup>

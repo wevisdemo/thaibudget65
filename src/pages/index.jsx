@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import WvSharer from '@wevisdemo/ui/components/sharer';
 import { useNumberingSystem } from '../utils/numbering-system';
-import { CURRRENT_FISCAL_YEAR, CURRRENT_FISCAL_YEAR_SHORT } from '../constants';
+import { CURRENT_FISCAL_YEAR, CURRENT_FISCAL_YEAR_SHORT } from '../constants';
 
 const IndexPage = () => {
   const { formatNumber } = useNumberingSystem();
@@ -11,7 +11,7 @@ const IndexPage = () => {
     <div className="flex flex-col wv-font-anuphan wv-b5">
       <div className="flex flex-col items-center text-center bg-gray-3 text-gray-2 py-16 px-4">
         <h1 className="wv-font-kondolar wv-font-black wv-h3 text-gray-1">
-          สำรวจงบประมาณปี {formatNumber(CURRRENT_FISCAL_YEAR_SHORT)}
+          สำรวจงบประมาณปี {formatNumber(CURRENT_FISCAL_YEAR_SHORT)}
         </h1>
         <p className="wv-b2 max-w-lg">
           ภาษีเรา.. เอาไปใช้อะไรบ้าง? ชวนมาติดตาม ตั้งคำถาม
@@ -33,7 +33,7 @@ const IndexPage = () => {
             title="สำรวจผ่านโครงสร้าง"
             image="/images/tree-aw.webp"
           >
-            สำรวจโครงสร้างงบประมาณปี {formatNumber(CURRRENT_FISCAL_YEAR_SHORT)}{' '}
+            สำรวจโครงสร้างงบประมาณปี {formatNumber(CURRENT_FISCAL_YEAR_SHORT)}{' '}
             แบ่งตามหน่วยงานและจังหวัดที่ได้รับงบ
           </PageCard>
           <PageCard
@@ -41,7 +41,7 @@ const IndexPage = () => {
             title="สำรวจผ่านคีย์เวิร์ด"
             image="/images/keyword-aw.webp"
           >
-            สำรวจงบประมาณปี {formatNumber(CURRRENT_FISCAL_YEAR_SHORT)}{' '}
+            สำรวจงบประมาณปี {formatNumber(CURRENT_FISCAL_YEAR_SHORT)}{' '}
             ผ่านคำที่พบบ่อยหรือคำที่น่าสนใจ
           </PageCard>
         </div>
@@ -53,7 +53,7 @@ const IndexPage = () => {
         <p className="max-w-2xl indent-8 text-gray-3">
           ข้อมูลที่แสดงบนเว็บไซต์นี้ มาจากร่างพระราชบัญญัติงบประมาณรายจ่าย
           (ฉบับที่ {formatNumber(3)} ขาว-แดง) ประจำปีงบประมาณ พ.ศ.{' '}
-          {formatNumber(CURRRENT_FISCAL_YEAR)} โดย
+          {formatNumber(CURRENT_FISCAL_YEAR)} โดย
           <ExternalLink href="https://www.bb.go.th/topic3.php?catID=1442&gid=860&mid=544">
             สำนักงบประมาณ
           </ExternalLink>{' '}
