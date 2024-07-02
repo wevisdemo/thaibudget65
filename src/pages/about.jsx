@@ -1,9 +1,9 @@
 import React from 'react';
-import WvContainer from '@wevisdemo/ui/components/container';
-import WvParagraphGroup from '@wevisdemo/ui/components/paragraph-group';
-import WvButtonGroup from '@wevisdemo/ui/components/button-group';
-import WvButton from '@wevisdemo/ui/components/button';
-import WvSharer from '@wevisdemo/ui/components/sharer';
+import WvContainer from '@wevisdemo/ui/react/container';
+import WvParagraphGroup from '@wevisdemo/ui/react/paragraph-group';
+import WvButtonGroup from '@wevisdemo/ui/react/button-group';
+import WvButton from '@wevisdemo/ui/react/button';
+import WvSharer from '@wevisdemo/ui/react/sharer';
 import { useNumberingSystem } from '../utils/numbering-system';
 import { CURRENT_FISCAL_YEAR } from '../constants';
 

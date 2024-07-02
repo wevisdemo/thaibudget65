@@ -10,9 +10,9 @@ import {
   Switch,
   useLocation,
 } from 'react-router-dom';
-import WvNavbar from '@wevisdemo/ui/components/navbar';
-import WvNavButton from '@wevisdemo/ui/components/nav-button';
-import WvFooter from '@wevisdemo/ui/components/footer';
+import WvNavbar from '@wevisdemo/ui/react/navbar';
+import WvNavButton from '@wevisdemo/ui/react/nav-button';
+import WvFooter from '@wevisdemo/ui/react/footer';
 import Structure from './pages/structure';
 import reportWebVitals from './reportWebVitals';
 import Keywords from './pages/keywords';

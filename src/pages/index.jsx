@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import WvSharer from '@wevisdemo/ui/components/sharer';
+import WvSharer from '@wevisdemo/ui/react/sharer';
 import { useNumberingSystem } from '../utils/numbering-system';
 import { CURRENT_FISCAL_YEAR, CURRENT_FISCAL_YEAR_SHORT } from '../constants';
 
