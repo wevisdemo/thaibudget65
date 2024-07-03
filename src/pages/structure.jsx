@@ -219,9 +219,9 @@ function TreemapPage() {
 
   return (
     <div className="flex-1 flex flex-col">
-      {/* <div className="absolute top-8 right-[83px] wv-font-anuphan z-30"> */}
+      {/* <div className="absolute top-8 right-[83px] wv-ibmplexlooped z-30"> */}
       <div className="flex justify-center text-white p-5 pt-8 md:pt-10">
-        <div className="wv-font-anuphan text-2xl font-bold flex items-center">
+        <div className="wv-ibmplexlooped text-2xl font-bold flex items-center">
           <img
             className="w-[24px] h-[24px] mr-2"
             src={`${process.env.PUBLIC_URL}/images/inspect.png`}
@@ -232,7 +232,7 @@ function TreemapPage() {
         </div>
       </div>
       <div>
-        <div className="wv-font-anuphan flex justify-center">
+        <div className="wv-ibmplexlooped flex justify-center">
           <div className="pr-2">
             <label className="flex text-xs items-center pb-2">แบ่งตาม</label>
 
@@ -272,7 +272,7 @@ function TreemapPage() {
             />
           </div>
         </div>
-        <p className="wv-b7 text-gray-2 text-center pt-4 wv-font-anuphan">
+        <p className="wv-b7 text-gray-2 text-center pt-4 wv-ibmplexlooped">
           หมายเหตุ : งบประมาณแบ่งตามจังหวัด
           เป็นการแสดงผลรวมของโครงการ/ผลผลิตที่ปรากฎชื่อจังหวัดนั้นอยู่
           ไม่ได้หมายความถึงงบทั้งหมดที่จังหวัดนั้นได้รับ
@@ -326,7 +326,7 @@ function TreemapPage() {
         <Sidebar>
           <ActionButton
             type="button"
-            className="wv-font-anuphan text-xs md:mt-[80px]"
+            className="wv-ibmplexlooped text-xs md:mt-[80px]"
             onClick={() => {
               if (isCompareView) {
                 setSumWindowsIdx(1, 0);
@@ -357,17 +357,17 @@ function TreemapPage() {
           <div style={{ flexGrow: 1 }} />
 
           <CreditLink target="_blank" href={CURRENT_DATA_URL}>
-            <small className="wv-font-anuphan text-xs">
+            <small className="wv-ibmplexlooped text-xs">
               ดูข้อมูลปี {formatNumber(CURRENT_FISCAL_YEAR_SHORT)}
             </small>
           </CreditLink>
           <CreditLink target="_blank" href={PREV_DATA_URL}>
-            <small className="wv-font-anuphan text-xs">
+            <small className="wv-ibmplexlooped text-xs">
               ดูข้อมูลปี {formatNumber(CURRENT_FISCAL_YEAR_SHORT - 1)}
             </small>
           </CreditLink>
           <CreditLink target="_blank" href="https://taepras.com">
-            {/* <small className="wv-font-anuphan text-xs">Visualized by</small> */}
+            {/* <small className="wv-ibmplexlooped text-xs">Visualized by</small> */}
             <ResponsiveImage
               src={`${process.env.PUBLIC_URL}/images/tp_logo_dark.svg`}
               alt="kaogeek logo"
@@ -375,7 +375,7 @@ function TreemapPage() {
             />
           </CreditLink>
           <CreditLink target="_blank" href="https://github.com/kaogeek">
-            {/* <small className="wv-font-anuphan text-xs">Data Source</small> */}
+            {/* <small className="wv-ibmplexlooped text-xs">Data Source</small> */}
             <ResponsiveImage
               src={`${process.env.PUBLIC_URL}/images/kaogeek_logo_dark.png`}
               alt="kaogeek logo"
@@ -400,7 +400,7 @@ function TreemapPage() {
       >
 
       </div> */}
-      <ReactTooltip className="wv-font-anuphan" multiline />
+      <ReactTooltip className="wv-ibmplexlooped" multiline />
     </div>
   );
 }

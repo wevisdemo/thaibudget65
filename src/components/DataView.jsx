@@ -75,7 +75,7 @@ function DataView({
   };
 
   return (
-    <FullView className="wv-font-anuphan">
+    <FullView className="wv-ibmplexlooped">
       {/*
       <button type="button" onClick={() => setCompareView(!isCompareView)}>
       toggle compare view

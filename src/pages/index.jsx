@@ -8,9 +8,9 @@ const IndexPage = () => {
   const { formatNumber } = useNumberingSystem();
 
   return (
-    <div className="flex flex-col wv-font-anuphan wv-b5">
+    <div className="flex flex-col wv-ibmplexlooped wv-b5">
       <div className="flex flex-col items-center text-center bg-gray-3 text-gray-2 py-16 px-4">
-        <h1 className="wv-font-kondolar wv-font-black wv-h3 text-gray-1">
+        <h1 className="wv-kondolar wv-black wv-h3 text-gray-1">
           สำรวจงบประมาณปี {formatNumber(CURRENT_FISCAL_YEAR_SHORT)}
         </h1>
         <p className="wv-b2 max-w-lg">
@@ -49,7 +49,7 @@ const IndexPage = () => {
       </div>
 
       <div className="flex flex-col items-center bg-black py-16 px-4 space-y-4">
-        <h2 className="wv-font-kondolar wv-font-black wv-h4">Disclaimer</h2>
+        <h2 className="wv-kondolar wv-black wv-h4">Disclaimer</h2>
         <p className="max-w-2xl indent-8 text-gray-3">
           ข้อมูลที่แสดงบนเว็บไซต์นี้ มาจากร่างพระราชบัญญัติงบประมาณรายจ่าย
           (ฉบับที่ {formatNumber(3)} ขาว-แดง) ประจำปีงบประมาณ พ.ศ.{' '}
@@ -74,7 +74,7 @@ const IndexPage = () => {
 const PageCard = ({ to, title, children, image }) => (
   <Link to={to}>
     <div className="h-full bg-white flex flex-col items-center p-6 pb-0 rounded-lg hover:shadow-xl transition-shadow duration-300 ease-in-out">
-      <p className="wv-b2 wv-font-bold text-gray-1 pb-2">{title}</p>
+      <p className="wv-b2 wv-bold text-gray-1 pb-2">{title}</p>
       <p className="flex-1">{children}</p>
       <img src={`${process.env.PUBLIC_URL}${image}`} alt={title} />
     </div>

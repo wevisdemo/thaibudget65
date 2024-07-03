@@ -10,7 +10,7 @@ import { CURRENT_FISCAL_YEAR } from '../constants';
 const About = () => {
   const { formatInteger, formatNumber } = useNumberingSystem();
   return (
-    <div className="bg-white text-black wv-font-anuphan">
+    <div className="bg-white text-black wv-ibmplexlooped">
       <WvContainer heading="เกี่ยวกับโครงการ">
         <WvParagraphGroup heading="เป้าหมาย">
           <p>

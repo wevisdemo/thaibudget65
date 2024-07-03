@@ -61,7 +61,7 @@ function Pagination({ currentPage, pageLength, setCurrentPage }) {
           <button
             type="button"
             onClick={() => setCurrentPage(v)}
-            className={`wv-font-anuphan rounded-full font-semibold min-h-[24px] min-w-[24px] px-1 ${
+            className={`wv-ibmplexlooped rounded-full font-semibold min-h-[24px] min-w-[24px] px-1 ${
               v === currentPage && 'bg-blue text-white'
             }`}
           >
