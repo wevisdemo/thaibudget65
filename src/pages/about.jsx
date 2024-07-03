@@ -107,7 +107,7 @@ const About = () => {
 
         <WvParagraphGroup heading="ที่มาของข้อมูล">
           <p>
-            <ExternalLink href="https://www.bb.go.th/topic3.php?catID=1377&gid=860&mid=544">
+            <ExternalLink href="https://www.bb.go.th/topic-detail.php?id=16659&mid=1061&catID=0">
               ร่างพระราชบัญญัติงบประมาณรายจ่าย ประจำปีงบประมาณ พ.ศ.{' '}
               {formatNumber(CURRENT_FISCAL_YEAR)} โดยสำนักงบประมาณ
             </ExternalLink>
