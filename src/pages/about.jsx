@@ -19,13 +19,11 @@ const About = () => {
             แต่ไม่ใช่เรื่องง่ายเลยกับการไล่ดูร่างพระราชบัญญัติงบประมาณรายจ่ายหลายสิบเล่มบนหน้าเว็บไซต์สำนักงบประมาณ
           </p>
           <p>
-            ทางทีม WeVis จึงร่วมกับทีมดิจิทัลพรรคก้าวไกล (GaoGeek)
-            แปลงเอกสารงบประมาณทั้งหมดกว่า {formatInteger(25)} เล่ม และ กว่า
-            {formatInteger(9000)} หน้า มาเป็นในรูปแบบ CSV หรือ Excel
-            เพื่อมาแจกประชาชนทุกคน และ ผู้แทนราษฎรจากทุกพรรค
-            ให้สามารถนำไปใช้วิเคราะห์ต่อได้อย่างสะดวกสบายยิ่งขึ้น
-            รวมถึงเปลี่ยนจากตารางให้เป็น Visualization
-            เพื่อช่วยในการสำรวจข้อมูลเบื้องต้นได้ง่ายขึ้น
+            ทางทีม WeVis จึงร่วมกับทีม GaoGeek แปลงเอกสารงบประมาณทั้งหมดกว่ากว่า{' '}
+            {formatInteger(9000)} หน้า มาเป็นในรูปแบบ CSV ที่นำไปวิเคราะห์ต่อได้
+            ให้ประชาชนผู้เสียภาษีทุกคน ค้นหา ตั้งคำถาม และตรวจสอบง่ายขึ้น
+            รวมถึงเปลี่ยนจากข้อมูลตารางให้เป็น Visualization
+            และเพิ่มฟังก์ชั่นค้นหา เพื่อช่วยในการสำรวจข้อมูลเบื้องต้นได้ง่ายขึ้น
           </p>
           <p>
             การแปลงข้อมูลและวิเคราะห์เบื้องต้นนั้นทำโดยคอมพิวเตอร์
@@ -37,22 +35,24 @@ const About = () => {
 
         <WvParagraphGroup heading="นโยบายการนำข้อมูลไปใช้ต่อ">
           <p>
-            ทางทีมมีความตั้งใจที่พัฒนาทุกโปรเจ็กต์ให้เป็น Open Source
-            และเปิดข้อมูลเป็น Open Data ภายใต้เงื่อนไข Creative Commons
-            Attribution-ShareAlike License คือสามารถนำไปเผยแพร่และดัดแปลงได้
-            โดยต้องระบุที่มา แต่ห้ามนำไปใช้เพื่อการค้า
-            และต้องเผยแพร่งานดัดแปลงโดยใช้สัญญาอนุญาตชนิดเดียวกัน
-          </p>
-          <p>
+            ทางทีมมีความตั้งใจที่พัฒนาทุกโปรเจกต์ให้เป็น Open Source
+            และเปิดข้อมูลเป็น Open Data{' '}
+            <ExternalLink href="https://wevis.info/terms-of-use/">
+              ภายใต้ข้อตกลงในการใช้งาน (Terms of Use)
+            </ExternalLink>{' '}
             หากมีข้อสงสัยต้องการสอบถามเพิ่มเติม
             ประสงค์แจ้งเปลี่ยนแปลงหรือเพิ่มเติมข้อมูลเพื่อความถูกต้อง
-            หรือมีข้อเสนอแนะใดๆ สามารถติดต่อได้ที่ team [at] punchup.world
+            หรือมีข้อเสนอแนะใดๆ สามารถติดต่อได้ที่ team@wevis.info
           </p>
         </WvParagraphGroup>
 
         <WvParagraphGroup heading="ทีมงานร่วมพัฒนา">
           <WvParagraphGroup small heading="เขียนโปรแกรม">
             <p>
+              <ExternalLink href="https://github.com/taepras">
+                taepras
+              </ExternalLink>
+              ,{' '}
               <ExternalLink href="https://github.com/mixth">Mixth</ExternalLink>
               ,{' '}
               <ExternalLink href="https://github.com/palminister">
@@ -65,6 +65,10 @@ const About = () => {
               ,{' '}
               <ExternalLink href="https://github.com/Th1nkK1D">
                 Th1nkK1D
+              </ExternalLink>
+              ,{' '}
+              <ExternalLink href="https://github.com/patiphan2000">
+                patiphan2000
               </ExternalLink>
             </p>
           </WvParagraphGroup>
@@ -91,11 +95,7 @@ const About = () => {
 
         <WvParagraphGroup small heading="หมายเหตุ">
           <p>
-            {' '}
-            <ExternalLink href="https://punchup.world">
-              Punch Up
-            </ExternalLink>{' '}
-            และ <ExternalLink href="https://wevis.info">WeVis</ExternalLink>{' '}
+            <ExternalLink href="https://wevis.info">WeVis</ExternalLink>{' '}
             ได้รับการสนับสนุนทุนในการดำเนินงานจาก{' '}
             <ExternalLink href="https://www.ned.org">
               National Endowment for Democracy (NED)
