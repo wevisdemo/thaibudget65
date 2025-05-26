@@ -63,7 +63,7 @@ export function groupBy(propName, items) {
 export function filterItems(keyword, items) {
   return items.filter(
     (item) =>
-      item.BUDGET_PLAN.includes(keyword) ||
+      item.BUDGET_PLAN?.includes(keyword) ||
       item.OUTPUT?.includes(keyword) ||
       item.PROJECT?.includes(keyword) ||
       item.CATEGORY_LV1?.includes(keyword) ||
