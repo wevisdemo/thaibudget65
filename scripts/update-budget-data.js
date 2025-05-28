@@ -40,15 +40,19 @@ const budgets = await Spreadsheet(sheetId, { headers: 1 }).get(
   budgetSheetSchema
 );
 
+const currentYearBudgets = budgets.filter(
+  (d) => d.FISCAL_YEAR === CURRENT_FISCAL_YEAR - 543
+);
+
 const outputCsv = `public/data/${CURRENT_FISCAL_YEAR}.csv`;
 
 console.log(`Writing full output CSV to ${outputCsv} ...`);
 
-await writeFile(outputCsv, formatToCsv(budgets, budgetSheetSchema));
+await writeFile(outputCsv, formatToCsv(currentYearBudgets, budgetSheetSchema));
 
 console.log(`Updating selectedKeyword.json ...`);
 
 await writeFile(
   'src/selectedKeyword.json',
-  JSON.stringify(extractingKeyword(budgets))
+  JSON.stringify(extractingKeyword(currentYearBudgets))
 );
