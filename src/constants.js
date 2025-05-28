@@ -1,5 +1,7 @@
 export const CURRENT_FISCAL_YEAR = 2569;
 export const CURRENT_FISCAL_YEAR_SHORT = 69;
+export const BUDGET_BUREAU_LINK =
+  'https://www.bb.go.th/topic3.php?gid=860&mid=544';
 export const CURRENT_DATA_URL =
   'https://docs.google.com/spreadsheets/d/1oRnzLwK2VYS-BjbZjs5Csl9_PtT0YeUWiYCjxhFVVl0/edit';
 export const CURRENT_DATA_SHEET_NAME = '2025-05-25#';

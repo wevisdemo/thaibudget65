@@ -5,7 +5,11 @@ import WvButtonGroup from '@wevisdemo/ui/react/button-group';
 import WvButton from '@wevisdemo/ui/react/button';
 import WvSharer from '@wevisdemo/ui/react/sharer';
 import { useNumberingSystem } from '../utils/numbering-system';
-import { CURRENT_FISCAL_YEAR } from '../constants';
+import {
+  BUDGET_BUREAU_LINK,
+  CURRENT_DATA_URL,
+  CURRENT_FISCAL_YEAR,
+} from '../constants';
 
 const About = () => {
   const { formatInteger, formatNumber } = useNumberingSystem();
@@ -19,10 +23,10 @@ const About = () => {
             แต่ไม่ใช่เรื่องง่ายเลยกับการไล่ดูร่างพระราชบัญญัติงบประมาณรายจ่ายหลายสิบเล่มบนหน้าเว็บไซต์สำนักงบประมาณ
           </p>
           <p>
-            ทางทีม WeVis จึงร่วมกับทีม GaoGeek แปลงเอกสารงบประมาณทั้งหมดกว่ากว่า{' '}
-            {formatInteger(9000)} หน้า มาเป็นในรูปแบบ CSV ที่นำไปวิเคราะห์ต่อได้
-            ให้ประชาชนผู้เสียภาษีทุกคน ค้นหา ตั้งคำถาม และตรวจสอบง่ายขึ้น
-            รวมถึงเปลี่ยนจากข้อมูลตารางให้เป็น Visualization
+            ทางทีม WeVis และเหล่าอาสาร่วมกันแปลงเอกสารงบประมาณทั้งหมดกว่ากว่า{' '}
+            {formatInteger(10000)} หน้า มาเป็นในรูปแบบ CSV
+            ที่นำไปวิเคราะห์ต่อได้ ให้ประชาชนผู้เสียภาษีทุกคน ค้นหา ตั้งคำถาม
+            และตรวจสอบง่ายขึ้น รวมถึงเปลี่ยนจากข้อมูลตารางให้เป็น Visualization
             และเพิ่มฟังก์ชั่นค้นหา เพื่อช่วยในการสำรวจข้อมูลเบื้องต้นได้ง่ายขึ้น
           </p>
           <p>
@@ -47,6 +51,14 @@ const About = () => {
         </WvParagraphGroup>
 
         <WvParagraphGroup heading="ทีมงานร่วมพัฒนา">
+          <WvParagraphGroup small heading="ประสานงาน">
+            <p>
+              <ExternalLink href="https://www.linkedin.com/in/pantira-monsumrith-b42018224/">
+                Pantira M.
+              </ExternalLink>
+            </p>
+          </WvParagraphGroup>
+
           <WvParagraphGroup small heading="เขียนโปรแกรม">
             <p>
               <ExternalLink href="https://github.com/taepras">
@@ -72,25 +84,21 @@ const About = () => {
               </ExternalLink>
             </p>
           </WvParagraphGroup>
-        </WvParagraphGroup>
 
-        <WvParagraphGroup small heading="ออกแบบ">
-          <p>
-            <ExternalLink href="https://th.linkedin.com/in/supawit-pipat-403110b8">
-              Supawit Pipat
-            </ExternalLink>
-          </p>
-        </WvParagraphGroup>
+          <WvParagraphGroup small heading="ออกแบบ">
+            <p>
+              <ExternalLink href="https://th.linkedin.com/in/supawit-pipat-403110b8">
+                Supawit Pipat
+              </ExternalLink>
+            </p>
+          </WvParagraphGroup>
 
-        <WvParagraphGroup small heading="สืบค้นและรวบรวมข้อมูล">
-          <p>
-            ร่วมกับ{' '}
-            <ExternalLink href="https://github.com/kaogeek">
-              GaoGeek
-            </ExternalLink>{' '}
-            แปลงเอกสารให้อยู่ในรูปแบบ Machine Readable
-            และตรวจสอบความถูกต้องเบื้องต้น
-          </p>
+          <WvParagraphGroup small heading="สืบค้นและรวบรวมข้อมูล">
+            <p>
+              ทีม WeVis และเหล่าอาสาร่วมกันแปลงเอกสารให้อยู่ในรูปแบบ Machine
+              Readable และตรวจสอบความถูกต้องเบื้องต้น
+            </p>
+          </WvParagraphGroup>
         </WvParagraphGroup>
 
         <WvParagraphGroup small heading="หมายเหตุ">
@@ -101,13 +109,13 @@ const About = () => {
               National Endowment for Democracy (NED)
             </ExternalLink>{' '}
             ซึ่งนำมาใช้เป็นต้นทุนในการรวมรวมข้อมูล ออกแบบ พัฒนาเว็บไซต์
-            ประสานงาน บริหารจัดการ ตลอดจนการจัด Meetup เพื่อดำเนินโครงการ
+            ประสานงาน และบริหารจัดการ เพื่อดำเนินโครงการ
           </p>
         </WvParagraphGroup>
 
         <WvParagraphGroup heading="ที่มาของข้อมูล">
           <p>
-            <ExternalLink href="https://www.bb.go.th/topic-detail.php?id=16659&mid=1061&catID=0">
+            <ExternalLink href={BUDGET_BUREAU_LINK}>
               ร่างพระราชบัญญัติงบประมาณรายจ่าย ประจำปีงบประมาณ พ.ศ.{' '}
               {formatNumber(CURRENT_FISCAL_YEAR)} โดยสำนักงบประมาณ
             </ExternalLink>
@@ -115,15 +123,9 @@ const About = () => {
         </WvParagraphGroup>
 
         <WvButtonGroup center>
-          <ExternalLink href="https://wevis.info/downloads">
+          <ExternalLink href={CURRENT_DATA_URL}>
             <WvButton>
-              <svg
-                width="21"
-                height="21"
-                viewBox="0 0 21 21"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
+              <svg width="21" height="21" viewBox="0 0 21 21" fill="none">
                 <g clipPath="url(#clip0_314_173)">
                   <path
                     d="M7.03582 2.86356H1.17529V19.4081H19.8247V2.86356C19.8247 2.86356 15.306 2.86356 13.9642 2.86356"

@@ -355,7 +355,6 @@ function TreemapPage() {
               : 'ปิดการเทียบ'}
           </ActionButton>
           <div style={{ flexGrow: 1 }} />
-
           <CreditLink target="_blank" href={CURRENT_DATA_URL}>
             <small className="wv-ibmplexlooped text-xs">
               ดูข้อมูลปี {formatNumber(CURRENT_FISCAL_YEAR_SHORT)}
@@ -370,16 +369,8 @@ function TreemapPage() {
             {/* <small className="wv-ibmplexlooped text-xs">Visualized by</small> */}
             <ResponsiveImage
               src={`${process.env.PUBLIC_URL}/images/tp_logo_dark.svg`}
-              alt="kaogeek logo"
+              alt="taepras logo"
               title="Thanawit Prasongpongchai"
-            />
-          </CreditLink>
-          <CreditLink target="_blank" href="https://github.com/kaogeek">
-            {/* <small className="wv-ibmplexlooped text-xs">Data Source</small> */}
-            <ResponsiveImage
-              src={`${process.env.PUBLIC_URL}/images/kaogeek_logo_dark.png`}
-              alt="kaogeek logo"
-              title="กลุ่มก้าว Geek"
             />
           </CreditLink>
           {/* <div style={{ opacity: 0.6, textAlign: 'center' }}>

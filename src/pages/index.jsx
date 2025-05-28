@@ -2,7 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import WvSharer from '@wevisdemo/ui/react/sharer';
 import { useNumberingSystem } from '../utils/numbering-system';
-import { CURRENT_FISCAL_YEAR, CURRENT_FISCAL_YEAR_SHORT } from '../constants';
+import {
+  BUDGET_BUREAU_LINK,
+  CURRENT_FISCAL_YEAR,
+  CURRENT_FISCAL_YEAR_SHORT,
+} from '../constants';
 
 const IndexPage = () => {
   const { formatNumber } = useNumberingSystem();
@@ -19,8 +23,9 @@ const IndexPage = () => {
         </p>
         <p className="mt-6 max-w-2xl">
           ประชาชนนับสิบล้านจ่ายภาษีทางตรงและทางอ้อมทุกวันทุกปี
-          อยากขอดูหน่อยว่าเอาเงินเราไปใช้อะไร แต่เปิดมาเจองบประมาณรายจ่ายเกือบ{' '}
-          {formatNumber(30)} เล่ม จะเปิดดูทีละเล่ม เฮ้อ.. เป็นท้อ!!
+          อยากขอดูหน่อยว่าเอาเงินเราไปใช้อะไร
+          แต่เปิดมาเจองบประมาณรายจ่ายเป็นร้อย ๆ ไฟล์ รวม ๆ แล้วหมื่นกว่าหน้า
+          เฮ้อ.. เป็นท้อ!!
         </p>
         <p className="mt-2 max-w-2xl">
           เราขอเยียวยาความเจ็บปวดของประชาชนผู้เสียภาษี ใครกำลังท้อ
@@ -54,14 +59,14 @@ const IndexPage = () => {
           ข้อมูลที่แสดงบนเว็บไซต์นี้ มาจากร่างพระราชบัญญัติงบประมาณรายจ่าย
           (ฉบับที่ {formatNumber(3)} ขาว-แดง) ประจำปีงบประมาณ พ.ศ.{' '}
           {formatNumber(CURRENT_FISCAL_YEAR)} โดย
-          <ExternalLink href="https://www.bb.go.th/topic3.php?catID=1442&gid=860&mid=544">
+          <ExternalLink href={BUDGET_BUREAU_LINK}>
             สำนักงบประมาณ
           </ExternalLink>{' '}
           โดยใช้โปรแกรมคอมพิวเตอร์แปลงข้อมูลเป็น Machine-Readable Format
           และตรวจสอบอีกครั้งโดยทีมงาน ส่วนในการแสดงผลส่วนต่างๆ
           มาจากการค้นหาและตัดคำเบื้องต้นโดยคอมพิวเตอร์ข้อมูล
           โปรดตรวจสอบบริบทอีกครั้งก่อนการใช้งาน
-          หากต้องการแจ้งข้อผิดพลาน/เสนอแนะเพิ่มเติม สามารถแจ้งทีมงานได้ที่{' '}
+          หากต้องการแจ้งข้อผิดพลาด/เสนอแนะเพิ่มเติม สามารถแจ้งทีมงานได้ที่{' '}
           <ExternalLink href="https://airtable.com/shryu4errnlj1LWsM">
             https://airtable.com/shryu4errnlj1LWsM
           </ExternalLink>
