@@ -54,5 +54,9 @@ console.log(`Updating selectedKeyword.json ...`);
 
 await writeFile(
   'src/selectedKeyword.json',
-  JSON.stringify(extractingKeyword(currentYearBudgets))
+  JSON.stringify(
+    extractingKeyword(currentYearBudgets).sort(
+      (a, z) => z.summation - a.summation
+    )
+  )
 );

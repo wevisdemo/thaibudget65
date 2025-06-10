@@ -20,7 +20,7 @@ function KeywordList({ keywords, activeKeyword, onActiveKeywordIndex }) {
   const [optionsState, setOptionsState] = useState('งบมากไปน้อย');
   const [searchQuery, setSearchQuery] = useState('');
   const filteredKeywords = keywords.filter((keyword) =>
-    keyword.word.includes(searchQuery)
+    keyword.word.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   const handleDropdown = (e) => {
